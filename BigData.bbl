@@ -16,6 +16,46 @@
   {}
 \endgroup
 
+\entry{einstein}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Einstein}{E.}%
+     {Albert}{A.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{EA1}
+  \strng{fullhash}{EA1}
+  \field{sortinit}{E}
+  \verb{doi}
+  \verb http://dx.doi.org/10.1002/andp.19053221004
+  \endverb
+  \field{number}{10}
+  \field{pages}{891\bibrangedash 921}
+  \field{title}{{Zur Elektrodynamik bewegter K{\"o}rper}. ({German}) [{On} the
+  electrodynamics of moving bodies]}
+  \field{volume}{322}
+  \field{journaltitle}{Annalen der Physik}
+  \field{year}{1905}
+\endentry
+
+\entry{q1:virtualization}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Massachusets~Amherst}{M.~A.}%
+     {Universidad}{U.}%
+     {de}{d.}%
+     {}{}}%
+  }
+  \strng{namehash}{MAUd1}
+  \strng{fullhash}{MAUd1}
+  \field{sortinit}{M}
+  \field{title}{CS677: Distributed OS - Lecture 4 - Virtualization}
+  \verb{url}
+  \verb http://www-cs-faculty.stanford.edu/\~{}uno/abcde.html
+  \endverb
+\endentry
+
 \lossort
 \endlossort
 
