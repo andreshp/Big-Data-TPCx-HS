@@ -16,44 +16,87 @@
   {}
 \endgroup
 
-\entry{einstein}{article}{}
+\entry{zeta-bytes}{misc}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Evans}{E.}%
+     {Hugo}{H.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {al.}{a.}%
+     {}{}%
+     {et.}{e.}%
+     {}{}}%
+  }
+  \strng{namehash}{EHae1}
+  \strng{fullhash}{EHae1}
+  \field{sortinit}{E}
+  \field{title}{Big Data and the Creative Destruction of Today's Business
+  Models}
+  \verb{url}
+  \verb http://www.atkearney.es/paper/-/asset_publisher/dVxv4Hz2h8bS/content/bi
+  \verb g-data-and-the-creative-destruction-of-today-s-business-models/10192
+  \endverb
+\endentry
+
+\entry{hard-disks}{article}{}
   \name{author}{1}{}{%
     {{}%
-     {Einstein}{E.}%
-     {Albert}{A.}%
+     {Farrance}{F.}%
+     {Rex}{R.}%
      {}{}%
      {}{}}%
   }
-  \strng{namehash}{EA1}
-  \strng{fullhash}{EA1}
-  \field{sortinit}{E}
-  \verb{doi}
-  \verb http://dx.doi.org/10.1002/andp.19053221004
+  \strng{namehash}{FR1}
+  \strng{fullhash}{FR1}
+  \field{sortinit}{F}
+  \field{title}{Timeline: 50 Years of Hard Drives}
+  \verb{url}
+  \verb http://www.pcworld.com/article/127105/article.html
   \endverb
-  \field{number}{10}
-  \field{pages}{891\bibrangedash 921}
-  \field{title}{{Zur Elektrodynamik bewegter K{\"o}rper}. ({German}) [{On} the
-  electrodynamics of moving bodies]}
-  \field{volume}{322}
-  \field{journaltitle}{Annalen der Physik}
-  \field{year}{1905}
+  \field{journaltitle}{PCWorld}
+  \field{year}{2016}
 \endentry
 
-\entry{q1:virtualization}{misc}{}
+\entry{internet}{misc}{}
   \name{author}{1}{}{%
     {{}%
-     {Massachusets~Amherst}{M.~A.}%
-     {Universidad}{U.}%
-     {de}{d.}%
+     {stats}{s.}%
+     {Internet}{I.}%
+     {live}{l.}%
      {}{}}%
   }
-  \strng{namehash}{MAUd1}
-  \strng{fullhash}{MAUd1}
-  \field{sortinit}{M}
-  \field{title}{CS677: Distributed OS - Lecture 4 - Virtualization}
+  \strng{namehash}{sIl1}
+  \strng{fullhash}{sIl1}
+  \field{sortinit}{S}
+  \field{title}{Total number of Websites}
   \verb{url}
-  \verb http://www-cs-faculty.stanford.edu/\~{}uno/abcde.html
+  \verb http://www.internetlivestats.com/total-number-of-websites/
   \endverb
+\endentry
+
+\entry{big-data-internet-cosas}{book}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Tascón}{T.}%
+     {Mario}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Coullaut}{C.}%
+     {Arantza}{A.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Catarata}%
+  }
+  \strng{namehash}{TMCA1}
+  \strng{fullhash}{TMCA1}
+  \field{sortinit}{T}
+  \field{title}{Big data y el Internet de las cosas}
+  \field{year}{2016}
 \endentry
 
 \lossort

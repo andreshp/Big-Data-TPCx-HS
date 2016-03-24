@@ -32,7 +32,7 @@
 %-----------------------------------------------------------------------------------------------------
 
 % Fuente utilizada.
-\usepackage{courier}                    % Fuente Courier.
+\usepackage{courier}
 \usepackage{microtype}                  % Mejora la letra final de cara al lector.
 
 %-----------------------------------------------------------------------------------------------------
@@ -151,30 +151,52 @@
 %	SECCIÓN 1: INTRODUCCIÓN
 %-----------------------------------------------------------------------------------------------------
 
-\section{Introducción}
+\section{Introducción a Big Data}
 
-	Big Data mola. Mola mucho. Además, Einstenin lo inventó \cite{einstein} y la virtualización es lo mejor \cite{q1:virtualization}. Salgo muy guapo en la Figura \ref{fig:andres}.
+	Desde hace miles de siglos el ser humano ha investigado la manera de almacenar y recopilar información. Durante muchos siglos la escritura y la pintura eran los únicos mecanismos existentes. Posteriormente surgió la fotografía, los discos de vinilo... Sin embargo, poca información seguía ocupando mucho volumen físico. Gracias a los avances tecnológicos de las últimos décadas, hoy en día disponemos dispositivos electrónicos para el almacenamiento de datos binarios. Además, la evolución de estos dispositivos ha sido frenética. IBM comercializó el primer disco duro en 1956. Este constaba solamente de 5 Mega Bytes de capacidad \cite{hard-disks} mientras que actualmente podemos utilizar discos duros con más de 1 Tera Byte.
 
-    \begin{figure}[h]
-       	\centering
-       	\includegraphics[width=10cm]{./images/wine-art.jpg}
-       	\caption{La mejor foto del mundo.}
-       	\label{fig:andres}
-    \end{figure}
+	La evolución en la capacidad de cómputo y procesamiento de los computadores también ha sido exponencial. El primer ordenador comercial se presentó en ....(Referencia). Este computador realizaba n cuentas por segundo. Actualmente hablamos de GHz cuando comparamos la velocidad del procesador de un ordenador. Es más, se han creado benchmarks.... (medio párrafo diciendo para que sirven y que son muy costosos computacionalmente).
+	
+	Sin embargo, a pesar de la evolución de los computadores en todas sus facetas, la cantidad de datos e información a procesar y almacenar crece incluso a mayor velocidad. El mayor flujo de datos se produce gracias a Internet. A pesar de ser relativamente joven, se hizo público en 1993, actualmente existen más de mil millones de páginas webs \cite{internet}. Además, multitud de dispositivos electrónicos se conectan e interactúan con Internet (lo que se denomina Internet de las cosas \cite{big-data-internet-cosas}). Los usuarios de estos dispositivos utilizan aplicaciones web y redes sociales, publicando textos y archivos multimedia. Todo este cúmulo de tecnologías y actividades ha dado lugar a que hoy en día haya más de 10 Zeta Bytes de información almacenados (1 ZB = $10^{12}$ GB) (ver la Figura \ref{fig:zeta-bytes}).
+	
+	 \begin{figure}[h]
+	       	\centering
+	       	\includegraphics[width=15cm]{./images/Data.png}
+	       	\caption{Evolución histórica del número de Zeta Bytes de información almacenados \cite{zeta-bytes}.} 
+	       	\label{fig:zeta-bytes}
+	 \end{figure}
+
+	Esta cantidad de datos contiene conocimiento. Por ejemplo, todas las empresas almacenan información sobre sus clientes, la actividad y transacciones realizadas. Esta información necesita ser analizada en tiempo real para poder actuar en consecuencia. Aquella empresa que mejor conozca el mercado y actúa rápidamente obtendrá mejores resultados. Por otro lado, toda nuestra información médica se encuentra almacenada en el sistema de salud correspondiente. Dependemos de esta información para tomar decisiones sobre los tratamientos médicos a seguir.
+	
+	En resumen, se puede decir que hoy en día el mundo gira alrededor de los datos. Todos estos datos contienen información y necesita ser procesados.
+
+
+	\begin{itemize}
+		\item \textbf{Volumen.} El tamaño de la información es cada vez mayor, por ejemplo, facebook procesa cada día 500 TB nuevos de información.
+		\item \textbf{Velocidad.} Los datos deben ser procesados rápidamente. Normalmente, el procesamiento de los datos debe ser incluso continuo.
+		\item \textbf{Variedad.} Los datos a tratar provienen de una gran variedad de fuentes. Por tanto, las herramientas Big Data deben permitir procesar a la vez datos de diferentes características y tamaños.
+	\end{itemize}
 
 %-----------------------------------------------------------------------------------------------------
 %	SECCIÓN 2
 %-----------------------------------------------------------------------------------------------------
 
-\section{Segunda Sección}
+\section{Map Reduce}
 
-	\subsection{Primera subsección}
 
-		\lipsum[1]
+%-----------------------------------------------------------------------------------------------------
+%	SECCIÓN 3
+%-----------------------------------------------------------------------------------------------------
 
-	\subsection{Segunda subsección}
+\section{Spark y Flink}
 
-		\lipsum[2]
+
+%-----------------------------------------------------------------------------------------------------
+%	SECCIÓN 4
+%-----------------------------------------------------------------------------------------------------
+
+\section{Benchmarks: TPCx-HS}
+
 
 %-----------------------------------------------------------------------------------------------------
 %	SECCIÓN X: REFERENCIAS
