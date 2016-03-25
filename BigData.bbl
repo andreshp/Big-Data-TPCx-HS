@@ -59,6 +59,28 @@
   \field{year}{2016}
 \endentry
 
+\entry{big-data}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Sagiroglu}{S.}%
+     {Seref}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Sinanc}{S.}%
+     {Duygu}{D.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{SSSD1}
+  \strng{fullhash}{SSSD1}
+  \field{sortinit}{S}
+  \field{pages}{42\bibrangedash 47}
+  \field{title}{Big data: A review}
+  \field{journaltitle}{International Conference on. IEEE}
+  \field{year}{2013}
+\endentry
+
 \entry{internet}{misc}{}
   \name{author}{1}{}{%
     {{}%
