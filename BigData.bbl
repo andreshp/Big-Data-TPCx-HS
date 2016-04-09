@@ -59,6 +59,56 @@
   \field{year}{2016}
 \endentry
 
+\entry{big-data-internet-cosas}{book}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Herrera}{H.}%
+     {F.}{F.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Servicio de Publicaciones, Universidad de Jaén}%
+  }
+  \strng{namehash}{HF1}
+  \strng{fullhash}{HF1}
+  \field{sortinit}{H}
+  \field{title}{Inteligencia artificial, inteligencia computacional y Big Data}
+  \field{year}{2014}
+\endentry
+
+\entry{big-data-trends}{article}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Kambatla}{K.}%
+     {Karthik}{K.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Kollias}{K.}%
+     {Giorgos}{G.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Kumar}{K.}%
+     {Vipin}{V.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Grama}{G.}%
+     {Ananth}{A.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{KK+1}
+  \strng{fullhash}{KKKGKVGA1}
+  \field{sortinit}{K}
+  \field{pages}{2561\bibrangedash 2573}
+  \field{title}{Trends in big data analytics}
+  \field{journaltitle}{Journal of Parallel and Distributed Computing}
+  \field{year}{2014}
+\endentry
+
 \entry{big-data}{article}{}
   \name{author}{2}{}{%
     {{}%
@@ -98,27 +148,46 @@
   \endverb
 \endentry
 
-\entry{big-data-internet-cosas}{book}{}
+\entry{bd-definition}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Todd}{T.}%
+     {Steve}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{TS1}
+  \strng{fullhash}{TS1}
+  \field{sortinit}{T}
+  \field{title}{AMPed At UC Berkeley}
+  \verb{url}
+  \verb http://stevetodd.typepad.com/my_weblog/2011/08/amped-at-uc-berkeley.htm
+  \verb l
+  \endverb
+\endentry
+
+\entry{understanding-big-data}{book}{}
   \name{author}{2}{}{%
     {{}%
-     {Tascón}{T.}%
-     {Mario}{M.}%
+     {Zikopoulos}{Z.}%
+     {P.}{P.}%
      {}{}%
      {}{}}%
     {{}%
-     {Coullaut}{C.}%
-     {Arantza}{A.}%
+     {Eaton}{E.}%
+     {C.}{C.}%
      {}{}%
      {}{}}%
   }
   \list{publisher}{1}{%
-    {Catarata}%
+    {McGraw-Hill Osborne Media}%
   }
-  \strng{namehash}{TMCA1}
-  \strng{fullhash}{TMCA1}
-  \field{sortinit}{T}
-  \field{title}{Big data y el Internet de las cosas}
-  \field{year}{2016}
+  \strng{namehash}{ZPEC1}
+  \strng{fullhash}{ZPEC1}
+  \field{sortinit}{Z}
+  \field{title}{Understanding big data: Analytics for enterprise class hadoop
+  and streaming data.}
+  \field{year}{2011}
 \endentry
 
 \lossort

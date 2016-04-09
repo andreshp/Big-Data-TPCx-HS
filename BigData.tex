@@ -16,8 +16,6 @@
 
 \documentclass{article}
 
-\usepackage{lipsum}                     % Texto dummy. Quitar en el documento final.
-
 %-----------------------------------------------------------------------------------------------------
 %	SELECCIÓN DEL LENGUAJE
 %-----------------------------------------------------------------------------------------------------
@@ -28,6 +26,7 @@
 \selectlanguage{spanish}                                       % Selecciono como lenguaje el Español.
 
 %-----------------------------------------------------------------------------------------------------
+\usepackage{lipsum}                     % Texto dummy. Quitar en el documento final.
 %	SELECCIÓN DE LA FUENTE
 %-----------------------------------------------------------------------------------------------------
 
@@ -151,67 +150,87 @@
 %	SECCIÓN 1: INTRODUCCIÓN
 %-----------------------------------------------------------------------------------------------------
 
-\section{Introducción a Big Data}
+\section{Introducción}
 
 	Desde hace miles de siglos el ser humano ha investigado la manera de almacenar y recopilar información. Durante muchos siglos la escritura y la pintura eran los únicos mecanismos existentes. Posteriormente surgió la fotografía, los discos de vinilo... Sin embargo, poca información seguía ocupando mucho volumen físico. Gracias a los avances tecnológicos de las últimos décadas, hoy en día disponemos dispositivos electrónicos para el almacenamiento de datos binarios. Además, la evolución de estos dispositivos ha sido frenética. IBM comercializó el primer disco duro en 1956. Este constaba solamente de 5 Mega Bytes de capacidad \cite{hard-disks} mientras que actualmente podemos utilizar discos duros con más de 1 Tera Byte.
 
-	La evolución en la capacidad de cómputo y procesamiento de los computadores también ha sido exponencial. El primer ordenador comercial se presentó en ....(Referencia). Este computador realizaba n cuentas por segundo. Actualmente hablamos de GHz cuando comparamos la velocidad del procesador de un ordenador. Además, es habitual utilizar ordenadores con 8 o más GB de memoria principal. Se han creado benchmarks.... (medio párrafo diciendo para que sirven y que son muy costosos computacionalmente).
-	
+	La evolución en la capacidad de cómputo y procesamiento de los computadores también ha sido exponencial. El primer ordenador comercial se presentó en 1951 y se conoce como  UNIVAC 1 \cite{first-commercial-computer}. Este computador realizaba n cuentas por segundo. Actualmente hablamos de GHz cuando comparamos la velocidad del procesador de un ordenador. Además, es habitual utilizar ordenadores con 8 o más GB de memoria principal. Se han creado benchmarks con el objetivo de aportar elementos de juicio con los que se permite ver cual o cuáles son las mejores enfoques para conducir a la optimización de los productos. 
+
+	El benchmarking sirve para obtener informmción útil que ayude a una organización a mejorar sus procesos \cite{benchmarking}. Aún así, el benchmarking es un proceso costoso computacionalmente y además, es un proceso que se ha de reservar para cuestiones de importancia que sean importantes en la organización y no se debe usar en tareas rutinarias \cite{desv-bench}.
+
 	Estas nuevas tecnologías han posibilitado que el almacenamiento de datos sea mucho más sencillo. Podemos guardar multitud de archivos multimedia en un dispositivo de unos centímetros y compartirlos con multitud de usuarios. 
 	
 	El mayor flujo de datos se produce gracias a Internet. Aunque es relativamente joven, se hizo público en 1993, actualmente existen más de mil millones de páginas webs \cite{internet}. Además, multitud de dispositivos electrónicos se conectan e interaccionan con Internet (lo que se denomina Internet de las cosas \cite{big-data-internet-cosas}). Los usuarios de estos dispositivos utilizan aplicaciones web y redes sociales, publicando textos y archivos multimedia. 
 	
-	Todo este cúmulo de tecnologías y actividades ha dado lugar a que hoy en día haya más de 10 Zeta Bytes de información almacenados (1 ZB = $10^{12}$ GB) (ver la Figura \ref{fig:zeta-bytes}). De hecho, podemos observar que cada año se generan varios Zeta Bytes de información, el crecimiento es exponencial. 5 Exa Bytes ($10^9$ Giga Bytes) se habían almacenado hasta 2003. Actualmente, generamos esta cantidad de información en dos días \cite{big-data}.
+	Todo este cúmulo de tecnologías y actividades ha dado lugar a que hoy en día haya más de 10 Zeta Bytes de información almacenados (1 ZB = $10^{12}$ GB) (ver la Figura \ref{fig:zeta-bytes}). De hecho, podemos observar que cada año se generan varios Zeta Bytes de información, el crecimiento es exponencial. Hasta 2003 se habían almacenado en total 5 Exa Bytes ($10^9$ Giga Bytes) de información. Actualmente, generamos esta cantidad de datos en dos días \cite{big-data}.
 	
 	 \begin{figure}[h]
 	       	\centering
 	       	\includegraphics[width=15cm]{./images/Data.png}
-	       	\caption{Evolución histórica del número de Zeta Bytes de información almacenados \cite{zeta-bytes}.} 
+	       	\caption{Evolución histórica del número de Zeta Bytes de información almacenados y predicción para los próximos años \cite{zeta-bytes}.} 
 	       	\label{fig:zeta-bytes}
 	 \end{figure}
 
-	Esta cantidad de datos contiene conocimiento. Por ejemplo, todas las empresas almacenan información sobre sus clientes, la actividad y transacciones realizadas. Esta información necesita ser analizada en tiempo real para poder actuar en consecuencia. Aquella empresa que mejor conozca el mercado y actúa rápidamente obtendrá mejores resultados. La ciencia de datos es la rama de la inteligencia artificial que se encarga de tratar y extraer conocimiento de los datos. Se han desarrollado múltiples algoritmos para ello (cita machine learning), que permiten resultados tan impactantes como el reconocimiento de voz o los sistemas de recomendación.
+	Por tanto, existen multitud de aplicaciones donde se tienen que procesar conjuntos de datos masivos. Estos conjuntos de datos requieren nuevas tecnologías y algoritmos que permitan tratarlos eficientemente. El desarrollo de estas nuevas tecnologías y algoritmos es lo que se conoce como Big Data.
 	
-	Sin embargo, a pesar de la evolución de los computadores en todas sus facetas, la cantidad de datos e información a procesar y almacenar crece incluso a mayor velocidad. Un ordenador normal no es capaz de tratar tantos GBs de datos. Es más, los algoritmos habituales de aprendizaje necesitan mucho tiempo de cómputo sobre estos conjuntos de datos masivos. Por tanto, necesitamos recurrir a servidores de altas prestaciones y procesamiento distribuido para poder aplicar técnicas de análisis de datos.
-	
-	Los servidores de altas prestaciones llevan tiempo utilizándose en el ámbito de la inteligencia artificial (referencias). Se han desarrollado herramientas de cómputo en paralelo y distribuido, como OPEN MP y MPI (referencias), que permiten implementar algoritmos distribuidos sobre estos. Sin embargo, estas implementaciones dependen del servidor y son a bajo nivel. Una determinada implementación sobre un esquema hardware puede funcionar bien en determinado momento pero al año tendrá que ser capaz de trabajar con el doble de datos. Esto probablemente suponga la necesidad de ampliar el hardware y rehacer la implementación. Necesitamos pues nuevos paradigma de programación que permitan abstraer el desarrollo de software para plataformas distribuidas del hardware y proporcionen capacidad para el tratamiento de datos masivos.
-	
-	
+	En este trabajo presentamos una introducción a Big Data y a las diferentes herramientas software existentes, destacando el papel de la ingeniería de servidores en este contexto.
 
+	El resto del texto se organiza como sigue. La Sección \ref{sec:big-data} contiene una mayor descripción del concepto de Big Data. En la Sección \ref{sec:map-reduce} introducimos el paradigma de programación map reduce y la tecnología que lo implementa, denominada Hadoop. En la Sección \ref{sec:spark-flink} describimos las nuevas tecnologías que han surgido para cohesionar la filosofía map reduce con el procesamiento iterativo. Estas se denominan Spark y Flink. En la Sección \ref{sec:tpcx-hs} explicamos uno de los benchmarks existentes para las tecnologías Big Data, denominado TPCx-HS. Por último, en la Sección \ref{sec:conclusion} presentamos las conclusiones obtenidas.
+
+\section{Big Data} \label{sec:big-data}
+	
+	A pesar de la evolución de los computadores en todas sus facetas, la cantidad de datos e información a procesar y almacenar crece incluso a mayor velocidad. En muchas ocasiones un ordenador normal no es capaz de tratar tantos Giga Bytes de datos. Estos conjuntos de datos se denominan masivos. Además, en múltiples aplicaciones se necesita aplicar algoritmos sobre los conjuntos de datos recopilados, requiriendo mucho tiempo de cómputo en el caso de que estos sean de gran tamaño. 
+	
+	Big Data engloba el tratamiento de datos masivos desde el punto de vista tecnológico y algorítmico. En palabras de Michael J. Franklin, profesor de informática en la universidad de Berkley \cite{bd-definition}:
+	
+	\textit{``Un problema sobre datos entra en el ámbito de big data cuando la aplicación de las actuales tecnologías no permite al usuario obtener soluciones  rápidas, efectivas en costo y de calidad''}
+
+	En la literatura especializada se destacan las siguientes características de Big Data, que se denominan las 3 V's de Big Data \cite{big-data}:
 
 	\begin{itemize}
-		\item \textbf{Volumen.} El tamaño de la información a procesar es cada vez mayor, por ejemplo, facebook procesa cada día 500 TB de información. Este volumen de datos require técnicas específicas 
-		\item \textbf{Velocidad.} Los datos deben ser procesados rápidamente. Normalmente, el procesamiento de los datos debe ser incluso continuo.
-		\item \textbf{Variedad.} Los datos a tratar provienen de una gran variedad de fuentes. Por tanto, las herramientas Big Data deben permitir procesar a la vez datos de diferentes características y tamaños.
+		\item \textbf{Volumen.} El tamaño de los conjuntos de datos a procesar es cada vez mayor, por ejemplo, facebook procesa cada día 500 TB de información. Este volumen de datos requiere tecnologías específicas para que los servidores de altas prestaciones puedan manejar la información con éxito.
+		\item \textbf{Velocidad.} Necesitamos herramientas que permitan procesar y analizar conjuntos de datos masivos en poco tiempo. Además, es habitual que el procesamiento de los datos deba ser incluso en tiempo real, esto es, los datos llegan al sistema de forma continua y este debe agregar la información de los mismos.
+		\item \textbf{Variedad.} Los datos a tratar provienen de una gran variedad de fuentes. Por tanto, las herramientas Big Data deben permitir procesar a la vez datos de diferentes características y tamaños. Es más, habitualmente encontramos datos de tres tipos: estructurados, semi estructurados y sin estructurar. Los datos estructurados son sencillos de clasificar. Sin embargo, los datos sin estructurar son aleatorios y difíciles de analizar. Por su parte, los datos semi estructurados requieren técnicas avanzadas para poder clasificarlos correctamente.
 	\end{itemize}
+
+	Algunos autores han extendido la definición hasta utilizar un total de 9 V's: veracidad, valor, viabilidad y visualización entre otras \cite{understanding-big-data}.
+
+	Los conjuntos de datos contienen conocimiento que necesitamos extraer. Por ejemplo, todas las empresas almacenan información sobre sus clientes, la actividad y transacciones realizadas. Esta información necesita ser analizada en tiempo real para poder actuar en consecuencia. Aquella empresa que mejor conozca el mercado y actúa rápidamente obtendrá mejores resultados. La ciencia de datos es la rama de la inteligencia artificial que se encarga de tratar y extraer conocimiento de los datos (referencia). Se han desarrollado múltiples algoritmos para ello (referencia machine learning), que permiten resultados tan impactantes como el reconocimiento de voz o los sistemas de recomendación. Big Data Analytics \cite{big-data-trends}. 
 
 %-----------------------------------------------------------------------------------------------------
 %	SECCIÓN 2
 %-----------------------------------------------------------------------------------------------------
 
-\section{Map Reduce}
+\section{Map Reduce. Hadoop} \label{sec:map-reduce}
+
+	Por tanto, necesitamos recurrir a servidores de altas prestaciones y procesamiento distribuido para poder aplicar estos algoritmos.
+	
+	Los servidores de altas prestaciones (alguna descripción). Se han desarrollado herramientas de cómputo en paralelo y distribuido, como OPEN MP y MPI (referencias), que permiten implementar algoritmos distribuidos sobre estos. Sin embargo, estas implementaciones dependen del servidor y son a bajo nivel. Una determinada implementación sobre un esquema hardware puede funcionar bien en determinado momento pero al año tendrá que ser capaz de trabajar con el doble de datos. Esto probablemente suponga la necesidad de ampliar el hardware y rehacer la implementación. Necesitamos pues nuevos paradigma de programación que permitan abstraer el desarrollo de software para plataformas distribuidas del hardware y proporcionen capacidad para el tratamiento de datos masivos.
 
 
 %-----------------------------------------------------------------------------------------------------
 %	SECCIÓN 3
 %-----------------------------------------------------------------------------------------------------
 
-\section{Spark y Flink}
+\section{Spark y Flink} \label{sec:spark-flink}
 
 
 %-----------------------------------------------------------------------------------------------------
 %	SECCIÓN 4
 %-----------------------------------------------------------------------------------------------------
 
-\section{Benchmarks: TPCx-HS}
+\section{Benchmarks: TPCx-HS} \label{sec:tpcx-hs}
 
+%-----------------------------------------------------------------------------------------------------
+%	SECCIÓN 5: CONCLUSIÓN
+%-----------------------------------------------------------------------------------------------------
+
+\section{Conclusión} \label{sec:conclusion}
 
 %-----------------------------------------------------------------------------------------------------
 %	SECCIÓN X: REFERENCIAS
 %-----------------------------------------------------------------------------------------------------
 
-\section{Referencias}
-
-	\printbibliography
+\printbibliography
 
 \end{document}

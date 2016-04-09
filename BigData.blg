@@ -15,15 +15,11 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: BigData-blx.bib
 Database file #2: references.bib
+Repeated entry---line 9 of file references.bib
+ : @book{big-data-internet-cosas
+ :                              ,
+I'm skipping whatever remains of this entry
 Biblatex version: 3.0
-Name 1 in "Mario Tascón, and Arantza Coullaut" has a comma at the end for entry big-data-internet-cosas
-while executing---line 2513 of file biblatex.bst
-Name 1 in "Mario Tascón, and Arantza Coullaut" has a comma at the end for entry big-data-internet-cosas
-while executing---line 2513 of file biblatex.bst
-Name 1 in "Mario Tascón, and Arantza Coullaut" has a comma at the end for entry big-data-internet-cosas
-while executing---line 2513 of file biblatex.bst
-Name 1 in "Mario Tascón, and Arantza Coullaut" has a comma at the end for entry big-data-internet-cosas
-while executing---line 2513 of file biblatex.bst
 Name 1 in "Seref Sagiroglu, and Duygu Sinanc" has a comma at the end for entry big-data
 while executing---line 2513 of file biblatex.bst
 Name 1 in "Seref Sagiroglu, and Duygu Sinanc" has a comma at the end for entry big-data
@@ -40,25 +36,53 @@ Name 1 in "Hugo Evans, and et. al." has a comma at the end for entry zeta-bytes
 while executing---line 2513 of file biblatex.bst
 Name 1 in "Hugo Evans, and et. al." has a comma at the end for entry zeta-bytes
 while executing---line 2513 of file biblatex.bst
-Name 1 in "Mario Tascón, and Arantza Coullaut" has a comma at the end for entry big-data-internet-cosas
+Name 1 in "Zikopoulos, P., and C. Eaton" has a comma at the end for entry understanding-big-data
+while executing---line 2513 of file biblatex.bst
+Name 1 in "Zikopoulos, P., and C. Eaton" has a comma at the end for entry understanding-big-data
+while executing---line 2513 of file biblatex.bst
+Name 1 in "Zikopoulos, P., and C. Eaton" has a comma at the end for entry understanding-big-data
+while executing---line 2513 of file biblatex.bst
+Name 1 in "Zikopoulos, P., and C. Eaton" has a comma at the end for entry understanding-big-data
+while executing---line 2513 of file biblatex.bst
+Name 1 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2513 of file biblatex.bst
+Name 1 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2513 of file biblatex.bst
+Name 1 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2513 of file biblatex.bst
+Name 1 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2513 of file biblatex.bst
+Name 2 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2513 of file biblatex.bst
+Name 3 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2513 of file biblatex.bst
+Name 1 in "Seref Sagiroglu, and Duygu Sinanc" has a comma at the end for entry big-data
 while executing---line 2517 of file biblatex.bst
-Name 1 in "Seref Sagiroglu, and Duygu Sinanc" has a comma at the end for entry big-data
-while executing---line 2517 of file biblatex.bst
 Name 1 in "Hugo Evans, and et. al." has a comma at the end for entry zeta-bytes
+while executing---line 2517 of file biblatex.bst
+Name 1 in "Zikopoulos, P., and C. Eaton" has a comma at the end for entry understanding-big-data
+while executing---line 2517 of file biblatex.bst
+Name 1 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
 while executing---line 2517 of file biblatex.bst
 Name 1 in "Hugo Evans, and et. al." has a comma at the end for entry zeta-bytes
 while executing---line 2523 of file biblatex.bst
+Name 1 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2523 of file biblatex.bst
 Name 1 in "Seref Sagiroglu, and Duygu Sinanc" has a comma at the end for entry big-data
 while executing---line 2523 of file biblatex.bst
-Name 1 in "Mario Tascón, and Arantza Coullaut" has a comma at the end for entry big-data-internet-cosas
+Name 1 in "Zikopoulos, P., and C. Eaton" has a comma at the end for entry understanding-big-data
 while executing---line 2523 of file biblatex.bst
-Name 1 in "Mario Tascón, and Arantza Coullaut" has a comma at the end for entry big-data-internet-cosas
+Name 1 in "Zikopoulos, P., and C. Eaton" has a comma at the end for entry understanding-big-data
 while executing---line 2527 of file biblatex.bst
-Name 1 in "Mario Tascón, and Arantza Coullaut" has a comma at the end for entry big-data-internet-cosas
+Name 1 in "Zikopoulos, P., and C. Eaton" has a comma at the end for entry understanding-big-data
+while executing---line 2527 of file biblatex.bst
+Name 1 in "Seref Sagiroglu, and Duygu Sinanc" has a comma at the end for entry big-data
 while executing---line 2527 of file biblatex.bst
 Name 1 in "Seref Sagiroglu, and Duygu Sinanc" has a comma at the end for entry big-data
 while executing---line 2527 of file biblatex.bst
-Name 1 in "Seref Sagiroglu, and Duygu Sinanc" has a comma at the end for entry big-data
+Name 1 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2527 of file biblatex.bst
+Name 1 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
 while executing---line 2527 of file biblatex.bst
 Name 1 in "Hugo Evans, and et. al." has a comma at the end for entry zeta-bytes
 while executing---line 2527 of file biblatex.bst
@@ -66,33 +90,55 @@ Name 1 in "Hugo Evans, and et. al." has a comma at the end for entry zeta-bytes
 while executing---line 2527 of file biblatex.bst
 Name 1 in "Hugo Evans, and et. al." has a comma at the end for entry zeta-bytes
 while executing---line 2531 of file biblatex.bst
+Name 1 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2531 of file biblatex.bst
 Name 1 in "Seref Sagiroglu, and Duygu Sinanc" has a comma at the end for entry big-data
 while executing---line 2531 of file biblatex.bst
-Name 1 in "Mario Tascón, and Arantza Coullaut" has a comma at the end for entry big-data-internet-cosas
+Name 1 in "Zikopoulos, P., and C. Eaton" has a comma at the end for entry understanding-big-data
 while executing---line 2531 of file biblatex.bst
 Name 1 in "Hugo Evans, and et. al." has a comma at the end for entry zeta-bytes
 while executing---line 2537 of file biblatex.bst
+Name 1 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2537 of file biblatex.bst
+Name 2 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2537 of file biblatex.bst
+Name 3 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2537 of file biblatex.bst
 Name 1 in "Seref Sagiroglu, and Duygu Sinanc" has a comma at the end for entry big-data
 while executing---line 2537 of file biblatex.bst
-Name 1 in "Mario Tascón, and Arantza Coullaut" has a comma at the end for entry big-data-internet-cosas
+Name 1 in "Zikopoulos, P., and C. Eaton" has a comma at the end for entry understanding-big-data
 while executing---line 2537 of file biblatex.bst
-Name 1 in "Mario Tascón, and Arantza Coullaut" has a comma at the end for entry big-data-internet-cosas
+Name 1 in "Zikopoulos, P., and C. Eaton" has a comma at the end for entry understanding-big-data
 while executing---line 2541 of file biblatex.bst
-Name 1 in "Mario Tascón, and Arantza Coullaut" has a comma at the end for entry big-data-internet-cosas
+Name 1 in "Zikopoulos, P., and C. Eaton" has a comma at the end for entry understanding-big-data
+while executing---line 2541 of file biblatex.bst
+Name 1 in "Seref Sagiroglu, and Duygu Sinanc" has a comma at the end for entry big-data
 while executing---line 2541 of file biblatex.bst
 Name 1 in "Seref Sagiroglu, and Duygu Sinanc" has a comma at the end for entry big-data
 while executing---line 2541 of file biblatex.bst
-Name 1 in "Seref Sagiroglu, and Duygu Sinanc" has a comma at the end for entry big-data
+Name 1 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2541 of file biblatex.bst
+Name 2 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2541 of file biblatex.bst
+Name 3 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2541 of file biblatex.bst
+Name 1 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2541 of file biblatex.bst
+Name 2 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2541 of file biblatex.bst
+Name 3 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
 while executing---line 2541 of file biblatex.bst
 Name 1 in "Hugo Evans, and et. al." has a comma at the end for entry zeta-bytes
 while executing---line 2541 of file biblatex.bst
 Name 1 in "Hugo Evans, and et. al." has a comma at the end for entry zeta-bytes
 while executing---line 2541 of file biblatex.bst
-Name 1 in "Mario Tascón, and Arantza Coullaut" has a comma at the end for entry big-data-internet-cosas
+Name 1 in "Seref Sagiroglu, and Duygu Sinanc" has a comma at the end for entry big-data
 while executing---line 2595 of file biblatex.bst
-Name 1 in "Seref Sagiroglu, and Duygu Sinanc" has a comma at the end for entry big-data
-while executing---line 2595 of file biblatex.bst
 Name 1 in "Hugo Evans, and et. al." has a comma at the end for entry zeta-bytes
+while executing---line 2595 of file biblatex.bst
+Name 1 in "Zikopoulos, P., and C. Eaton" has a comma at the end for entry understanding-big-data
+while executing---line 2595 of file biblatex.bst
+Name 1 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
 while executing---line 2595 of file biblatex.bst
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
@@ -112,7 +158,53 @@ Name 1 in "Hugo Evans, and et. al." has a comma at the end for entry zeta-bytes
 while executing---line 2659 of file biblatex.bst
 Name 1 in "Hugo Evans, and et. al." has a comma at the end for entry zeta-bytes
 while executing---line 2659 of file biblatex.bst
-Name 1 in "Seref Sagiroglu, and Duygu Sinanc" has a comma at the end for entry big-data
+Name 1 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2659 of file biblatex.bst
+Name 1 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2659 of file biblatex.bst
+Name 1 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2659 of file biblatex.bst
+Name 1 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2659 of file biblatex.bst
+Name 1 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2659 of file biblatex.bst
+Name 1 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2659 of file biblatex.bst
+Name 1 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2659 of file biblatex.bst
+Name 1 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2659 of file biblatex.bst
+Name 2 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2659 of file biblatex.bst
+Name 2 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2659 of file biblatex.bst
+Name 2 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2659 of file biblatex.bst
+Name 2 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2659 of file biblatex.bst
+Name 2 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2659 of file biblatex.bst
+Name 2 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2659 of file biblatex.bst
+Name 2 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2659 of file biblatex.bst
+Name 2 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2659 of file biblatex.bst
+Name 3 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2659 of file biblatex.bst
+Name 3 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2659 of file biblatex.bst
+Name 3 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2659 of file biblatex.bst
+Name 3 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2659 of file biblatex.bst
+Name 3 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2659 of file biblatex.bst
+Name 3 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2659 of file biblatex.bst
+Name 3 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
+while executing---line 2659 of file biblatex.bst
+Name 3 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
 while executing---line 2659 of file biblatex.bst
 Name 1 in "Seref Sagiroglu, and Duygu Sinanc" has a comma at the end for entry big-data
 while executing---line 2659 of file biblatex.bst
@@ -128,61 +220,63 @@ Name 1 in "Seref Sagiroglu, and Duygu Sinanc" has a comma at the end for entry b
 while executing---line 2659 of file biblatex.bst
 Name 1 in "Seref Sagiroglu, and Duygu Sinanc" has a comma at the end for entry big-data
 while executing---line 2659 of file biblatex.bst
-Name 1 in "Mario Tascón, and Arantza Coullaut" has a comma at the end for entry big-data-internet-cosas
+Name 1 in "Seref Sagiroglu, and Duygu Sinanc" has a comma at the end for entry big-data
 while executing---line 2659 of file biblatex.bst
-Name 1 in "Mario Tascón, and Arantza Coullaut" has a comma at the end for entry big-data-internet-cosas
+Name 1 in "Zikopoulos, P., and C. Eaton" has a comma at the end for entry understanding-big-data
 while executing---line 2659 of file biblatex.bst
-Name 1 in "Mario Tascón, and Arantza Coullaut" has a comma at the end for entry big-data-internet-cosas
+Name 1 in "Zikopoulos, P., and C. Eaton" has a comma at the end for entry understanding-big-data
 while executing---line 2659 of file biblatex.bst
-Name 1 in "Mario Tascón, and Arantza Coullaut" has a comma at the end for entry big-data-internet-cosas
+Name 1 in "Zikopoulos, P., and C. Eaton" has a comma at the end for entry understanding-big-data
 while executing---line 2659 of file biblatex.bst
-Name 1 in "Mario Tascón, and Arantza Coullaut" has a comma at the end for entry big-data-internet-cosas
+Name 1 in "Zikopoulos, P., and C. Eaton" has a comma at the end for entry understanding-big-data
 while executing---line 2659 of file biblatex.bst
-Name 1 in "Mario Tascón, and Arantza Coullaut" has a comma at the end for entry big-data-internet-cosas
+Name 1 in "Zikopoulos, P., and C. Eaton" has a comma at the end for entry understanding-big-data
 while executing---line 2659 of file biblatex.bst
-Name 1 in "Mario Tascón, and Arantza Coullaut" has a comma at the end for entry big-data-internet-cosas
+Name 1 in "Zikopoulos, P., and C. Eaton" has a comma at the end for entry understanding-big-data
 while executing---line 2659 of file biblatex.bst
-Name 1 in "Mario Tascón, and Arantza Coullaut" has a comma at the end for entry big-data-internet-cosas
+Name 1 in "Zikopoulos, P., and C. Eaton" has a comma at the end for entry understanding-big-data
 while executing---line 2659 of file biblatex.bst
-You've used 6 entries,
+Name 1 in "Zikopoulos, P., and C. Eaton" has a comma at the end for entry understanding-big-data
+while executing---line 2659 of file biblatex.bst
+You've used 9 entries,
             6047 wiz_defined-function locations,
-            1153 strings with 8752 characters,
-and the built_in function-call counts, 15306 in all, are:
-= -- 535
-> -- 550
-< -- 149
-+ -- 166
-- -- 209
-* -- 1026
-:= -- 1105
+            1168 strings with 9242 characters,
+and the built_in function-call counts, 25630 in all, are:
+= -- 1064
+> -- 872
+< -- 287
++ -- 289
+- -- 300
+* -- 1618
+:= -- 1643
 add.period$ -- 0
-call.type$ -- 6
-change.case$ -- 52
+call.type$ -- 9
+change.case$ -- 142
 chr.to.int$ -- 34
-cite$ -- 10
-duplicate$ -- 1638
-empty$ -- 1618
-format.name$ -- 304
-if$ -- 3500
+cite$ -- 16
+duplicate$ -- 2811
+empty$ -- 2673
+format.name$ -- 485
+if$ -- 5915
 int.to.chr$ -- 0
-int.to.str$ -- 11
+int.to.str$ -- 18
 missing$ -- 0
-newline$ -- 126
-num.names$ -- 216
-pop$ -- 1656
+newline$ -- 194
+num.names$ -- 405
+pop$ -- 2634
 preamble$ -- 1
-purify$ -- 63
+purify$ -- 159
 quote$ -- 0
-skip$ -- 948
+skip$ -- 1617
 stack$ -- 0
-substring$ -- 251
-swap$ -- 496
-text.length$ -- 159
-text.prefix$ -- 5
+substring$ -- 643
+swap$ -- 853
+text.length$ -- 237
+text.prefix$ -- 8
 top$ -- 1
-type$ -- 216
+type$ -- 330
 warning$ -- 0
-while$ -- 136
+while$ -- 188
 width$ -- 0
-write$ -- 119
-(There were 63 error messages)
+write$ -- 184
+(There were 109 error messages)
