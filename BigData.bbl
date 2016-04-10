@@ -1,5 +1,5 @@
 % $ biblatex auxiliary file $
-% $ biblatex version 2.5 $
+% $ biblatex version 2.6 $
 % Do not modify the above lines!
 %
 % This is an auxiliary file used by the 'biblatex' package.
@@ -273,6 +273,38 @@
   \field{title}{About TPC}
   \verb{url}
   \verb http://www.tpc.org/information/about/abouttpc.asp
+  \endverb
+\endentry
+
+\entry{tpcxhs}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {TPC}{T.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{T1}
+  \strng{fullhash}{T1}
+  \field{sortinit}{T}
+  \field{title}{TPC EXPRESS BENCHMARK ™ HS, Standard Specification Version
+  1.3.0}
+\endentry
+
+\entry{ejemplos}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {TPC}{T.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{T1}
+  \strng{fullhash}{T1}
+  \field{sortinit}{T}
+  \field{title}{TPCx-HS - Ten Most Recently Published Results}
+  \verb{url}
+  \verb http://www.tpc.org/tpcx-hs/results/tpcxhs_last_ten_results.asp
   \endverb
 \endentry
 

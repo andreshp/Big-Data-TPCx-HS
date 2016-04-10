@@ -221,7 +221,6 @@
 
 \section{Benchmarks: TPCx-HS} \label{sec:tpcx-hs}
 
-
 	La variedad de computadores es bastante heterogénea. Cada uno realiza de forma eficiente un determinado conjunto de operaciones a consta de presentar peores resultados en otros factores. Por tanto, la comparación entre diferentes modelos de computadores es compleja. Consecuentemente, se han creado benchmarks con el objetivo de aportar elementos de juicio con los que se discernir entre el uso de un computador u otro para una determinada aplicación. Habitualmente el benchmarking se define como la obtención de información útil mediante pruebas empíricas que ayude a una organización a mejorar sus procesos \cite{benchmarking}. Sin embargo, el benchmarking de computadores es un proceso costoso computacionalmente. Gasta tanto energía como mucho tiempo de cómputo. Por tanto, se ha de reservar para cuestiones sean importantes y no para evaluar tareas simples \cite{desv-bench}.
 
 	Una técnica utilizada para ver qué sistema nos da más prestaciones son los benchmarks, uno de ellos es TPC. TPC es una organización sin ánimo de lucro que estudia el proceso de transacción y los benchmarks para las bases de datos. El término transacción se suele atribuir a aspectos bancarios, pero si pensamos en este concepto como una función que tienen los ordenadores, una transacción puede ser un conjunto de operaciones que incluyen lectura y escritura en disco, llamadas a funciones del sistema operativo, o cualquier forma de transferencia de datos de un sistema a otro. Este es el ámbito en el que se mueve TPC, que produce benchmarks que miden el proceso de transacción y el rendimiento de las bases de datos en términos de: dados un sistema y una base de datos, ¿cuántas transacciones pueden hacer por unidad de tiempo?\cite{intro-tpc}
@@ -230,7 +229,7 @@
 	
 \subsection{Carga de trabajo de TPCx-HS}
 
-	La carga de trabajo de TPCx-HS consiste en los siguientes módulos:
+	La carga de trabajo de TPCx-HS consiste en los siguientes módulos \cite{tpcxhs}:
 	
 	\begin{itemize}
 		\item HSGen: es un programa que genera los datos según factor de escala, que suele estar entre un 1TB y 10000TB(se denota TB como terabytes).
@@ -241,7 +240,7 @@
 	
 	\subsection{Fases de ejecución del benchmark}
 		
-	Una ejecución válida consiste en cinco fases separadas que corren secuencialmente. Estas fases no se solapan en su ejecución, es decir, el comienzo de la fase 2 no puede darse hasta que la fase 1 esté completa. Para que comience cada fase se necesita de un script llamado <TPCx-HS-master> que es el que inicia cada fase y que puede ser ejecutado desde cualquier nodo del sistema que se está bajo test.
+	Una ejecución válida consiste en cinco fases separadas que corren secuencialmente. Estas fases no se solapan en su ejecución, es decir, el comienzo de la fase 2 no puede darse hasta que la fase 1 esté completa. Para que comience cada fase se necesita de un script llamado <TPCx-HS-master> que es el que inicia cada fase y que puede ser ejecutado desde cualquier nodo del sistema que se está bajo test \cite{tpcxhs}.
 	
 	Las fases de ejecución son las siguientes:
 		
@@ -262,8 +261,52 @@
 			 \label{fig:ejecucionesTPC}
 		\end{figure}
 		
-		Como consideraciones finales en la ejecución, el sistema bajo test no puede ser reconfigurado o cambiado durante o entre cualquiera de las fases de la ejecución ni tampoco entre la primera y la segunda ejecución. Cualquier cambio que se haga en el sistema se deberá realizar antes del comienzo de la fase 1 de la primera ejecución. 
+		Como consideraciones finales en la ejecución, el sistema bajo test no puede ser reconfigurado o cambiado durante o entre cualquiera de las fases de la ejecución ni tampoco entre la primera y la segunda ejecución. Cualquier cambio que se haga en el sistema se deberá realizar antes del comienzo de la fase 1 de la primera ejecución. El factor de escala usado en el conjunto de datos del test debe ser escogido del conjunto de factores de escala definido como sigue: 1TB, 3TB, 10TB, 30TB, 100TB, 300TB, 1000TB, 3000TB, 10000TB.
+		
+		\subsection{Medida del rendimiento}
+		
+		Para hacer el análisis de la medida del rendimiento, TPCx-HS define las siguientes medidas:
+		
+		\begin{itemize}
+			\item HSph@SF: refleja la medida del rendimiento de TPCx-HS.
+			\item \$HSph@SF: es la medida del rendimiento-precio.
+			\item Si se escoge la opción de \textit{"TPC-energy"}, la medida de la energía que hace TPCx-HS informa de la potencia por rendimiento. \\
+		\end{itemize}
+		
+		La medida del rendimiento se representa con HSph@SF, que se mide con la siguiente expresión:
+		
+		$$ HSph@SF = \frac{SF}{T/3600} $$
+		
+		donde:
+		 \begin{itemize}
+			\item SF es el factor de escala escogido.
+			\item T es el tiempo total que se obtuvo al sumar el tiempo de las dos ejecuciones. \\
+		  \end{itemize}	
+		  
+		La medida del rendimiento-precio se puede calcular con la siguiente fórmula:
+		 
+		$$ \$HSph@SF = \frac{P}{HSph@SF} $$
 
+		donde P es el costo del sistema en el que se han hecho las ejecuciones.
+		
+		\subsection{Comparación de la medida}
+		
+		Un resultado dado por la ejecución de TPCx-HS sólo puede ser comparado con otro resultado que provenga de la ejecución de este benchmark y que tenga el mismo factor de escala. Otras consideraciones a tener en cuenta son:
+		
+		\begin{itemize}
+			\item Los resultados producidos por test que tienen diferente factor de escala no son comparables, debido a los \textit{retos} computacionales encontrados en volúmenes de datos de distinto tamaño.
+			\item Si los resultados medidos con diferentes factores de escalas aparecen impresos o en algún documento electrónico, entonces cada referencia que se haga a uno de estos resultados se ha de especificar claramente el factor de escala que se usó para obtener esos resultados. Si los resultados aparecen de forma gráfica, el factor de escala en el que se basó dicha medición se deberá poder discernir, por ejemplo usando una etiqueta en uno de los ejes.
+		\end{itemize}
+		
+		
+		Se presenta a continuación una tabla con los resultados para algunas compañías donde se puede ver el factor de escala usado, el sistema y los resultados obtenidos tras la ejecución del benchmark.
+		
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=15cm]{./images/examples.png}
+			\caption{Tabla de resultados obtenidos con TPCx-HS \cite{ejemplos}.} 
+			\label{fig:ejemplo}
+		\end{figure}
 %-----------------------------------------------------------------------------------------------------
 %	SECCIÓN 5: CONCLUSIÓN
 %-----------------------------------------------------------------------------------------------------
