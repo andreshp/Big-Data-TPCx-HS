@@ -40,7 +40,7 @@
   \field{pages}{1165\bibrangedash 1188}
   \field{title}{Business Intelligence and Analytics: From Big Data to Big
   Impact}
-  \field{journaltitle}{MIS quarterly}
+  \field{journaltitle}{MIS Quarterly}
   \field{year}{2012}
 \endentry
 
@@ -226,6 +226,29 @@
   \field{pages}{42\bibrangedash 47}
   \field{title}{Big data: A review}
   \field{journaltitle}{International Conference on. IEEE}
+  \field{year}{2013}
+\endentry
+
+\entry{data-science}{book}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Schutt}{S.}%
+     {R.}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {O'Neil}{O.}%
+     {C.}{C.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {O'Reilly Media, Inc.}%
+  }
+  \strng{namehash}{SROC1}
+  \strng{fullhash}{SROC1}
+  \field{sortinit}{S}
+  \field{title}{Doing data science: Straight talk from the frontline}
   \field{year}{2013}
 \endentry
 
