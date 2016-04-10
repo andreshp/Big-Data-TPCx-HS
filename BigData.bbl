@@ -126,6 +126,23 @@
   \field{year}{2014}
 \endentry
 
+\entry{replication}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Linbit}{L.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{L1}
+  \strng{fullhash}{L1}
+  \field{sortinit}{L}
+  \field{title}{Three-way replication}
+  \verb{url}
+  \verb https://www.drbd.org/en/doc/users-guide-83/s-three-way-repl
+  \endverb
+\endentry
+
 \entry{first-commercial-computer}{misc}{}
   \name{author}{1}{}{%
     {{}%
@@ -156,6 +173,10 @@
   \field{sortinit}{P}
   \field{title}{Ventajas, desventajas y causas posibles de fracasos del
   benchmarking}
+  \verb{url}
+  \verb http://www.buenastareas.com/ensayos/Ventajas-Desventajas-y-Causas-Posib
+  \verb les-De/3531988.html
+  \endverb
 \endentry
 
 \entry{big-data}{article}{}
@@ -235,6 +256,41 @@
   \verb{url}
   \verb http://stevetodd.typepad.com/my_weblog/2011/08/amped-at-uc-berkeley.htm
   \verb l
+  \endverb
+\endentry
+
+\entry{intro-tpc}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {TPC}{T.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{T1}
+  \strng{fullhash}{T1}
+  \field{sortinit}{T}
+  \field{title}{About TPC}
+  \verb{url}
+  \verb http://www.tpc.org/information/about/abouttpc.asp
+  \endverb
+\endentry
+
+\entry{info-tpc}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {TPC}{T.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{T1}
+  \strng{fullhash}{T1}
+  \field{sortinit}{T}
+  \field{title}{Transaction Processing Performance Council (TPC) Launches
+  TPCx-HS, the First Vendor-Neutral, Industry Standard Big Data Benchmark}
+  \verb{url}
+  \verb http://www.tpc.org/information/other/tpcx-hs_press_release_final.pdf
   \endverb
 \endentry
 
