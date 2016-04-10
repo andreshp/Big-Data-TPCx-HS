@@ -16,6 +16,34 @@
   {}
 \endgroup
 
+\entry{business-intelligence}{article}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Chen}{C.}%
+     {H.}{H.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Chiang}{C.}%
+     {R.~H.}{R.~H.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Storey}{S.}%
+     {V.~C.}{V.~C.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{CHCRHSVC1}
+  \strng{fullhash}{CHCRHSVC1}
+  \field{sortinit}{C}
+  \field{pages}{1165\bibrangedash 1188}
+  \field{title}{Business Intelligence and Analytics: From Big Data to Big
+  Impact}
+  \field{journaltitle}{MIS quarterly}
+  \field{year}{2012}
+\endentry
+
 \entry{benchmarking}{misc}{}
   \name{author}{1}{}{%
     {{}%
