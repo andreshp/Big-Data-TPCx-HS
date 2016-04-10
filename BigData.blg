@@ -402,45 +402,45 @@ Name 1 in "Zikopoulos, P., and C. Eaton" has a comma at the end for entry unders
 while executing---line 2659 of file biblatex.bst
 Name 1 in "Zikopoulos, P., and C. Eaton" has a comma at the end for entry understanding-big-data
 while executing---line 2659 of file biblatex.bst
-You've used 18 entries,
+You've used 19 entries,
             6047 wiz_defined-function locations,
-            1205 strings with 10441 characters,
-and the built_in function-call counts, 50575 in all, are:
-= -- 1954
-> -- 1736
-< -- 549
-+ -- 507
-- -- 608
-* -- 3266
-:= -- 3077
+            1210 strings with 10592 characters,
+and the built_in function-call counts, 53821 in all, are:
+= -- 2123
+> -- 1836
+< -- 594
++ -- 543
+- -- 632
+* -- 3425
+:= -- 3241
 add.period$ -- 0
-call.type$ -- 18
-change.case$ -- 244
+call.type$ -- 19
+change.case$ -- 275
 chr.to.int$ -- 34
-cite$ -- 34
-duplicate$ -- 5710
-empty$ -- 5410
-format.name$ -- 1009
-if$ -- 11682
+cite$ -- 36
+duplicate$ -- 6080
+empty$ -- 5747
+format.name$ -- 1058
+if$ -- 12454
 int.to.chr$ -- 0
-int.to.str$ -- 40
+int.to.str$ -- 43
 missing$ -- 0
-newline$ -- 370
-num.names$ -- 811
-pop$ -- 5557
+newline$ -- 388
+num.names$ -- 876
+pop$ -- 5877
 preamble$ -- 1
-purify$ -- 278
+purify$ -- 310
 quote$ -- 0
-skip$ -- 3197
+skip$ -- 3419
 stack$ -- 0
-substring$ -- 932
-swap$ -- 1688
-text.length$ -- 478
-text.prefix$ -- 17
+substring$ -- 1053
+swap$ -- 1797
+text.length$ -- 502
+text.prefix$ -- 18
 top$ -- 1
-type$ -- 672
+type$ -- 710
 warning$ -- 0
-while$ -- 344
+while$ -- 361
 width$ -- 0
-write$ -- 351
+write$ -- 368
 (There were 192 error messages)
