@@ -1,25 +1,12 @@
-This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
-Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
-The top-level auxiliary file: BigData.aux
+This is BibTeX, Version 0.99dThe top-level auxiliary file: BigData.aux
 The style file: biblatex.bst
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: BigData-blx.bib
 Database file #2: references.bib
 Repeated entry---line 9 of file references.bib
  : @book{big-data-internet-cosas
  :                              ,
 I'm skipping whatever remains of this entry
-Biblatex version: 3.0
+Biblatex version: 3.3
 Name 1 in "Seref Sagiroglu, and Duygu Sinanc" has a comma at the end for entry big-data
 while executing---line 2513 of file biblatex.bst
 Name 1 in "Seref Sagiroglu, and Duygu Sinanc" has a comma at the end for entry big-data
@@ -140,8 +127,6 @@ Name 1 in "Zikopoulos, P., and C. Eaton" has a comma at the end for entry unders
 while executing---line 2595 of file biblatex.bst
 Name 1 in "Karthik Kambatla, and Giorgos Kollias, and Vipin Kumar, and Ananth Grama" has a comma at the end for entry big-data-trends
 while executing---line 2595 of file biblatex.bst
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
 Name 1 in "Hugo Evans, and et. al." has a comma at the end for entry zeta-bytes
 while executing---line 2659 of file biblatex.bst
 Name 1 in "Hugo Evans, and et. al." has a comma at the end for entry zeta-bytes
@@ -238,45 +223,4 @@ Name 1 in "Zikopoulos, P., and C. Eaton" has a comma at the end for entry unders
 while executing---line 2659 of file biblatex.bst
 Name 1 in "Zikopoulos, P., and C. Eaton" has a comma at the end for entry understanding-big-data
 while executing---line 2659 of file biblatex.bst
-You've used 9 entries,
-            6047 wiz_defined-function locations,
-            1168 strings with 9242 characters,
-and the built_in function-call counts, 25630 in all, are:
-= -- 1064
-> -- 872
-< -- 287
-+ -- 289
-- -- 300
-* -- 1618
-:= -- 1643
-add.period$ -- 0
-call.type$ -- 9
-change.case$ -- 142
-chr.to.int$ -- 34
-cite$ -- 16
-duplicate$ -- 2811
-empty$ -- 2673
-format.name$ -- 485
-if$ -- 5915
-int.to.chr$ -- 0
-int.to.str$ -- 18
-missing$ -- 0
-newline$ -- 194
-num.names$ -- 405
-pop$ -- 2634
-preamble$ -- 1
-purify$ -- 159
-quote$ -- 0
-skip$ -- 1617
-stack$ -- 0
-substring$ -- 643
-swap$ -- 853
-text.length$ -- 237
-text.prefix$ -- 8
-top$ -- 1
-type$ -- 330
-warning$ -- 0
-while$ -- 188
-width$ -- 0
-write$ -- 184
 (There were 109 error messages)
