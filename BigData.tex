@@ -98,6 +98,13 @@
 \addbibresource{references.bib}
 
 %-----------------------------------------------------------------------------------------------------
+%	ALGORITMOS
+%-----------------------------------------------------------------------------------------------------
+
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+%-----------------------------------------------------------------------------------------------------
 %	PORTADA
 %-----------------------------------------------------------------------------------------------------
 
@@ -135,6 +142,9 @@
 
 \begin{document}
 
+\renewcommand{\ALG@name}{Algoritmo}
+\renewcommand{\listalgorithmname}{Lista de \ALG@name s}
+
 \maketitle
 
 %-----------------------------------------------------------------------------------------------------
@@ -152,13 +162,13 @@
 %	SECCIÓN 1: INTRODUCCIÓN
 %-----------------------------------------------------------------------------------------------------
 
-\section{Introducción}
+\section{Introducción} \label{sec:introduction}
 
-	Desde hace miles de siglos el ser humano ha investigado la manera de almacenar y recopilar información. Durante muchos siglos la escritura y la pintura eran los únicos mecanismos existentes. Posteriormente surgió la fotografía, los discos de vinilo... Sin embargo, poca información seguía ocupando mucho volumen físico. Gracias a los avances tecnológicos de las últimos décadas, hoy en día disponemos dispositivos electrónicos para el almacenamiento de datos binarios. Además, la evolución de estos dispositivos ha sido frenética. IBM comercializó el primer disco duro en 1956. Este constaba solamente de 5 mega bytes de capacidad \cite{hard-disks} mientras que actualmente podemos utilizar discos duros con más de 1 tera byte.
+	Desde hace miles de años el ser humano ha investigado la manera de almacenar y recopilar información. Durante muchos siglos la escritura y la pintura eran los únicos mecanismos existentes. Posteriormente surgió la fotografía, los discos de vinilo... Sin embargo, poca información seguía ocupando mucho volumen físico. Gracias a los avances tecnológicos de las últimos décadas, hoy en día disponemos dispositivos electrónicos para el almacenamiento de datos binarios. Además, la evolución de estos dispositivos ha sido frenética. IBM comercializó el primer disco duro en 1956. Este constaba solamente de 5 mega bytes de capacidad \cite{hard-disks} mientras que actualmente podemos utilizar discos duros con más de 1 tera byte.
 
-	La capacidad de cómputo y procesamiento de los computadores también ha crecido de forma exponencial. El primer ordenador comercial se presentó en 1951 y se conoce como  UNIVAC 1 \cite{first-commercial-computer}. Este computador tenía una frecuencia de 2.25 mega hercios y 1000 palabras de memoria principal o RAM \cite{caract}. Actualmente utilizamos procesadores con más de 2 giga hercios de frecuencia de reloj, esto es, realizan hasta dos mil millones de operaciones por segundo. Además, es habitual utilizar ordenadores con 8 o más giga bytes de memoria principal, lo que permite trabajar con bastante información de forma eficiente. 
+	La capacidad de cómputo y procesamiento de los computadores también ha crecido de forma exponencial. El primer ordenador comercial se presentó en 1951 y se conoce como  UNIVAC 1 \cite{first-commercial-computer}. Este computador tenía una frecuencia de 2.25 mega hercios y 1000 palabras de memoria principal o RAM \cite{caract}. Actualmente utilizamos procesadores con más de 2 giga hercios de frecuencia de reloj. Además, es habitual encontrar computadores con 8 o más giga bytes de memoria principal, lo que permite trabajar con bastante información de forma eficiente. 
 
-	Estas nuevas tecnologías han posibilitado que el almacenamiento de datos sea mucho más sencillo. Podemos guardar multitud de archivos en un dispositivo de unos centímetros y compartirlos con cualquier usuario. Además, el procesamiento de estos archivos e información es eficiente gracias a la capacidad de los computadores actuales. 
+	Estas nuevas tecnologías han posibilitado que el almacenamiento de datos sea mucho más sencillo. Podemos guardar multitud de archivos en un dispositivo de unos centímetros y compartirlos con cualquier usuario. Además, el procesamiento de estos archivos a nivel de usuario es eficiente gracias a la capacidad de los computadores actuales. 
 	
 	El mayor flujo de datos es producido en Internet. Aunque es relativamente joven, se hizo público en 1993, actualmente existen más de mil millones de páginas webs \cite{internet}. Además, multitud de dispositivos electrónicos se conectan e interaccionan con Internet (lo que se denomina Internet de las cosas \cite{big-data-internet-cosas}). Los usuarios de estos dispositivos utilizan aplicaciones web y redes sociales, publicando textos y archivos multimedia. 
 	
@@ -171,15 +181,15 @@
 	       	\label{fig:zeta-bytes}
 	 \end{figure}
 
-	Toda esta cantidad de información necesita ser procesada y clasificada. Por ejemplo, encontramos empresas como Facebook y Google cuyos usuarios generan una gran cantidad de datos diariamente. Estos datos deben ser tratados en tiempo real para poder mantener los sistemas de recomendaciones asociados. En estos ejemplos la cantidad de datos a procesar supera con creces la capacidad de un computador usual. Se denominan conjuntos de datos masivos. Estos conjuntos de datos requieren nuevas tecnologías y algoritmos que permitan tratarlos eficientemente. El desarrollo de estas nuevas tecnologías, algoritmos y herramientas para tratar conjuntos de datos masivos es lo que se conoce como Big Data \cite{big-data-herrera}.
+	En resumen, a pesar de la evolución de los computadores en todas sus facetas, la cantidad de datos e información a procesar y almacenar crece incluso a mayor velocidad en muchas aplicaciones. Por ejemplo, encontramos empresas como Facebook y Google cuyos usuarios generan una gran cantidad de datos diariamente. Estos datos deben ser tratados en tiempo real para poder mantener los sistemas de recomendaciones asociados. En estos ejemplos se requieren servidores de altas prestaciones para poder tratar tal cantidad de datos en un tiempo razonable. Estos conjuntos de datos adquieren el calificativo ``masivos''. El desarrollo de nuevas tecnologías, algoritmos y herramientas para tratar de forma eficiente conjuntos de datos masivos es lo que se conoce como Big Data \cite{big-data-herrera}.
 	
-	En este trabajo presentamos una introducción a Big Data y a las diferentes herramientas software existentes, destacando el papel de la ingeniería de servidores en este contexto. En particular, mostramos la importancia del desarrollo de nuevos benchmarks que permitan evaluar las tecnologías de Big Data de forma clara y objetiva.
+	En este trabajo presentamos una introducción a Big Data y a las diferentes herramientas software existentes, destacando el papel de la ingeniería de servidores en este contexto. En particular, incidimos en la importancia del desarrollo de nuevos benchmarks que permitan evaluar las tecnologías de Big Data de forma clara y objetiva.
 
-	El resto del texto se organiza como sigue. La Sección \ref{sec:big-data} contiene una mayor descripción del concepto de Big Data. En la Sección \ref{sec:map-reduce} introducimos el paradigma de programación map reduce y la tecnología que lo implementa, denominada Hadoop. En la Sección \ref{sec:spark-flink} describimos las nuevas tecnologías que han surgido para cohesionar la filosofía map reduce con el procesamiento iterativo. Estas se denominan Spark y Flink. En la Sección \ref{sec:tpcx-hs} explicamos uno de los benchmarks existentes para las tecnologías Big Data, denominado TPCx-HS. Por último, en la Sección \ref{sec:conclusion} presentamos las conclusiones obtenidas.
+	El resto del texto se organiza como sigue. La Sección \ref{sec:big-data} contiene una descripción del concepto de Big Data. En la Sección \ref{sec:map-reduce} introducimos el paradigma de programación map reduce y la tecnología libre que lo implementa, denominada Hadoop. En la Sección \ref{sec:spark-flink} describimos las nuevas tecnologías que han surgido para cohesionar la filosofía map reduce con el procesamiento iterativo. Estas se denominan Spark y Flink. En la Sección \ref{sec:tpcx-hs} explicamos uno de los benchmarks existentes para las tecnologías Big Data, denominado TPCx-HS. Por último, en la Sección \ref{sec:conclusion} presentamos las conclusiones obtenidas.
 
 \section{Big Data} \label{sec:big-data}
 	
-	A pesar de la evolución de los computadores en todas sus facetas, la cantidad de datos e información a procesar y almacenar crece incluso a mayor velocidad. En muchas ocasiones un ordenador normal no es capaz de tratar tantos giga bytes de datos. Estos conjuntos de datos se denominan masivos. Además, en múltiples aplicaciones se necesita aplicar algoritmos sobre los conjuntos de datos recopilados, requiriendo mucho tiempo de cómputo en el caso de que estos sean de gran tamaño. 
+	En la Sección \ref{sec:introduction} hemos incidido en la rápida evolución que han sufrido los computadores. Sin embargo, en muchas aplicaciones encontramos conjuntos de datos que ponen a prueba a los ordenadores más ponentes. Estos conjuntos de datos se denominan masivos. El tratamiento de datos masivos tiene dos problemas claros. El primero de ellos es la memoria. Necesitamos computadores con suficiente memoria principal para procesar de forma eficiente un gran flujo de datos. El segundo problema es la capacidad de cómputo necesaria para aplicar algoritmos sobre estos conjuntos de datos. 
 	
 	Big Data engloba el tratamiento de datos masivos desde el punto de vista tecnológico y algorítmico. En palabras de Michael J. Franklin, profesor de informática en la universidad de Berkley \cite{bd-definition}:
 	
@@ -199,9 +209,9 @@
 		\item \textbf{Variedad.} Los datos a tratar provienen de una gran variedad de fuentes. Por tanto, las herramientas Big Data deben permitir procesar a la vez datos de diferentes características y tamaños. Es más, habitualmente encontramos datos de tres tipos: estructurados, semi estructurados y sin estructurar. Los datos estructurados son sencillos de clasificar. Sin embargo, los datos sin estructurar son aleatorios y difíciles de analizar. Por su parte, los datos semi estructurados requieren técnicas avanzadas para poder clasificarlos correctamente.
 	\end{itemize}
 
-	Algunos autores han extendido la definición hasta utilizar un total de 9 V's: veracidad, valor, viabilidad y visualización entre otras \cite{understanding-big-data}. Estas destacan diferentes aspectos del tratamiento de conjuntos de datos masivos como mantener y analizar la veracidad de los datos y poner en valor el conocimiento subyacente.
+	Algunos autores han extendido la definición hasta utilizar un total de 9 V's: veracidad, valor, viabilidad y visualización entre otras \cite{understanding-big-data}. De esta forma se destacan diferentes aspectos del tratamiento de conjuntos de datos masivos como mantener y analizar la veracidad de los datos y poner en valor el conocimiento subyacente.
 
-	El término Big Data ha tomado peso en el ámbito empresarial. Actualmente forma parte del área de conocimiento que se denomina inteligencia de negocio (business intelligence) \cite{business-intelligence}. La inteligencia de negocio cubre aquellos problemas relacionados con datos que se resuelven en organizaciones empresariales. Las empresas almacenan información de sus clientes y de toda la actividad realizada. Esta información contiene conocimiento que es valioso para determinar cómo aproximar los negocios de la empresa. 
+	El término Big Data ha tomado peso en el ámbito empresarial. Actualmente forma parte del área de conocimiento que se denomina inteligencia de negocio (business intelligence) \cite{business-intelligence}. La inteligencia de negocio cubre aquellos problemas relacionados con datos que se resuelven en organizaciones empresariales. Las empresas almacenan información de sus clientes y de toda la actividad realizada. Esta información contiene conocimiento que es valioso para determinar estrategias de negocio. Podemos decir que el análisis de datos es crucial para que las decisiones tomadas en la empresa sean efectivas. 
 
 	También podemos considerar Big Data como parte del área denominada ciencia de datos \cite{data-science}. Esta es una temática emergente que aglutina todas las áreas científicas que se encargan del tratamiento de los datos y de la extracción de conocimiento de los mismos. En este contexto, algunos autores denominan Big Data Analytics a la aplicación de Big Data al análisis de datos \cite{big-data-trends}. 
 
@@ -211,10 +221,67 @@
 
 \section{Map Reduce. Hadoop} \label{sec:map-reduce}
 
-	Por tanto, necesitamos recurrir a servidores de altas prestaciones y procesamiento distribuido para poder aplicar estos algoritmos.
-	
-	Los servidores de altas prestaciones (alguna descripción). Se han desarrollado herramientas de cómputo en paralelo y distribuido, como OPEN MP y MPI (referencias), que permiten implementar algoritmos distribuidos sobre estos. Sin embargo, estas implementaciones dependen del servidor y son a bajo nivel. Una determinada implementación sobre un esquema hardware puede funcionar bien en determinado momento pero al año tendrá que ser capaz de trabajar con el doble de datos. Esto probablemente suponga la necesidad de ampliar el hardware y rehacer la implementación. Necesitamos pues nuevos paradigma de programación que permitan abstraer el desarrollo de software para plataformas distribuidas del hardware y proporcionen capacidad para el tratamiento de datos masivos.
 
+	\subsection{Servidores de altas prestaciones. Sistemas de archivos distribuidos}
+
+		En la Sección \ref{sec:big-data} destacábamos dos problemas del tratamiento de conjuntos de datos masivos: el conjunto de datos puede no caber en memoria principal y se necesita una gran capacidad de cómputo para ejecutar algoritmos sobre este. La solución a este problema suele ser utilizar servidores de altas prestaciones con procesamiento en paralelo y distribuido.
+	
+		Los servidores de altas prestaciones (alguna descripción). .... 
+		
+		Los servidores contendrán ingentes cantidades de información de vital importancia. Por tanto, se necesita almacenar la información en un sistema de archivo tolerante a errores. Esto es, si un nodo o disco duro del servidor se estropea, no se pueden perder datos ni provocar una caída del servidor. En esta situación se encontró Google a principios de este siglo cuando desarrolló Google File System, GFS, que fue presentado oficialmente en 2003 \cite{gfs}. Este es un sistema de archivos escalable y distribuido que utilizan para aplicaciones distribuidas que requieran conjuntos de datos masivos. El sistema proporciona tolerancia ante fallos de forma automática y administra de forma eficiente grandes conjuntos de datos en el servidor, no necesitando que este sea especialmente caro. Además, proporciona escalabilidad en el sentido de que se pueden añadir o eliminar nodos o discos duros sin problemas. De esta forma, se consigue un correcto almacenamiento de los datos en el servidor.
+		
+		Google File System es un software privado. Basándose en las ideas de este, la fundación Apache ha desarrollado HDFS (Hadoop Distributed File System) \cite{hdfs}.
+
+	\subsection{Map Reduce}
+
+
+		Además de un sistema de archivos distribuido que asegure un correcto almacenamiento de la información en el servidor, se necesitan herramientas y librerías que permitan programar algoritmos paralelos y distribuidos. Las librerías OPEN MP y MPI (referencias) son muy conocidas. OPEN MP permite paralelizar cálculos vectoriales. Por su parte, MPI se basa en el paso de mensajes entre hebras como mecanismo para realizar implementaciones distribuidas. Estas librerías operan a bajo nivel y funcionan principalmente con lenguajes de programación como c y c++. 
+		
+		La implementación de un algoritmo distribuido utilizando estas librerías es muy costosa. El programador debe indicar expresamente el tratamiento distribuidos de los datos y cómo se paralelizan los cómputos. Además, tiene que crear las hebras asociadas y encargarse de que el sistema funcione correctamente. Nótese que si durante la ejecución el algoritmo un nodo se estropea, entonces la implementación puede dejar de funcionar a no ser que el programador le haya dedicado mucho tiempo para conseguir que sea tolerante ante fallos. Es más, si uno implementa varios algoritmos distribuidos esencialmente se está implementando el mismo tipo de paralelización una y otra vez.
+	
+		Ante esta situación en Google se dieron cuenta de la necesidad de desarrollar un nuevo paradigma de programación distribuida. Este debía proporcionar una interfaz para implementar algoritmos distribuidos de forma simple y eficiente sin tener que centrarse en cuestiones de bajo nivel. La distribución de los datos en los nodos y la tolerancia ante los fallos serían llevadas a cabo por el propio lenguaje de programación de manera que el programador solamente tiene que desarrollar el algoritmo en cuestión. Gracias a esta idea surge el paradigma de programación Map Reduce, que Google hace público en 2008 \cite{map-reduce1, map-reduce2, map-reduce3}.
+	
+		Map Reduce se basa en un proceso de abstracción a la hora de implementar algoritmos distribuidos. Los creadores de este paradigma se basaron en las funciones map y reduce que suelen estar presentes como primitivas en múltiples lenguajes de programación funcional. Un algoritmo se define como sigue. La entrada y la salida del algoritmo se conciben como dos listas de parejas clave / valor que pueden no tener los mismos tipos. El programador debe proporcionar el código de las funciones map y reduce.
+		
+		\begin{itemize}
+			\item La función \textbf{map} toma como entrada una pareja clave / valor y produce un conjunto intermedio de parejas. Tras la ejecución de todos los maps, el sistema filtra los conjuntos intermedios de parejas obtenidos de manera que a cada posible clave se le asigna un conjuntos con todos los valores que tenía asociados como pareja.
+			\item La función \textbf{reduce} toma una clave y un conjunto de valores asociados a la clave. Estos valores se mezclan, devolviendo al final cero o más parejas con la clave y los valores obtenidos tras la mezcla. El conjunto de valores que se proporciona como argumento a reduce se representa en la implementación mediante un iterador. De esta forma se puede trabajar con listas de valores tan grandes que no quepan en memoria principal.
+		\end{itemize}  
+		
+		Para ejemplificar el funcionamiento de Map Reduce es habitual explicar cómo se puede contar el número de ocurrencias de cada una de las palabras de un texto. 
+		
+		\begin{algorithm}
+			\caption{Algoritmo para contar el número de ocurrencias de cada una de las palabras de un texto en map reduce.}
+			\label{alg:map}
+			\begin{algorithmic}
+				\REQUIRE Pareja (String key, String value) donde la clave representa el nombre del documento y el valor el contenido del documento.
+				\FOR{\textbf{each word} $w$ \textbf{ in } $value$}
+				\STATE EmitIntermediate(w, "1")
+				\ENDFOR
+			\end{algorithmic}
+
+			\begin{algorithmic}
+				\REQUIRE Pareja (String key, Iterator values) donde la clave consiste en una palabra del documento mientras que el iterador proporciona el número de veces que se ha encontrado la palabra en cada map.
+				\STATE result = 0
+				\FOR{each value $v$ in  $values$}
+				\STATE result += ParseInt(v);
+				\ENDFOR
+				\STATE Emit(AsString(result));
+			\end{algorithmic}
+		\end{algorithm}
+		
+
+
+
+		Por tanto, se requieren tecnologías que manejen grandes conjuntos de datos de forma eficiente y a alto nivel, permitiendo que la implementación sea independiente del hardware a utilizar.
+
+		Supóngase que una empresa compra un servidor en el cual ejecuta un algoritmo distribuido con eficiencia $\theta(n^2)$ sobre conjuntos de datos masivos. En el momento en el que se compra el hardware consiguen ejecutar el algoritmo en 8 horas, obteniendo resultados en el mismo día. Sin embargo, siguiendo la tendencia mostrada en la Figura \ref{fig:zeta-bytes}, es probable que al año el conjunto de datos a utilizar se duplique en tamaño dentro de un año. En tal caso el servidor puede tener problemas desde el punto de vista de la memoria y el flujo de datos. Es habitual que el hardware tenga cuellos de botella que provoquen que determinadas operaciones relacionadas con la memoria lleven mucho tiempo.  Por otro lado, el algoritmo tardará de todas formas 4 veces más en ejecutarse al ser cuadrático. Por tanto, la ejecución pasará a durar 32 horas, no pudiendo obtener resultados en un mismo día. 
+		
+		El ejemplo anterior muestra un problema de escalabilidad inherente a Big Data. Aunque esta claro que el procesamiento distribuido es la solución, el crecimiento de los conjuntos de datos hace que el hardware se quede obsoleto en poco tiempo. Una solución puede ser actualizarlo cada año. Sin embargo, una empresa no puede permitirse renovar el hardware anualmente pues esto supondría un aumento de costes, consumo eléctrico, mantenimiento y, además, requiere una gran cantidad de espacio. Otra solución consiste en reformular el algoritmo en cuestión, mejorando su eficiencia y escalabilidad.
+		
+		En cualquier caso, la solución que se tome implicará un gran trabajo para adaptar el software existente al nuevo hardware o para implementar nuevos algoritmos distribuidos. Cada nueva implementación conlleva multitud de líneas de código para manejar el conjunto de datos y realizar los cómputos distribuidos. Además, la implementación debe conseguir que el sistema sea tolerante ante fallos, esto es, si un nodo se estropea, entonces el sistema debe no perder la información y reasignar el trabajo del nodo a otro.
+
+	\subsection{Hadoop}
 
 %-----------------------------------------------------------------------------------------------------
 %	SECCIÓN 3
@@ -321,6 +388,8 @@
 %-----------------------------------------------------------------------------------------------------
 
 \section{Conclusión} \label{sec:conclusion}
+
+	Podemos decir que Big Data es un área que aúna tanto la ingeniería del software como la ingeniería de servidores y la ciencia de datos.
 
 %-----------------------------------------------------------------------------------------------------
 %	SECCIÓN X: REFERENCIAS

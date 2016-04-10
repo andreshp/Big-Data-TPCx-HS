@@ -16,6 +16,24 @@
   {}
 \endgroup
 
+\entry{hdfs}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Borthakur}{B.}%
+     {D.}{D.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{BD1}
+  \strng{fullhash}{BD1}
+  \field{sortinit}{B}
+  \field{title}{HDFS architecture guide}
+  \verb{url}
+  \verb archive.cloudera.com/cdh/3/hadoop-0.20.2-cdh3u6/hdfs_design.pdf
+  \endverb
+  \field{year}{2008}
+\endentry
+
 \entry{business-intelligence}{article}{}
   \name{author}{3}{}{%
     {{}%
@@ -42,6 +60,73 @@
   Impact}
   \field{journaltitle}{MIS Quarterly}
   \field{year}{2012}
+\endentry
+
+\entry{map-reduce3}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Dean}{D.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ghemawat}{G.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{DJGS1}
+  \strng{fullhash}{DJGS1}
+  \field{sortinit}{D}
+  \field{pages}{72\bibrangedash 77}
+  \field{title}{MapReduce: a flexible data processing tool}
+  \field{journaltitle}{Communications of the ACM}
+  \field{year}{2010}
+\endentry
+
+\entry{map-reduce1}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Dean}{D.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ghemawat}{G.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{DJGS1}
+  \strng{fullhash}{DJGS1}
+  \field{sortinit}{D}
+  \field{pages}{137\bibrangedash 150}
+  \field{title}{MapReduce: Simplified data processing on large clusters}
+  \field{journaltitle}{Proceedings of Operating Systems Design and
+  Implementation (OSDI)}
+  \field{year}{2004}
+\endentry
+
+\entry{map-reduce2}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Dean}{D.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ghemawat}{G.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{DJGS1}
+  \strng{fullhash}{DJGS1}
+  \field{sortinit}{D}
+  \field{pages}{107\bibrangedash 113}
+  \field{title}{MapReduce: simplified data processing on large clusters}
+  \field{journaltitle}{Communications of the ACM}
+  \field{year}{2008}
 \endentry
 
 \entry{benchmarking}{misc}{}
@@ -102,6 +187,33 @@
   \endverb
   \field{journaltitle}{PCWorld}
   \field{year}{2016}
+\endentry
+
+\entry{gfs}{article}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Ghemawat}{G.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Gobioff}{G.}%
+     {H.}{H.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Leung}{L.}%
+     {S.~T.}{S.~T.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{GSGHLST1}
+  \strng{fullhash}{GSGHLST1}
+  \field{sortinit}{G}
+  \field{pages}{29\bibrangedash 43}
+  \field{title}{The Google file system}
+  \field{journaltitle}{ACM SIGOPS operating systems review}
+  \field{year}{2013}
 \endentry
 
 \entry{big-data-herrera}{book}{}
@@ -343,6 +455,38 @@
   \field{title}{About TPC}
   \verb{url}
   \verb http://www.tpc.org/information/about/abouttpc.asp
+  \endverb
+\endentry
+
+\entry{tpcxhs}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {TPC}{T.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{T1}
+  \strng{fullhash}{T1}
+  \field{sortinit}{T}
+  \field{title}{TPC EXPRESS BENCHMARK ™ HS, Standard Specification Version
+  1.3.0}
+\endentry
+
+\entry{ejemplos}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {TPC}{T.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{T1}
+  \strng{fullhash}{T1}
+  \field{sortinit}{T}
+  \field{title}{TPCx-HS - Ten Most Recently Published Results}
+  \verb{url}
+  \verb http://www.tpc.org/tpcx-hs/results/tpcxhs_last_ten_results.asp
   \endverb
 \endentry
 
