@@ -218,6 +218,25 @@
   \endverb
 \endentry
 
+\entry{caract}{book}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Stern}{S.}%
+     {N.B}{N.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Butterworth-Heinemann}%
+  }
+  \strng{namehash}{SN1}
+  \strng{fullhash}{SN1}
+  \field{sortinit}{S}
+  \field{title}{Stern, N. B. (1981). From Eniac to UNIVAC: An Appraisal of the
+  Eckert-Mauchy Computers. Butterworth-Heinemann.}
+  \field{year}{1981}
+\endentry
+
 \entry{big-data-internet-cosas}{book}{}
   \name{author}{2}{}{%
     {{}%
