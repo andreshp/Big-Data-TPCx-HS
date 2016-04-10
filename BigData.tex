@@ -14,7 +14,7 @@
 %	INCLUSIÓN DE PAQUETES BÁSICOS
 %-----------------------------------------------------------------------------------------------------
 
-\documentclass{article}
+\documentclass[10pt]{article}
 
 %-----------------------------------------------------------------------------------------------------
 %	SELECCIÓN DEL LENGUAJE
@@ -26,13 +26,14 @@
 \selectlanguage{spanish}                                       % Selecciono como lenguaje el Español.
 
 %-----------------------------------------------------------------------------------------------------
-\usepackage{lipsum}                     % Texto dummy. Quitar en el documento final.
 %	SELECCIÓN DE LA FUENTE
 %-----------------------------------------------------------------------------------------------------
 
 % Fuente utilizada.
-\usepackage{courier}
 \usepackage{microtype}                  % Mejora la letra final de cara al lector.
+\usepackage{helvet}
+
+\renewcommand{\familydefault}{\sfdefault}
 
 %-----------------------------------------------------------------------------------------------------
 %	ESTILO DE PÁGINA
@@ -85,6 +86,7 @@
 \usepackage{graphicx}                  % Utilizado para insertar gráficos.
 \usepackage{caption}                   % Títulos y leyendas para los gráficos.
 \usepackage{subcaption}                % Subfiguras.
+\usepackage{float}
 
 %-----------------------------------------------------------------------------------------------------
 %	BIBLIOGRAFÍA
@@ -152,28 +154,26 @@
 
 \section{Introducción}
 
-	Desde hace miles de siglos el ser humano ha investigado la manera de almacenar y recopilar información. Durante muchos siglos la escritura y la pintura eran los únicos mecanismos existentes. Posteriormente surgió la fotografía, los discos de vinilo... Sin embargo, poca información seguía ocupando mucho volumen físico. Gracias a los avances tecnológicos de las últimos décadas, hoy en día disponemos dispositivos electrónicos para el almacenamiento de datos binarios. Además, la evolución de estos dispositivos ha sido frenética. IBM comercializó el primer disco duro en 1956. Este constaba solamente de 5 Mega Bytes de capacidad \cite{hard-disks} mientras que actualmente podemos utilizar discos duros con más de 1 Tera Byte.
+	Desde hace miles de siglos el ser humano ha investigado la manera de almacenar y recopilar información. Durante muchos siglos la escritura y la pintura eran los únicos mecanismos existentes. Posteriormente surgió la fotografía, los discos de vinilo... Sin embargo, poca información seguía ocupando mucho volumen físico. Gracias a los avances tecnológicos de las últimos décadas, hoy en día disponemos dispositivos electrónicos para el almacenamiento de datos binarios. Además, la evolución de estos dispositivos ha sido frenética. IBM comercializó el primer disco duro en 1956. Este constaba solamente de 5 mega bytes de capacidad \cite{hard-disks} mientras que actualmente podemos utilizar discos duros con más de 1 tera byte.
 
-	La evolución en la capacidad de cómputo y procesamiento de los computadores también ha sido exponencial. El primer ordenador comercial se presentó en 1951 y se conoce como  UNIVAC 1 \cite{first-commercial-computer}. Este computador realizaba n cuentas por segundo. Actualmente hablamos de GHz cuando comparamos la velocidad del procesador de un ordenador. Además, es habitual utilizar ordenadores con 8 o más GB de memoria principal. Se han creado benchmarks con el objetivo de aportar elementos de juicio con los que se permite ver cual o cuáles son las mejores enfoques para conducir a la optimización de los productos. 
+	La capacidad de cómputo y procesamiento de los computadores también ha crecido de forma exponencial. El primer ordenador comercial se presentó en 1951 y se conoce como  UNIVAC 1 \cite{first-commercial-computer}. Este computador realizaba n cuentas por segundo y tenía m kilo bytes de memoria principal o RAM. Actualmente utilizamos procesadores con más de 2 giga gercios de frecuencia de reloj, esto es, realizan hasta dos mil millones de operaciones por segundo. Además, es habitual utilizar ordenadores con 8 o más giga bytes de memoria principal, lo que permite trabajar con bastante información de forma eficiente. 
 
-	El benchmarking sirve para obtener informmción útil que ayude a una organización a mejorar sus procesos \cite{benchmarking}. Aún así, el benchmarking es un proceso costoso computacionalmente y además, es un proceso que se ha de reservar para cuestiones de importancia que sean importantes en la organización y no se debe usar en tareas rutinarias \cite{desv-bench}.
+	Estas nuevas tecnologías han posibilitado que el almacenamiento de datos sea mucho más sencillo. Podemos guardar multitud de archivos en un dispositivo de unos centímetros y compartirlos con cualquier usuario. Además, el procesamiento de estos archivos e información es eficiente gracias a la capacidad de los computadores actuales. 
+	
+	El mayor flujo de datos es producido en Internet. Aunque es relativamente joven, se hizo público en 1993, actualmente existen más de mil millones de páginas webs \cite{internet}. Además, multitud de dispositivos electrónicos se conectan e interaccionan con Internet (lo que se denomina Internet de las cosas \cite{big-data-internet-cosas}). Los usuarios de estos dispositivos utilizan aplicaciones web y redes sociales, publicando textos y archivos multimedia. 
+	
+	Todo este cúmulo de tecnologías y actividades ha dado lugar a que hoy en día haya más de 10 zeta bytes de información almacenados (1 ZB = $10^{12}$ GB). La Figura \ref{fig:zeta-bytes} muestra la evolución histórica de la cantidad de información acumulada por el ser humano. Podemos observar que cada año se generan varios zeta bytes de información, el crecimiento es exponencial. Hasta 2003 se habían almacenado en total 5 exa bytes de información (1 EB = $10^9$ GB). Actualmente, generamos esta cantidad de datos en dos días \cite{big-data}.
 
-	Estas nuevas tecnologías han posibilitado que el almacenamiento de datos sea mucho más sencillo. Podemos guardar multitud de archivos multimedia en un dispositivo de unos centímetros y compartirlos con multitud de usuarios. 
-	
-	El mayor flujo de datos se produce gracias a Internet. Aunque es relativamente joven, se hizo público en 1993, actualmente existen más de mil millones de páginas webs \cite{internet}. Además, multitud de dispositivos electrónicos se conectan e interaccionan con Internet (lo que se denomina Internet de las cosas \cite{big-data-internet-cosas}). Los usuarios de estos dispositivos utilizan aplicaciones web y redes sociales, publicando textos y archivos multimedia. 
-	
-	Todo este cúmulo de tecnologías y actividades ha dado lugar a que hoy en día haya más de 10 Zeta Bytes de información almacenados (1 ZB = $10^{12}$ GB) (ver la Figura \ref{fig:zeta-bytes}). De hecho, podemos observar que cada año se generan varios Zeta Bytes de información, el crecimiento es exponencial. Hasta 2003 se habían almacenado en total 5 Exa Bytes ($10^9$ Giga Bytes) de información. Actualmente, generamos esta cantidad de datos en dos días \cite{big-data}.
-	
-	 \begin{figure}[h]
+	\begin{figure}[H]
 	       	\centering
-	       	\includegraphics[width=15cm]{./images/Data.png}
+	       	\includegraphics[width=14cm]{./images/Data.png}
 	       	\caption{Evolución histórica del número de Zeta Bytes de información almacenados y predicción para los próximos años \cite{zeta-bytes}.} 
 	       	\label{fig:zeta-bytes}
 	 \end{figure}
 
-	Por tanto, existen multitud de aplicaciones donde se tienen que procesar conjuntos de datos masivos. Estos conjuntos de datos requieren nuevas tecnologías y algoritmos que permitan tratarlos eficientemente. El desarrollo de estas nuevas tecnologías y algoritmos es lo que se conoce como Big Data.
+	Toda esta cantidad de información necesita ser procesada y clasificada. Por ejemplo, encontramos empresas como Facebook y Google cuyos usuarios generan una gran cantidad de datos diariamente. Estos datos deben ser tratados en tiempo real para poder mantener los sistemas de recomendaciones asociados. En estos ejemplos la cantidad de datos a procesar supera con creces la capacidad de un computador usual. Se denominan conjuntos de datos masivos. Estos conjuntos de datos requieren nuevas tecnologías y algoritmos que permitan tratarlos eficientemente. El desarrollo de nuevas tecnologías, algoritmos y herramientas para tratar conjuntos de datos masivos es lo que se conoce como Big Data \cite{big-data-herrera}.
 	
-	En este trabajo presentamos una introducción a Big Data y a las diferentes herramientas software existentes, destacando el papel de la ingeniería de servidores en este contexto.
+	En este trabajo presentamos una introducción a Big Data y a las diferentes herramientas software existentes, destacando el papel de la ingeniería de servidores en este contexto. En particular, mostramos la importancia del desarrollo de nuevos benchmarks que permitan evaluar estas tecnologías de forma clara y objetiva.
 
 	El resto del texto se organiza como sigue. La Sección \ref{sec:big-data} contiene una mayor descripción del concepto de Big Data. En la Sección \ref{sec:map-reduce} introducimos el paradigma de programación map reduce y la tecnología que lo implementa, denominada Hadoop. En la Sección \ref{sec:spark-flink} describimos las nuevas tecnologías que han surgido para cohesionar la filosofía map reduce con el procesamiento iterativo. Estas se denominan Spark y Flink. En la Sección \ref{sec:tpcx-hs} explicamos uno de los benchmarks existentes para las tecnologías Big Data, denominado TPCx-HS. Por último, en la Sección \ref{sec:conclusion} presentamos las conclusiones obtenidas.
 
@@ -220,6 +220,8 @@
 %-----------------------------------------------------------------------------------------------------
 
 \section{Benchmarks: TPCx-HS} \label{sec:tpcx-hs}
+
+	La variedad de computadores es bastante heterogénea. Cada uno realiza de forma eficiente un determinado conjunto de operaciones a consta de presentar peores resultados en otros factores. Por tanto, la comparación entre diferentes modelos de computadores es compleja. Consecuentemente, se han creado benchmarks con el objetivo de aportar elementos de juicio con los que se discernir entre el uso de un computador u otro para una determinada aplicación. Habitualmente el benchmarking se define como la obtención de información útil mediante pruebas empíricas que ayude a una organización a mejorar sus procesos \cite{benchmarking}. Sin embargo, el benchmarking de computadores es un proceso costoso computacionalmente. Gasta tanto energía como mucho tiempo de cómputo. Por tanto, se ha de reservar para cuestiones sean importantes y no para evaluar tareas simples \cite{desv-bench}.
 
 %-----------------------------------------------------------------------------------------------------
 %	SECCIÓN 5: CONCLUSIÓN

@@ -16,6 +16,23 @@
   {}
 \endgroup
 
+\entry{benchmarking}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Empresarios}{E.}%
+     {Confederación~Granadina}{C.~G.}%
+     {de}{d.}%
+     {}{}}%
+  }
+  \strng{namehash}{ECGd1}
+  \strng{fullhash}{ECGd1}
+  \field{sortinit}{E}
+  \field{title}{¿Qué es el Benchmarking}
+  \verb{url}
+  \verb http://www.cge.es/portalcge/tecnologia/innovacion/4111benchmarking.aspx
+  \endverb
+\endentry
+
 \entry{zeta-bytes}{misc}{}
   \name{author}{2}{}{%
     {{}%
@@ -59,7 +76,7 @@
   \field{year}{2016}
 \endentry
 
-\entry{big-data-internet-cosas}{book}{}
+\entry{big-data-herrera}{book}{}
   \name{author}{1}{}{%
     {{}%
      {Herrera}{H.}%
@@ -109,6 +126,38 @@
   \field{year}{2014}
 \endentry
 
+\entry{first-commercial-computer}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Museum}{M.}%
+     {Computer~History}{C.~H.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{MCH1}
+  \strng{fullhash}{MCH1}
+  \field{sortinit}{M}
+  \field{title}{Timeline of Computer History}
+  \verb{url}
+  \verb http://www.computerhistory.org/timeline/1951/
+  \endverb
+\endentry
+
+\entry{desv-bench}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Peralta}{P.}%
+     {Universidad Técnica~José}{U.~T.~J.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{PUTJ1}
+  \strng{fullhash}{PUTJ1}
+  \field{sortinit}{P}
+  \field{title}{Ventajas, desventajas y causas posibles de fracasos del
+  benchmarking}
+\endentry
+
 \entry{big-data}{article}{}
   \name{author}{2}{}{%
     {{}%
@@ -146,6 +195,29 @@
   \verb{url}
   \verb http://www.internetlivestats.com/total-number-of-websites/
   \endverb
+\endentry
+
+\entry{big-data-internet-cosas}{book}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Tascón}{T.}%
+     {Mario}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Coullaut}{C.}%
+     {Arantza}{A.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Catarata}%
+  }
+  \strng{namehash}{TMCA1}
+  \strng{fullhash}{TMCA1}
+  \field{sortinit}{T}
+  \field{title}{Big data y el Internet de las cosas}
+  \field{year}{2016}
 \endentry
 
 \entry{bd-definition}{misc}{}
