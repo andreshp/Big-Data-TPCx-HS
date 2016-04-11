@@ -102,7 +102,12 @@
 %-----------------------------------------------------------------------------------------------------
 
 \usepackage{algorithm}
-\usepackage{algorithmic}
+\usepackage{algpseudocode}
+\usepackage{subcaption}
+\captionsetup{compatibility=false}
+\DeclareCaptionSubType*{algorithm}
+\renewcommand\thesubalgorithm{\thetable\alph{subalgorithm}}
+\DeclareCaptionLabelFormat{alglabel}{Alg.~#2}
 
 %-----------------------------------------------------------------------------------------------------
 %	PORTADA
@@ -165,13 +170,13 @@
 
 	Desde hace miles de años el ser humano ha investigado la manera de almacenar y recopilar información. Durante muchos siglos la escritura y la pintura eran los únicos mecanismos existentes. Posteriormente surgió la fotografía, los discos de vinilo... Sin embargo, poca información seguía ocupando mucho volumen físico. Gracias a los avances tecnológicos de las últimos décadas, hoy en día disponemos dispositivos electrónicos para el almacenamiento de datos binarios. Además, la evolución de estos dispositivos ha sido frenética. IBM comercializó el primer disco duro en 1956. Este constaba solamente de 5 mega bytes de capacidad \cite{hard-disks} mientras que actualmente podemos utilizar discos duros con más de 1 tera byte.
 
-	La capacidad de cómputo y procesamiento de los computadores también ha crecido de forma exponencial. El primer ordenador comercial se presentó en 1951 y se conoce como  UNIVAC 1 \cite{first-commercial-computer}. Este computador tenía una frecuencia de 2.25 mega hercios y 1000 palabras de memoria principal o RAM \cite{caract}. Actualmente utilizamos procesadores con más de 2 giga hercios de frecuencia de reloj. Además, es habitual encontrar computadores con 8 o más giga bytes de memoria principal, lo que permite trabajar con bastante información de forma eficiente. 
+	La capacidad de cómputo y procesamiento de los computadores también ha crecido de forma exponencial. El primer ordenador comercial se presentó en 1951 y se conoce como  UNIVAC 1 \cite{first-commercial-computer}. Este computador tenía una frecuencia de $2.25$ mega hercios y $1000$ palabras de memoria principal o RAM \cite{caract}. Actualmente utilizamos procesadores con más de 2 giga hercios de frecuencia de reloj. Además, es habitual encontrar computadores con $8$ o más giga bytes de memoria principal, lo que permite trabajar con bastante información de forma eficiente. 
 
 	Estas nuevas tecnologías han posibilitado que el almacenamiento de datos sea mucho más sencillo. Podemos guardar multitud de archivos en un dispositivo de unos centímetros y compartirlos con cualquier usuario. Además, el procesamiento de estos archivos a nivel de usuario es eficiente gracias a la velocidad de los computadores. 
 	
 	El mayor flujo de datos es producido en Internet. Aunque es relativamente joven, se hizo público en 1993, actualmente existen más de mil millones de páginas webs \cite{internet}. Además, multitud de dispositivos electrónicos se conectan e interaccionan con Internet (lo que se denomina Internet de las cosas \cite{big-data-internet-cosas}). Los usuarios de estos dispositivos utilizan aplicaciones web y redes sociales, publicando textos y archivos multimedia. 
 	
-	Todo este cúmulo de tecnologías y actividades ha dado lugar a que hoy en día haya más de 10 zeta bytes de información almacenados (1 ZB = $10^{12}$ GB). La Figura \ref{fig:zeta-bytes} muestra la evolución histórica de la cantidad de información acumulada por el ser humano. Podemos observar que cada año se generan varios zeta bytes de información, el crecimiento es exponencial. Hasta 2003 se habían almacenado en total 5 exa bytes de información (1 EB = $10^9$ GB). Actualmente, generamos esta cantidad de datos en dos días \cite{big-data}. Podemos decir que vivimos en una sociedad digital o sociedad de la información.
+	Todo este cúmulo de tecnologías y actividades ha dado lugar a que hoy en día haya más de $10$ zeta bytes de información almacenados ($1$ ZB = $10^{12}$ GB). La Figura \ref{fig:zeta-bytes} muestra la evolución histórica de la cantidad de información acumulada por el ser humano. Podemos observar que cada año se generan varios zeta bytes de información, el crecimiento es exponencial. Hasta 2003 se habían almacenado en total $5$ exa bytes de información ($1$ EB = $10^9$ GB). Actualmente, generamos esta cantidad de datos en dos días \cite{big-data}. Podemos decir que vivimos en una sociedad digital o sociedad de la información.
 
 	\begin{figure}[H]
 	       	\centering
@@ -184,7 +189,7 @@
 	
 	En este trabajo presentamos una introducción a Big Data y a las diferentes herramientas software existentes, destacando el papel de la ingeniería de servidores en este contexto. En particular, incidimos en la importancia del desarrollo de nuevos benchmarks que permitan evaluar las tecnologías de Big Data de forma clara y objetiva.
 
-	El resto del texto se organiza como sigue. La Sección \ref{sec:big-data} contiene una descripción del concepto de Big Data. En la Sección \ref{sec:map-reduce} introducimos el paradigma de programación map reduce y la tecnología libre que lo implementa, denominada Hadoop. En la Sección \ref{sec:spark-flink} describimos las nuevas tecnologías que han surgido para cohesionar la filosofía map reduce con el procesamiento iterativo. Estas se denominan Spark y Flink. En la Sección \ref{sec:tpcx-hs} explicamos uno de los benchmarks existentes para las tecnologías Big Data, denominado TPCx-HS. Por último, en la Sección \ref{sec:conclusion} presentamos las conclusiones obtenidas.
+	El resto del texto se organiza como sigue. La Sección \ref{sec:big-data} contiene una descripción del concepto de Big Data. En la Sección \ref{sec:mr-hadoop} introducimos el paradigma de programación map reduce y la tecnología libre que lo implementa, denominada Hadoop. En la Sección \ref{sec:spark-flink} describimos las nuevas tecnologías que han surgido para cohesionar la filosofía map reduce con el procesamiento iterativo. Estas se denominan Spark y Flink. En la Sección \ref{sec:tpcx-hs} explicamos uno de los benchmarks existentes para las tecnologías Big Data, denominado TPCx-HS. Por último, en la Sección \ref{sec:conclusion} presentamos las conclusiones obtenidas.
 
 \section{Big Data} \label{sec:big-data}
 	
@@ -210,65 +215,92 @@
 
 	Algunos autores han extendido la definición hasta utilizar un total de 9 V's: veracidad, valor, viabilidad y visualización entre otras \cite{understanding-big-data}. De esta forma se destacan diferentes aspectos del tratamiento de conjuntos de datos masivos como mantener y analizar la veracidad de los datos y poner en valor el conocimiento subyacente.
 
-	El término Big Data ha tomado peso en el ámbito empresarial. Actualmente forma parte del área de conocimiento que se denomina inteligencia de negocio (business intelligence) \cite{business-intelligence}. La inteligencia de negocio cubre aquellos problemas relacionados con datos que se resuelven en organizaciones empresariales. Las empresas almacenan información de sus clientes y de toda la actividad realizada. Esta información contiene conocimiento que es valioso para determinar estrategias de negocio. Podemos decir que el análisis de datos es crucial para que las decisiones tomadas en la empresa sean efectivas. 
+	El término Big Data ha tomado peso en el ámbito empresarial. Actualmente forma parte del área de conocimiento que se denomina inteligencia de negocio (business intelligence) \cite{business-intelligence}. La inteligencia de negocio cubre aquellos problemas relacionados con datos que se resuelven en organizaciones empresariales. Las empresas almacenan información de sus clientes y de toda la actividad realizada. Esta información contiene conocimiento que es valioso para determinar nuevas estrategias de negocio. Podemos decir que el análisis de datos es crucial para que las decisiones tomadas en la empresa sean efectivas. 
 
-	También podemos considerar Big Data como parte del área denominada ciencia de datos \cite{data-science}. Esta es una temática emergente que aglutina todas las áreas científicas que se encargan del tratamiento de los datos y de la extracción de conocimiento de los mismos. En este contexto, algunos autores denominan Big Data Analytics a la aplicación de Big Data al análisis de datos \cite{big-data-trends}. 
+	Big Data también se considera parte del área denominada ciencia de datos \cite{data-science}. Esta es una temática emergente que aglutina todas las áreas científicas que se encargan del tratamiento de los datos y de la extracción de conocimiento de los mismos. En este contexto, algunos autores denominan Big Data Analytics a la aplicación de Big Data al análisis de datos \cite{big-data-trends}. La ciencia de datos y la inteligencia de negocio están muy relacionadas, siendo el último término más popular en el ámbito empresarial. La importancia de estas áreas de conocimiento ha dado lugar a una nueva profesión, el científico de datos, que es considerada una de las profesiones más valoradas del siglo XXI \cite{data-scientist}.
 
 %-----------------------------------------------------------------------------------------------------
 %	SECCIÓN 2
 %-----------------------------------------------------------------------------------------------------
 
-\section{Map Reduce. Hadoop} \label{sec:map-reduce}
+\section{Map Reduce. Hadoop} \label{sec:mr-hadoop}
 
 
-	\subsection{Servidores de altas prestaciones. Sistemas de archivos distribuidos}
+	\subsection{Servidores de altas prestaciones. Sistemas de archivos distribuidos} \label{sec:mr-hadoop:servidores}
 
 		En la Sección \ref{sec:big-data} destacábamos dos problemas del tratamiento de conjuntos de datos masivos: el conjunto de datos puede no caber en memoria principal y se necesita una gran capacidad de cómputo para ejecutar algoritmos sobre este. La solución a este problema suele ser utilizar servidores de altas prestaciones con procesamiento en paralelo y distribuido.
 	
 		Los servidores de altas prestaciones (alguna descripción). .... 
 		
-		Los servidores contendrán ingentes cantidades de información de vital importancia. Por tanto, se necesita almacenar la información en un sistema de archivo tolerante a errores. Esto es, si un nodo o disco duro del servidor se estropea, no se pueden perder datos ni provocar una caída del servidor. En esta situación se encontró Google a principios de este siglo cuando desarrolló Google File System, GFS, que fue presentado oficialmente en 2003 \cite{gfs}. Este es un sistema de archivos escalable y distribuido que utilizan para aplicaciones distribuidas que requieran conjuntos de datos masivos. El sistema proporciona tolerancia ante fallos de forma automática y administra de forma eficiente grandes conjuntos de datos en el servidor, no necesitando que este sea especialmente caro. Además, proporciona escalabilidad en el sentido de que se pueden añadir o eliminar nodos o discos duros sin problemas. De esta forma, se consigue un correcto almacenamiento de los datos en el servidor.
+		Los servidores a utilizar contendrán ingentes cantidades de información de vital importancia. Por tanto, se necesita almacenar la información en un sistema de archivos tolerante a errores. Esto es, si un nodo o disco duro del servidor se estropea, no se pueden perder datos ni provocar una caída del servidor. En esta situación se encontró Google a principios de este siglo cuando desarrolló Google File System, GFS, que fue presentado oficialmente en 2003 \cite{gfs}. Este es un sistema de archivos escalable y distribuido que utilizan para aplicaciones distribuidas que requieran conjuntos de datos masivos. El sistema proporciona tolerancia ante fallos de forma automática y administra de forma eficiente grandes conjuntos de datos en el servidor, no necesitando que este sea especialmente caro. Además, proporciona escalabilidad en el sentido de que se pueden añadir o eliminar nodos o discos duros sin problemas. De esta forma, se consigue un correcto almacenamiento de los datos en el servidor.
 		
-		Google File System es un software privado. Basándose en las ideas de este, la fundación Apache ha desarrollado HDFS (Hadoop Distributed File System) \cite{hdfs}.
+		Google File System es un software privado. Basándose en las ideas de este, la fundación Apache ha desarrollado HDFS (Hadoop Distributed File System) \cite{hdfs}. Incidiremos en este en la Sección \ref{sec:mr-hadoop:hadoop}, pues una herramienta esencial dentro de Hadoop.
 
-	\subsection{Map Reduce}
-
+	\subsection{Map Reduce} \label{sec:mr-hadoop:map-reduce}
 
 		Además de un sistema de archivos distribuido que asegure un correcto almacenamiento de la información en el servidor, se necesitan herramientas y librerías que permitan programar algoritmos paralelos y distribuidos. Las librerías OPEN MP y MPI (referencias) son muy conocidas. OPEN MP permite paralelizar cálculos vectoriales. Por su parte, MPI se basa en el paso de mensajes entre hebras como mecanismo para realizar implementaciones distribuidas. Estas librerías operan a bajo nivel y funcionan principalmente con lenguajes de programación como c y c++. 
 		
 		La implementación de un algoritmo distribuido utilizando estas librerías es muy costosa. El programador debe indicar expresamente el tratamiento distribuidos de los datos y cómo se paralelizan los cómputos. Además, tiene que crear las hebras asociadas y encargarse de que el sistema funcione correctamente. Nótese que si durante la ejecución el algoritmo un nodo se estropea, entonces la implementación puede dejar de funcionar a no ser que el programador le haya dedicado mucho tiempo para conseguir que sea tolerante ante fallos. Es más, si uno implementa varios algoritmos distribuidos esencialmente se está implementando el mismo tipo de paralelización una y otra vez.
 	
-		Ante esta situación en Google se dieron cuenta de la necesidad de desarrollar un nuevo paradigma de programación distribuida. Este debía proporcionar una interfaz para implementar algoritmos distribuidos de forma simple y eficiente sin tener que centrarse en cuestiones de bajo nivel. La distribución de los datos en los nodos y la tolerancia ante los fallos serían llevadas a cabo por el propio lenguaje de programación de manera que el programador solamente tiene que desarrollar el algoritmo en cuestión. Gracias a esta idea surge el paradigma de programación Map Reduce, que Google hace público en 2008 \cite{map-reduce1, map-reduce2, map-reduce3}.
+		Ante esta situación en Google se dieron cuenta de la necesidad de desarrollar un nuevo paradigma de programación distribuida. Este debía proporcionar una interfaz para implementar algoritmos distribuidos de forma simple y eficiente sin tener que centrarse en cuestiones de bajo nivel. La distribución de los datos en los nodos y la tolerancia ante los fallos serían llevadas a cabo por el propio lenguaje de programación de manera que el programador solamente tiene que desarrollar el algoritmo en cuestión. Gracias a esta idea surge el paradigma de programación Map Reduce, que Google hace público en 2004 \cite{map-reduce1, map-reduce2, map-reduce3}.
 	
-		Map Reduce se basa en un proceso de abstracción a la hora de implementar algoritmos distribuidos. Los creadores de este paradigma se basaron en las funciones map y reduce que suelen estar presentes como primitivas en múltiples lenguajes de programación funcional. Un algoritmo se define como sigue. La entrada y la salida del algoritmo se conciben como dos listas de parejas clave / valor que pueden no tener los mismos tipos. El programador debe proporcionar el código de las funciones map y reduce.
+		Map Reduce se basa en un proceso de abstracción a la hora de implementar algoritmos distribuidos. Los creadores de este paradigma se inspiraron en las funciones map y reduce que suelen estar presentes como primitivas en múltiples lenguajes de programación funcional. En primer lugar, la entrada y la salida de un algoritmo se conciben como dos listas de parejas clave / valor, que pueden tener tipos distintos. El programador debe proporcionar el código de las funciones map y reduce. Estas funciones se ejecutarán en paralelo en los diferentes nodos del clúster.
 		
 		\begin{itemize}
-			\item La función \textbf{map} toma como entrada una pareja clave / valor y produce un conjunto intermedio de parejas. Tras la ejecución de todos los maps, el sistema filtra los conjuntos intermedios de parejas obtenidos de manera que a cada posible clave se le asigna un conjuntos con todos los valores que tenía asociados como pareja.
-			\item La función \textbf{reduce} toma una clave y un conjunto de valores asociados a la clave. Estos valores se mezclan, devolviendo al final cero o más parejas con la clave y los valores obtenidos tras la mezcla. El conjunto de valores que se proporciona como argumento a reduce se representa en la implementación mediante un iterador. De esta forma se puede trabajar con listas de valores tan grandes que no quepan en memoria principal.
+			\item La función \textbf{map} toma como entrada una pareja clave / valor y produce un conjunto intermedio de parejas. La función map se aplica en paralelo a cada una de las parejas que conforman la entrada del algoritmo. Tras la ejecución de todos los maps, el sistema ordena y filtra los conjuntos intermedios de parejas obtenidos de manera que a cada posible clave se le asigna una lista con todos los valores que tenía asociados como pareja.
+			\item La función \textbf{reduce} toma una clave y una lista de valores asociados a la clave. Se aplica a cada una de las salidas que se han obtenido tras la ordenación y el filtrado de los resultados de map. Los valores de cada clave se mezclan mediante el procedimiento indicado por el programador. Este debe devolver al final cero o más parejas formadas por la clave y los valores obtenidos tras la mezcla. La lista de valores que se proporciona como argumento a reduce se representa en la implementación mediante un iterador. De esta forma se puede trabajar con listas de valores tan grandes que no quepan en memoria principal.
 		\end{itemize}  
 		
-		Para ejemplificar el funcionamiento de Map Reduce es habitual explicar cómo se puede contar el número de ocurrencias de cada una de las palabras de un texto. 
+		Para ejemplificar el funcionamiento de Map Reduce mostraremos un algoritmo distribuido para contar el número de ocurrencias de cada una de las palabras de un texto. El Algoritmo \ref{alg:map-reduce} muestra la implementación de este. La función map toma cómo parámetros el nombre del documento y parte del texto asociado. Por cada palabra que encuentra emite un 1. La función reduce suma todas las ocurrencias encontradas de la palabra, devolviendo la pareja palabra / número total de ocurrencias.
+		
+		La paralelización se lleva a cabo de forma automática por el sistema. La entrada se particiona en tiempo de ejecución, dando lugar a distintos bloques de datos sobre los que se ejecuta en paralelo la función map. Conforme los maps terminan de ejecutarse se va realizando la fase de filtrado u ordenación de los resultados, obteniendo para cada palabra el conjunto con todos los valores que se han emitido junto a esta. Una vez han finalizado los maps, se pueden ejecutar los reduces también en paralelo, obteniendo como resultado la lista de palabras y el número de ocurrencias de las mismas.
 		
 		\begin{algorithm}
-			\caption{Algoritmo para contar el número de ocurrencias de cada una de las palabras de un texto en map reduce.}
-			\label{alg:map}
-			\begin{algorithmic}
-				\REQUIRE Pareja (String key, String value) donde la clave representa el nombre del documento y el valor el contenido del documento.
-				\FOR{\textbf{each word} $w$ \textbf{ in } $value$}
-				\STATE EmitIntermediate(w, "1")
-				\ENDFOR
-			\end{algorithmic}
+			\caption{Obtención del número de ocurrencias de cada una de las palabras de un texto mediante Map Reduce.}
+			\label{alg:map-reduce}
 
+			\begin{subalgorithm}{.4\textwidth}
 			\begin{algorithmic}
-				\REQUIRE Pareja (String key, Iterator values) donde la clave consiste en una palabra del documento mientras que el iterador proporciona el número de veces que se ha encontrado la palabra en cada map.
-				\STATE result = 0
-				\FOR{each value $v$ in  $values$}
-				\STATE result += ParseInt(v);
-				\ENDFOR
-				\STATE Emit(AsString(result));
+				\State key: Nombre del documento
+				\State value: Texto del documento
+				\Function{map}{String key, String value}
+					\For{each word $w$ in $value$}
+						\State EmitIntermediate(w, "1")
+					\EndFor
+				\EndFunction
 			\end{algorithmic}
+			\end{subalgorithm}
+			\begin{subalgorithm}{.6\textwidth}
+			\begin{algorithmic}
+				\State key: Palabra
+				\State values: Conjunto con las ocurrencias de cada palabra
+				\Function{reduce}{String key, Iterator values}
+					\State result = 0
+					\For{each value $v$ in  $values$}
+						\State result += Int(v);
+					\EndFor
+					\State \textbf{return} key, String(result);
+				\EndFunction
+			\end{algorithmic}
+			\end{subalgorithm}
 		\end{algorithm}
+
+		Las llamadas a la función map se distribuyen entre los diferentes nodos del sistema. Para ello la entrada debe particionarse en $M$ bloques de manera que estos bloques se procesen en paralelo en diferentes máquinas. La función map es aplicada de forma secuencial a cada una de las parejas que conforman el bloque. El programador debe indicar tanto el número de bloques como definir la función utilizada en el particionamiento. Habitualmente se recomienda que cada uno de los $M$ bloques contenga entre $16$ y $64$ MB.
 		
+		Por su parte, las llamadas a reduce también se distribuyen en el sistema. Para ello, el conjunto de claves intermedias sobre las que se aplican se particiona en $R$ bloques. Cada uno de estos bloques se procesa en un nodo de forma secuencial. El programador debe decidir el valor $R$ para obtener el mejor rendimiento posible del sistema.
+
+		\begin{enumerate}
+			\item En primer lugar los archivos de entrada se particionan en los $M$ bloques. Por cada bloque se lanza una copia del programa en el servidor. Una de estas copias se denomina maestro mientras que el resto son esclavos a los que el maestro asigna trabajo. Hay en total $M$ bloques asociados a map y $R$ bloques asociados a reduce que se tienen que asignar.
+			\item Un trabajador al que se le asigna un bloque de map lee cada una de las parejas clave / valor que lo componen. A cada una de ellas le aplica la función map. Las parejas intermedias que se producen son almacenadas en buffers de la memoria.
+			\item Periódicamente, las parejas intermedias almacenadas en buffers se escriben en los discos duros. En concreto, cada pareja se asigna a uno de los $R$ bloques según corresponda. La localización de estos bloques en el disco es pasada al maestro, quien se encarga de informar a los esclavos que realizan los reduces de dónde se encuentran almacenados los bloques.
+			\item Cuando un esclavo es notificado por el maestro de la localización de los bloques del reduce, llama al correspondiente disco local para obtener los datos. Tras esto, ordena los datos por clave y agrupa aquellos valores que pertenezcan a la misma clave en conjuntos. Si el tamaño de los datos es demasiado grande, entonces una ordenación externa es utilizada.
+			\item El esclavo reduce itera sobre los datos ordenados y por cada clave encontrada  aplica el reduce a su correspondiente conjunto de valores intermedios. La salida de cada reduce se añade a un archivo asociado a este reduce.
+			\item Cuando todos las las tareas maps y reduce se han completado, el maestro finaliza la ejecución y el control vuelve al usuario. 
+		\end{enumerate}
+
+		La salida del algoritmo se encuentra disponible en los $R$ archivos creados por los exclavos que hicieron los reduces. Normalmente se deben unir estos archivos en un nuevo archivo, para lo cual se requeriría una nueva llamada a MapReduce u otra aplicación distribuida que permita realizar este proceso.
+		
+		La tolerancia a errores se implementa como sigue. Periódicamente el maestro realiza un ping a cada uno de los exclavos. Si algunos de ellos no le responde, entonces se asume que la hebra ha fallado y se envía su correspondiente trabajo al primer nodo que se encuentre disponible. En caso de que falle un exlavo que tenía que ejecutar un map, los nodos que realicen el reduce son informados de que deben leer los datos de la nueva ejecución a no ser que ya hayan obtenido completamente los datos de la ejecución errada.
 
 
 
@@ -280,7 +312,10 @@
 		
 		En cualquier caso, la solución que se tome implicará un gran trabajo para adaptar el software existente al nuevo hardware o para implementar nuevos algoritmos distribuidos. Cada nueva implementación conlleva multitud de líneas de código para manejar el conjunto de datos y realizar los cómputos distribuidos. Además, la implementación debe conseguir que el sistema sea tolerante ante fallos, esto es, si un nodo se estropea, entonces el sistema debe no perder la información y reasignar el trabajo del nodo a otro.
 
-	\subsection{Hadoop}
+		Map Reduce permite a los programadores con poca experiencia en sistemas distribuidos llevar a cabo implementaciones eficientes para grandes cantidades de datos. Una implementación típica de MapReduce puede procesar varios tera bytes de datos en servidores con miles de nodos.
+
+
+	\subsection{Hadoop} \label{sec:mr-hadoop:hadoop}
 
 %-----------------------------------------------------------------------------------------------------
 %	SECCIÓN 3

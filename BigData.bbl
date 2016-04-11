@@ -62,6 +62,31 @@
   \field{year}{2012}
 \endentry
 
+\entry{data-scientist}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Davenport}{D.}%
+     {Thomas~H.}{T.~H.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Patil}{P.}%
+     {D.~J.}{D.~J.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{DTHPDJ1}
+  \strng{fullhash}{DTHPDJ1}
+  \field{sortinit}{D}
+  \field{title}{Data Scientist: The Sexiest Job of the 21st Century}
+  \verb{url}
+  \verb https://hbr.org/2012/10/data-scientist-the-sexiest-job-of-the-21st-cent
+  \verb ury/
+  \endverb
+  \field{journaltitle}{Harvard Business Review}
+  \field{year}{2012}
+\endentry
+
 \entry{map-reduce3}{article}{}
   \name{author}{2}{}{%
     {{}%
