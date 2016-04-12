@@ -1,5 +1,5 @@
 % $ biblatex auxiliary file $
-% $ biblatex version 2.5 $
+% $ biblatex version 2.6 $
 % Do not modify the above lines!
 %
 % This is an auxiliary file used by the 'biblatex' package.
@@ -239,6 +239,24 @@
   \field{title}{The Google file system}
   \field{journaltitle}{ACM SIGOPS operating systems review}
   \field{year}{2013}
+\endentry
+
+\entry{openmpmpi}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Ghildiyal}{G.}%
+     {Pawan}{P.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{GP1}
+  \strng{fullhash}{GP1}
+  \field{sortinit}{G}
+  \field{title}{MPI vs OpenMP: A Short Introduction Plus Comparison (Parallel
+  Computing)}
+  \verb{url}
+  \verb http://pawangh.blogspot.com.es/2014/05/mpi-vs-openmp.html
+  \endverb
 \endentry
 
 \entry{big-data-herrera}{book}{}
