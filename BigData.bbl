@@ -259,6 +259,35 @@
   \endverb
 \endentry
 
+\entry{openmp}{book}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Gropp}{G.}%
+     {William}{W.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Lusk}{L.}%
+     {Ewing}{E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Skjellum}{S.}%
+     {Anthony}{A.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {MIT Press}%
+  }
+  \strng{namehash}{GWLESA1}
+  \strng{fullhash}{GWLESA1}
+  \field{sortinit}{G}
+  \field{title}{Using MPI: portable parallel programming with the
+  message-passing interface}
+  \field{year}{1999}
+\endentry
+
 \entry{big-data-herrera}{book}{}
   \name{author}{1}{}{%
     {{}%
