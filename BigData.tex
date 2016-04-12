@@ -193,7 +193,7 @@
 
 \section{Big Data} \label{sec:big-data}
 	
-	En la Sección \ref{sec:introduction} hemos incidido en la rápida evolución que han sufrido los computadores. Sin embargo, en muchas aplicaciones encontramos conjuntos de datos que ponen a prueba a los ordenadores más ponentes. Estos conjuntos de datos se denominan masivos. El tratamiento de datos masivos tiene dos problemas claros. El primero de ellos es la memoria. Necesitamos computadores con suficiente memoria principal para procesar de forma eficiente un gran flujo de datos. El segundo problema es la capacidad de cómputo necesaria para aplicar algoritmos sobre estos conjuntos de datos. 
+	En la Sección \ref{sec:introduction} hemos incidido en la rápida evolución que han sufrido los computadores. Sin embargo, en muchas aplicaciones encontramos conjuntos de datos que ponen a prueba a los ordenadores más pontentes. Estos conjuntos de datos se denominan masivos. El tratamiento de datos masivos tiene dos problemas claros. El primero de ellos es la memoria. Necesitamos computadores con suficiente memoria principal para procesar de forma eficiente un gran flujo de datos. El segundo problema es la capacidad de cómputo necesaria para aplicar algoritmos sobre estos conjuntos de datos. 
 	
 	Big Data engloba el tratamiento de datos masivos desde el punto de vista tecnológico y algorítmico. En palabras de Michael J. Franklin, profesor de informática en la universidad de Berkley \cite{bd-definition}:
 	
@@ -213,12 +213,15 @@
 		\item \textbf{Variedad.} Los datos a tratar provienen de una gran variedad de fuentes. Por tanto, las herramientas Big Data deben permitir procesar a la vez datos de diferentes características y tamaños. Es más, habitualmente encontramos datos de tres tipos: estructurados, semi estructurados y sin estructurar. Los datos estructurados son sencillos de clasificar. Sin embargo, los datos sin estructurar son aleatorios y difíciles de analizar. Por su parte, los datos semi estructurados requieren técnicas avanzadas para poder clasificarlos correctamente.
 	\end{itemize}
 
-	Algunos autores han extendido la definición hasta utilizar un total de 9 V's: veracidad, valor, viabilidad y visualización entre otras \cite{understanding-big-data}. De esta forma se destacan diferentes aspectos del tratamiento de conjuntos de datos masivos como mantener y analizar la veracidad de los datos y poner en valor el conocimiento subyacente.
+	Algunos autores han extendido estas características hasta utilizar un total de 9 V's: veracidad, valor, viabilidad y visualización entre otras \cite{understanding-big-data}. De esta forma se destacan diferentes aspectos del tratamiento de conjuntos de datos masivos como mantener y analizar la veracidad de los datos y poner en valor el conocimiento subyacente.
 
 	El término Big Data ha tomado peso en el ámbito empresarial. Actualmente forma parte del área de conocimiento que se denomina inteligencia de negocio (business intelligence) \cite{business-intelligence}. La inteligencia de negocio cubre aquellos problemas relacionados con datos que se resuelven en organizaciones empresariales. Las empresas almacenan información de sus clientes y de toda la actividad realizada. Esta información contiene conocimiento que es valioso para determinar nuevas estrategias de negocio. Podemos decir que el análisis de datos es crucial para que las decisiones tomadas en la empresa sean efectivas. 
 
 	Big Data también se considera parte del área denominada ciencia de datos \cite{data-science}. Esta es una temática emergente que aglutina todas las áreas científicas que se encargan del tratamiento de los datos y de la extracción de conocimiento de los mismos. En este contexto, algunos autores denominan Big Data Analytics a la aplicación de Big Data al análisis de datos \cite{big-data-trends}. La ciencia de datos y la inteligencia de negocio están muy relacionadas, siendo el último término más popular en el ámbito empresarial. La importancia de estas áreas de conocimiento ha dado lugar a una nueva profesión, el científico de datos, que es considerada una de las profesiones más valoradas del siglo XXI \cite{data-scientist}.
-
+	
+	Cuando uno se enfrenta a un problema de Big Data necesita estudiar y desarrollar tecnologías que permitan el procesamiento de gran cantidades de datos de forma eficiente. Además, debe adaptar los algoritmos que pretenda utilizar a este nuevo ámbito, reduciendo en medida de lo posible complejidad algorítmica de los mismos. La dificultad de este proceso resolutivo es lo que hace que los expertos en Big Data sean muy valorados en el ámbito científico y empresarial. En el resto del documento presentaremos varias tecnologías que se utilizan de forma habitual en Big Data (Hadoop, Spark y Flink) así como un benchmark para Hadoop, denominado TPCx-HS.
+		
+	
 %-----------------------------------------------------------------------------------------------------
 %	SECCIÓN 2
 %-----------------------------------------------------------------------------------------------------
@@ -240,20 +243,18 @@
 
 		Además de un sistema de archivos distribuido que asegure un correcto almacenamiento de la información en el servidor, se necesitan herramientas y librerías que permitan programar algoritmos paralelos y distribuidos. Las librerías OPEN MP y MPI (referencias) son muy conocidas. OPEN MP permite paralelizar cálculos vectoriales. Por su parte, MPI se basa en el paso de mensajes entre hebras como mecanismo para realizar implementaciones distribuidas. Estas librerías operan a bajo nivel y funcionan principalmente con lenguajes de programación como c y c++. 
 		
-		La implementación de un algoritmo distribuido utilizando estas librerías es muy costosa. El programador debe indicar expresamente el tratamiento distribuidos de los datos y cómo se paralelizan los cómputos. Además, tiene que crear las hebras asociadas y encargarse de que el sistema funcione correctamente. Nótese que si durante la ejecución el algoritmo un nodo se estropea, entonces la implementación puede dejar de funcionar a no ser que el programador le haya dedicado mucho tiempo para conseguir que sea tolerante ante fallos. Es más, si uno implementa varios algoritmos distribuidos esencialmente se está implementando el mismo tipo de paralelización una y otra vez.
+		La implementación de un algoritmo distribuido utilizando estas librerías es muy costosa. El programador debe indicar expresamente el tratamiento distribuido de los datos y cómo se paralelizan los cómputos. Además, tiene que crear las hebras asociadas y encargarse de que el sistema funcione correctamente. Nótese que si durante la ejecución del algoritmo un nodo se estropea, entonces la implementación puede dejar de funcionar a no ser que el programador le haya dedicado mucho tiempo para conseguir que sea tolerante ante fallos. Es más, si uno implementa varios algoritmos distribuidos esencialmente se está implementando el mismo tipo de paralelización una y otra vez.
 	
-		Ante esta situación en Google se dieron cuenta de la necesidad de desarrollar un nuevo paradigma de programación distribuida. Este debía proporcionar una interfaz para implementar algoritmos distribuidos de forma simple y eficiente sin tener que centrarse en cuestiones de bajo nivel. La distribución de los datos en los nodos y la tolerancia ante los fallos serían llevadas a cabo por el propio lenguaje de programación de manera que el programador solamente tiene que desarrollar el algoritmo en cuestión. Gracias a esta idea surge el paradigma de programación Map Reduce, que Google hace público en 2004 \cite{map-reduce1, map-reduce2, map-reduce3}.
+		Ante esta situación en Google se dieron cuenta de la necesidad de desarrollar un nuevo paradigma de programación distribuida. Este debía proporcionar una interfaz que permitiese al programador implementar algoritmos distribuidos de forma simple y eficiente sin tener que centrarse en cuestiones de bajo nivel. La distribución de los datos en los nodos y la tolerancia ante los fallos serían llevadas a cabo por el propio lenguaje de programación de manera que el programador solamente tiene que desarrollar el algoritmo en cuestión. Gracias a esta idea surge el paradigma de programación Map Reduce, que Google hizo público en 2004 \cite{map-reduce1, map-reduce2, map-reduce3}.
 	
-		Map Reduce se basa en un proceso de abstracción a la hora de implementar algoritmos distribuidos. Los creadores de este paradigma se inspiraron en las funciones map y reduce que suelen estar presentes como primitivas en múltiples lenguajes de programación funcional. En primer lugar, la entrada y la salida de un algoritmo se conciben como dos listas de parejas clave / valor, que pueden tener tipos distintos. El programador debe proporcionar el código de las funciones map y reduce. Estas funciones se ejecutarán en paralelo en los diferentes nodos del clúster.
+		Map Reduce se basa en un proceso de abstracción a la hora de implementar algoritmos distribuidos. Los creadores de este paradigma se inspiraron en las funciones map y reduce que suelen estar presentes como primitivas en múltiples lenguajes de programación funcional. En primer lugar, la entrada y la salida de un algoritmo se conciben como dos listas de parejas (clave,valor), que pueden tener tipos distintos. El programador debe proporcionar el código de las funciones map y reduce. Estas funciones se ejecutarán en paralelo en los diferentes nodos del clúster.
 		
 		\begin{itemize}
-			\item La función \textbf{map} toma como entrada una pareja clave / valor y produce un conjunto intermedio de parejas. La función map se aplica en paralelo a cada una de las parejas que conforman la entrada del algoritmo. Tras la ejecución de todos los maps, el sistema ordena y filtra los conjuntos intermedios de parejas obtenidos de manera que a cada posible clave se le asigna una lista con todos los valores que tenía asociados como pareja.
-			\item La función \textbf{reduce} toma una clave y una lista de valores asociados a la clave. Se aplica a cada una de las salidas que se han obtenido tras la ordenación y el filtrado de los resultados de map. Los valores de cada clave se mezclan mediante el procedimiento indicado por el programador. Este debe devolver al final cero o más parejas formadas por la clave y los valores obtenidos tras la mezcla. La lista de valores que se proporciona como argumento a reduce se representa en la implementación mediante un iterador. De esta forma se puede trabajar con listas de valores tan grandes que no quepan en memoria principal.
+			\item La función \textbf{map} toma como entrada una pareja (clave, valor) y produce un conjunto de parejas, denominado conjunto intermedio. La función map se aplica en paralelo a cada una de las parejas que conforman la entrada del algoritmo. Tras la ejecución de todos los maps, el sistema ordena y filtra los conjuntos intermedios de parejas de manera que a cada posible clave se le asigna una lista con todos los valores que tenía asociados como pareja.
+			\item La función \textbf{reduce} toma una clave y una lista de valores asociados a la clave. Se aplica a cada una de las salidas que se han obtenido tras la ordenación y el filtrado de los resultados de los maps. Los valores de cada clave se mezclan mediante el procedimiento indicado por el programador. Este debe devolver al final cero o más parejas formadas por la clave y cada uno de los valores obtenidos tras la mezcla. La lista de valores que se proporciona como argumento a reduce se representa en la implementación mediante un iterador. De esta forma se puede trabajar con listas de valores tan grandes que no quepan en memoria principal.
 		\end{itemize}  
 		
-		Para ejemplificar el funcionamiento de Map Reduce mostraremos un algoritmo distribuido para contar el número de ocurrencias de cada una de las palabras de un texto. El Algoritmo \ref{alg:map-reduce} muestra la implementación de este. La función map toma cómo parámetros el nombre del documento y parte del texto asociado. Por cada palabra que encuentra emite un 1. La función reduce suma todas las ocurrencias encontradas de la palabra, devolviendo la pareja palabra / número total de ocurrencias.
-		
-		La paralelización se lleva a cabo de forma automática por el sistema. La entrada se particiona en tiempo de ejecución, dando lugar a distintos bloques de datos sobre los que se ejecuta en paralelo la función map. Conforme los maps terminan de ejecutarse se va realizando la fase de filtrado u ordenación de los resultados, obteniendo para cada palabra el conjunto con todos los valores que se han emitido junto a esta. Una vez han finalizado los maps, se pueden ejecutar los reduces también en paralelo, obteniendo como resultado la lista de palabras y el número de ocurrencias de las mismas.
+		Para ejemplificar el funcionamiento de Map Reduce mostraremos un algoritmo distribuido para contar el número de ocurrencias de cada una de las palabras de un documento. El Algoritmo \ref{alg:map-reduce} contiene el pseudo-código de este. La función map toma como parámetros el nombre del documento y una string con parte del texto asociado. Por cada palabra que encuentra emite una pareja con la palabra y un 1. La función reduce suma todas las ocurrencias encontradas de la palabra, devolviendo la pareja (palabra, número total de ocurrencias).
 		
 		\begin{algorithm}
 			\caption{Obtención del número de ocurrencias de cada una de las palabras de un texto mediante Map Reduce.}
@@ -261,32 +262,32 @@
 
 			\begin{subalgorithm}{.4\textwidth}
 			\begin{algorithmic}
-				\State key: Nombre del documento
-				\State value: Texto del documento
-				\Function{map}{String key, String value}
+				\State $key$: Nombre del documento
+				\State $value$: Texto del documento
+				\Function{map}{String $key$, String $value$}
 					\For{each word $w$ in $value$}
-						\State EmitIntermediate(w, "1")
+						\State EmitIntermediate($w$, \texttt{"}$1$\texttt{"} )
 					\EndFor
 				\EndFunction
 			\end{algorithmic}
 			\end{subalgorithm}
 			\begin{subalgorithm}{.6\textwidth}
 			\begin{algorithmic}
-				\State key: Palabra
-				\State values: Conjunto con las ocurrencias de cada palabra
-				\Function{reduce}{String key, Iterator values}
-					\State result = 0
+				\State $key$: Palabra
+				\State $values$: Conjunto con las ocurrencias de cada palabra
+				\Function{reduce}{String $key$, Iterator $values$}
+					\State $result = 0$
 					\For{each value $v$ in  $values$}
-						\State result += Int(v);
+						\State $result$ += Int($v$);
 					\EndFor
-					\State \textbf{return} key, String(result);
+					\State \textbf{return} $key$, String($result$);
 				\EndFunction
 			\end{algorithmic}
 			\end{subalgorithm}
 		\end{algorithm}
 
-		Las llamadas a la función map se distribuyen entre los diferentes nodos del sistema. Para ello la entrada debe particionarse en $M$ bloques de manera que estos bloques se procesen en paralelo en diferentes máquinas. La función map es aplicada de forma secuencial a cada una de las parejas que conforman el bloque. El programador debe indicar tanto el número de bloques como definir la función utilizada en el particionamiento. Habitualmente se recomienda que cada uno de los $M$ bloques contenga entre $16$ y $64$ MB.
-		
+		La paralelización  la lleva  cabo el sistema de forma automática. Para ello la entrada debe particionarse en $M$ bloques tiempo de ejecución. Cada uno de estos bloques contiene una lista de parejas (clave, valor). Map Reduce repartirá los bloques en distintos nodos del servidor de forma que cada uno de estos nodos ejecuta la función map sobre cada una de las parejas de su bloque. El programador debe indicar tanto el número de bloques a utilizar ($M$) como definir la función utilizada para el particionamiento de la entrada. Habitualmente se recomienda que cada uno de los $M$ bloques contenga entre $16$ y $64$ MB. Conforme los maps terminan de ejecutarse se va realizando la fase de filtrado u ordenación de los resultados. En este ejemplo concreto se obtiene para cada palabra el conjunto con todos los valores que se han emitido junto a esta. Una vez han finalizado los maps, se pueden ejecutar los reduces, también en paralelo, obteniendo como resultado la lista de palabras y el número de ocurrencias de las mismas.
+
 		Por su parte, las llamadas a reduce también se distribuyen en el sistema. Para ello, el conjunto de claves intermedias sobre las que se aplican se particiona en $R$ bloques. Cada uno de estos bloques se procesa en un nodo de forma secuencial. El programador debe decidir el valor $R$ para obtener el mejor rendimiento posible del sistema.
 
 		\begin{enumerate}
@@ -301,8 +302,6 @@
 		La salida del algoritmo se encuentra disponible en los $R$ archivos creados por los exclavos que hicieron los reduces. Normalmente se deben unir estos archivos en un nuevo archivo, para lo cual se requeriría una nueva llamada a MapReduce u otra aplicación distribuida que permita realizar este proceso.
 		
 		La tolerancia a errores se implementa como sigue. Periódicamente el maestro realiza un ping a cada uno de los exclavos. Si algunos de ellos no le responde, entonces se asume que la hebra ha fallado y se envía su correspondiente trabajo al primer nodo que se encuentre disponible. En caso de que falle un exlavo que tenía que ejecutar un map, los nodos que realicen el reduce son informados de que deben leer los datos de la nueva ejecución a no ser que ya hayan obtenido completamente los datos de la ejecución errada.
-
-
 
 		Por tanto, se requieren tecnologías que manejen grandes conjuntos de datos de forma eficiente y a alto nivel, permitiendo que la implementación sea independiente del hardware a utilizar.
 
