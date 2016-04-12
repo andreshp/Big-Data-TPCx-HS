@@ -125,7 +125,7 @@
 
 % Título del documento.
 \newcommand{\doctitle}{Big Data y TPCx-HS}
-% Subtítulo.
+% Subtítulo.0
 \newcommand{\docsubtitle}{}
 % Fecha.
 \newcommand{\docdate}{28 \ de \ Marzo \ de \ 2015}
@@ -228,6 +228,11 @@
 
 \section{Map Reduce. Hadoop} \label{sec:mr-hadoop}
 
+		Supóngase que una empresa compra un servidor en el cual ejecuta un algoritmo distribuido con eficiencia $\theta(n^2)$ sobre conjuntos de datos masivos. En el momento en el que se compra el hardware consiguen ejecutar el algoritmo en 8 horas, obteniendo resultados en el mismo día. Sin embargo, siguiendo la tendencia mostrada en la Figura \ref{fig:zeta-bytes}, es probable que al año el conjunto de datos a utilizar se duplique en tamaño dentro de un año. En tal caso el servidor puede tener problemas desde el punto de vista de la memoria y el flujo de datos. Es habitual que el hardware tenga cuellos de botella que provoquen que determinadas operaciones relacionadas con la memoria lleven mucho tiempo.  Por otro lado, el algoritmo tardará de todas formas 4 veces más en ejecutarse al ser cuadrático. Por tanto, la ejecución pasará a durar 32 horas, no pudiendo obtener resultados en un mismo día. 
+		
+		El ejemplo anterior muestra un problema de escalabilidad inherente a Big Data. Aunque esta claro que el procesamiento distribuido es la solución, el crecimiento de los conjuntos de datos hace que el hardware se quede obsoleto en poco tiempo. Una solución puede ser actualizarlo cada año. Sin embargo, una empresa no puede permitirse renovar el hardware anualmente pues esto supondría un aumento de costes, consumo eléctrico, mantenimiento y, además, requiere una gran cantidad de espacio. Otra solución consiste en reformular el algoritmo en cuestión, mejorando su eficiencia y escalabilidad.
+		
+		En cualquier caso, la solución que se tome implicará un gran trabajo para adaptar el software existente al nuevo hardware o para implementar nuevos algoritmos distribuidos. Cada nueva implementación conlleva multitud de líneas de código para manejar el conjunto de datos y realizar los cómputos distribuidos. Además, la implementación debe conseguir que el sistema sea tolerante ante fallos, esto es, si un nodo se estropea, entonces el sistema debe no perder la información y reasignar el trabajo del nodo a otro.
 
 	\subsection{Servidores de altas prestaciones. Sistemas de archivos distribuidos} \label{sec:mr-hadoop:servidores}
 
@@ -237,11 +242,11 @@
 		
 		Los servidores a utilizar contendrán ingentes cantidades de información de vital importancia. Por tanto, se necesita almacenar la información en un sistema de archivos tolerante a errores. Esto es, si un nodo o disco duro del servidor se estropea, no se pueden perder datos ni provocar una caída del servidor. En esta situación se encontró Google a principios de este siglo cuando desarrolló Google File System, GFS, que fue presentado oficialmente en 2003 \cite{gfs}. Este es un sistema de archivos escalable y distribuido que utilizan para aplicaciones distribuidas que requieran conjuntos de datos masivos. El sistema proporciona tolerancia ante fallos de forma automática y administra de forma eficiente grandes conjuntos de datos en el servidor, no necesitando que este sea especialmente caro. Además, proporciona escalabilidad en el sentido de que se pueden añadir o eliminar nodos o discos duros sin problemas. De esta forma, se consigue un correcto almacenamiento de los datos en el servidor.
 		
-		Google File System es un software privado. Basándose en las ideas de este, la fundación Apache ha desarrollado HDFS (Hadoop Distributed File System) \cite{hdfs}. Incidiremos en este en la Sección \ref{sec:mr-hadoop:hadoop}, pues una herramienta esencial dentro de Hadoop.
+		Google File System es un software privado. Basándose en las ideas de este, la fundación Apache ha desarrollado HDFS (Hadoop Distributed File System) \cite{hdfs}. Incidiremos en este en la Sección \ref{sec:mr-hadoop:hadoop}, pues una herramienta esencial dentro de Hadoop.				
 
 	\subsection{Map Reduce} \label{sec:mr-hadoop:map-reduce}
 
-		Además de un sistema de archivos distribuido que asegure un correcto almacenamiento de la información en el servidor, se necesitan herramientas y librerías que permitan programar algoritmos paralelos y distribuidos. Las librerías OPEN MP y MPI (referencias) son muy conocidas. OPEN MP permite paralelizar cálculos vectoriales. Por su parte, MPI se basa en el paso de mensajes entre hebras como mecanismo para realizar implementaciones distribuidas. Estas librerías operan a bajo nivel y funcionan principalmente con lenguajes de programación como c y c++. 
+		Además de un sistema de archivos distribuido que asegure un correcto almacenamiento de la información en el servidor, se necesitan herramientas y librerías que permitan programar algoritmos paralelos y distribuidos. Las librerías OPEN MP y MPI son muy conocidas \cite{openmpmpi}. OPEN MP permite paralelizar cálculos vectoriales. Por su parte, MPI se basa en el paso de mensajes entre hebras como mecanismo para realizar implementaciones distribuidas. Estas librerías operan a bajo nivel y funcionan principalmente con lenguajes de programación como c y c++. 
 		
 		La implementación de un algoritmo distribuido utilizando estas librerías es muy costosa. El programador debe indicar expresamente el tratamiento distribuido de los datos y cómo se paralelizan los cómputos. Además, tiene que crear las hebras asociadas y encargarse de que el sistema funcione correctamente. Nótese que si durante la ejecución del algoritmo un nodo se estropea, entonces la implementación puede dejar de funcionar a no ser que el programador le haya dedicado mucho tiempo para conseguir que sea tolerante ante fallos. Es más, si uno implementa varios algoritmos distribuidos esencialmente se está implementando el mismo tipo de paralelización una y otra vez.
 	
@@ -254,7 +259,7 @@
 			\item La función \textbf{reduce} toma una clave y una lista de valores asociados a la clave. Se aplica a cada una de las salidas que se han obtenido tras la ordenación y el filtrado de los resultados de los maps. Los valores de cada clave se mezclan mediante el procedimiento indicado por el programador. Este debe devolver al final cero o más parejas formadas por la clave y cada uno de los valores obtenidos tras la mezcla. La lista de valores que se proporciona como argumento a reduce se representa en la implementación mediante un iterador. De esta forma se puede trabajar con listas de valores tan grandes que no quepan en memoria principal.
 		\end{itemize}  
 		
-		Para ejemplificar el funcionamiento de Map Reduce mostraremos un algoritmo distribuido para contar el número de ocurrencias de cada una de las palabras de un documento. El Algoritmo \ref{alg:map-reduce} contiene el pseudo-código de este. La función map toma como parámetros el nombre del documento y una string con parte del texto asociado. Por cada palabra que encuentra emite una pareja con la palabra y un 1. La función reduce suma todas las ocurrencias encontradas de la palabra, devolviendo la pareja (palabra, número total de ocurrencias).
+		Para ejemplificar el funcionamiento de Map Reduce mostraremos un algoritmo distribuido que cuenta el número de ocurrencias de cada una de las palabras de un documento. El Algoritmo \ref{alg:map-reduce} contiene el pseudo-código de este. La función map toma como parámetros el nombre del documento y una string con parte del texto asociado. Por cada palabra que encuentra emite una pareja con la palabra y un 1. La función reduce suma todas las ocurrencias encontradas de la palabra, devolviendo la pareja (palabra, número total de ocurrencias).
 		
 		\begin{algorithm}
 			\caption{Obtención del número de ocurrencias de cada una de las palabras de un texto mediante Map Reduce.}
@@ -274,7 +279,7 @@
 			\begin{subalgorithm}{.6\textwidth}
 			\begin{algorithmic}
 				\State $key$: Palabra
-				\State $values$: Conjunto con las ocurrencias de cada palabra
+				\State $values$: Conjunto con las ocurrencias de la palabra
 				\Function{reduce}{String $key$, Iterator $values$}
 					\State $result = 0$
 					\For{each value $v$ in  $values$}
@@ -286,35 +291,43 @@
 			\end{subalgorithm}
 		\end{algorithm}
 
-		La paralelización  la lleva  cabo el sistema de forma automática. Para ello la entrada debe particionarse en $M$ bloques tiempo de ejecución. Cada uno de estos bloques contiene una lista de parejas (clave, valor). Map Reduce repartirá los bloques en distintos nodos del servidor de forma que cada uno de estos nodos ejecuta la función map sobre cada una de las parejas de su bloque. El programador debe indicar tanto el número de bloques a utilizar ($M$) como definir la función utilizada para el particionamiento de la entrada. Habitualmente se recomienda que cada uno de los $M$ bloques contenga entre $16$ y $64$ MB. Conforme los maps terminan de ejecutarse se va realizando la fase de filtrado u ordenación de los resultados. En este ejemplo concreto se obtiene para cada palabra el conjunto con todos los valores que se han emitido junto a esta. Una vez han finalizado los maps, se pueden ejecutar los reduces, también en paralelo, obteniendo como resultado la lista de palabras y el número de ocurrencias de las mismas.
-
-		Por su parte, las llamadas a reduce también se distribuyen en el sistema. Para ello, el conjunto de claves intermedias sobre las que se aplican se particiona en $R$ bloques. Cada uno de estos bloques se procesa en un nodo de forma secuencial. El programador debe decidir el valor $R$ para obtener el mejor rendimiento posible del sistema.
-
-		\begin{enumerate}
-			\item En primer lugar los archivos de entrada se particionan en los $M$ bloques. Por cada bloque se lanza una copia del programa en el servidor. Una de estas copias se denomina maestro mientras que el resto son esclavos a los que el maestro asigna trabajo. Hay en total $M$ bloques asociados a map y $R$ bloques asociados a reduce que se tienen que asignar.
-			\item Un trabajador al que se le asigna un bloque de map lee cada una de las parejas clave / valor que lo componen. A cada una de ellas le aplica la función map. Las parejas intermedias que se producen son almacenadas en buffers de la memoria.
-			\item Periódicamente, las parejas intermedias almacenadas en buffers se escriben en los discos duros. En concreto, cada pareja se asigna a uno de los $R$ bloques según corresponda. La localización de estos bloques en el disco es pasada al maestro, quien se encarga de informar a los esclavos que realizan los reduces de dónde se encuentran almacenados los bloques.
-			\item Cuando un esclavo es notificado por el maestro de la localización de los bloques del reduce, llama al correspondiente disco local para obtener los datos. Tras esto, ordena los datos por clave y agrupa aquellos valores que pertenezcan a la misma clave en conjuntos. Si el tamaño de los datos es demasiado grande, entonces una ordenación externa es utilizada.
-			\item El esclavo reduce itera sobre los datos ordenados y por cada clave encontrada  aplica el reduce a su correspondiente conjunto de valores intermedios. La salida de cada reduce se añade a un archivo asociado a este reduce.
-			\item Cuando todos las las tareas maps y reduce se han completado, el maestro finaliza la ejecución y el control vuelve al usuario. 
-		\end{enumerate}
-
-		La salida del algoritmo se encuentra disponible en los $R$ archivos creados por los exclavos que hicieron los reduces. Normalmente se deben unir estos archivos en un nuevo archivo, para lo cual se requeriría una nueva llamada a MapReduce u otra aplicación distribuida que permita realizar este proceso.
+		La paralelización  la lleva  cabo el sistema de forma automática. Para ello la entrada debe particionarse en $M$ bloques en tiempo de ejecución. Cada uno de estos bloques contiene una lista de parejas (clave, valor). Map Reduce repartirá los bloques en distintos nodos del servidor de forma que cada uno de estos nodos ejecuta la función map sobre cada una de las parejas de su bloque. Las hebras que realizan esta acción se denomina mappers. El programador debe indicar tanto el número de bloques a utilizar ($M$) como definir la función utilizada para el particionamiento de la entrada. Habitualmente se recomienda que cada uno de los $M$ bloques contenga entre $16$ y $64$ MB. 
 		
-		La tolerancia a errores se implementa como sigue. Periódicamente el maestro realiza un ping a cada uno de los exclavos. Si algunos de ellos no le responde, entonces se asume que la hebra ha fallado y se envía su correspondiente trabajo al primer nodo que se encuentre disponible. En caso de que falle un exlavo que tenía que ejecutar un map, los nodos que realicen el reduce son informados de que deben leer los datos de la nueva ejecución a no ser que ya hayan obtenido completamente los datos de la ejecución errada.
+		Conforme los maps terminan de ejecutarse se va realizando la fase de ordenación y filtrado de los resultados. En este ejemplo para cada palabra se obtiene una lista de unos con tantos elementos como el número de veces que se haya encontrado la palabra. Una vez han finalizado los mappers, se pueden ejecutar las hebras que aplican la función reduce. Estas se denominan reducers. Para ello el conjunto de claves intermedias se particiona en $R$ bloques. Cada uno de esto $R$ bloques se asigna a un nodo con un reducer, que ejecutará la función reduce sobre las parejas (clave, iterador) que le correspondan. El programador debe decidir el valor $R$ para obtener el mejor rendimiento posible del sistema. Tras la ejecución de los reduce se obtiene la lista de las palabras encontradas y el número de ocurrencias de las mismas.  La Figura \ref{fig:map-reduce} muestra de forma gráfica este proceso.
 
-		Por tanto, se requieren tecnologías que manejen grandes conjuntos de datos de forma eficiente y a alto nivel, permitiendo que la implementación sea independiente del hardware a utilizar.
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=14cm]{./images/MapReduce.png}
+			\caption{Aplicación de Map Reduce sobre un conjunto de datos.} 
+			\label{fig:map-reduce}
+		\end{figure}
 
-		Supóngase que una empresa compra un servidor en el cual ejecuta un algoritmo distribuido con eficiencia $\theta(n^2)$ sobre conjuntos de datos masivos. En el momento en el que se compra el hardware consiguen ejecutar el algoritmo en 8 horas, obteniendo resultados en el mismo día. Sin embargo, siguiendo la tendencia mostrada en la Figura \ref{fig:zeta-bytes}, es probable que al año el conjunto de datos a utilizar se duplique en tamaño dentro de un año. En tal caso el servidor puede tener problemas desde el punto de vista de la memoria y el flujo de datos. Es habitual que el hardware tenga cuellos de botella que provoquen que determinadas operaciones relacionadas con la memoria lleven mucho tiempo.  Por otro lado, el algoritmo tardará de todas formas 4 veces más en ejecutarse al ser cuadrático. Por tanto, la ejecución pasará a durar 32 horas, no pudiendo obtener resultados en un mismo día. 
+
+		La implementación de Map Reduce se lleva a cabo siguiendo el paradigma maestro - esclavo. La Figura \ref{fig:map-reduce:master-workers} muestra el proceso que se realiza de forma interna en una ejecución de Map Reduce. El primer paso es el particionamiento de la entrada. Tras realizarse este se crea una hebra denominada maestro que se encarga de controlar toda la ejecución. Además, se lanzan tantas hebras como tareas haya que realizar, en total $M+R$. Estas hebras son los esclavos que son de dos tipos: mappers y reducers. Los esclavos se almacenan en una cola en la que tienen prioridad los mappers.
 		
-		El ejemplo anterior muestra un problema de escalabilidad inherente a Big Data. Aunque esta claro que el procesamiento distribuido es la solución, el crecimiento de los conjuntos de datos hace que el hardware se quede obsoleto en poco tiempo. Una solución puede ser actualizarlo cada año. Sin embargo, una empresa no puede permitirse renovar el hardware anualmente pues esto supondría un aumento de costes, consumo eléctrico, mantenimiento y, además, requiere una gran cantidad de espacio. Otra solución consiste en reformular el algoritmo en cuestión, mejorando su eficiencia y escalabilidad.
-		
-		En cualquier caso, la solución que se tome implicará un gran trabajo para adaptar el software existente al nuevo hardware o para implementar nuevos algoritmos distribuidos. Cada nueva implementación conlleva multitud de líneas de código para manejar el conjunto de datos y realizar los cómputos distribuidos. Además, la implementación debe conseguir que el sistema sea tolerante ante fallos, esto es, si un nodo se estropea, entonces el sistema debe no perder la información y reasignar el trabajo del nodo a otro.
+		Las hebras de la cola se van asignando a los nodos del sistema y los mappers comienzan a ejecutarse. Cada mapper genera parejas intermedias que se almacenan en un buffer de la memoria. Periódicamente, el buffer se vacía, escribiendo las parejas en un disco duro asociado al mapper. En cada disco duro se utilizan $R$ regiones, numeradas desde el $0$ al $R-1$. Las parejas se reparten entre estas regiones utilizando una función hash sobre las claves. De esta manera parejas con la misma clave irán a la misma región disco duro. 
 
-		Map Reduce permite a los programadores con poca experiencia en sistemas distribuidos llevar a cabo implementaciones eficientes para grandes cantidades de datos. Una implementación típica de MapReduce puede procesar varios tera bytes de datos en servidores con miles de nodos.
+		Como consecuencia, si los datos generados no están uniformemente distribuidos en todas las claves puede suceder que una región contenga mucho más trabajo que otra. A cambio, se consigue un proceso eficiente para conseguir que todas las parejas con la misma clave vayan a la misma región.
+		
+		La localización de estas regiones en los discos es pasada al maestro. Cuando un reducer pasa a ejecutarse, el maestro le notifica de la localización de las regiones de los discos que les corresponden (aquellas que tienen el mismo índice que el reducer). Posteriormente, el esclavo llama a los discos para obtener los datos. Tras esto, ordena todos sus datos por clave y agrupa aquellos valores que pertenezcan a la misma clave en conjuntos. Si el tamaño de los datos es demasiado grande, entonces una ordenación externa es utilizada.
+		
+		Cuando todos los mappers se han ejecutado, los reducers comienzan a aplicar la función reduce a sus correspondientes parejas. Cada hebra produce un archivo de salida con los resultados obtenidos. Tras finalizar la ejecución de estas, el control vuelve al usuario. Normalmente se deberían unir los $R$ archivos generados en uno nuevo, para lo cual se requeriría una nueva llamada a MapReduce u otra aplicación distribuida que permita realizar este proceso.
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=14cm]{./images/MapReduce-MasterWorkers.png}
+			\caption{Funcionamiento interno de Map Reduce.} 
+			\label{fig:map-reduce:master-workers}
+		\end{figure}
+
+		En este contexto se implementa la tolerancia a errores como sigue. Periódicamente el maestro realiza un ping a cada uno de los esclavos. Si algunos de ellos no le responde, entonces se asume que el nodo ha fallado y se envía su correspondiente trabajo al primer nodo que se encuentre disponible. En caso de que falle un mapper, los reducers son informados de que deben leer los datos de este mapper desde la nueva localización en disco a no ser que ya hayan completado la lectura de los datos de la ejecución errada.
+
+		En definitiva, Map Reduce permite a los programadores con poca experiencia en sistemas distribuidos llevar a cabo implementaciones eficientes para grandes cantidades de datos. De esta manera se ahorra trabajo de implementación, pudiendo dedicarse el programador a mejorar la eficiencia de los algoritmos. Es más, una implementación típica de Map Reduce puede procesar varios tera bytes de datos en servidores con miles de nodos.
 
 
 	\subsection{Hadoop} \label{sec:mr-hadoop:hadoop}
+
+		La implementación de Google del paradigma de programación Map Reduce es privada. Sin embargo, las publicaciones que hiceron los trabajadores de Google sobre este paradigma han inspirado implementaciones libres de Map Reduce. La más importante sin duda es Hadoop \cite{hadoop-book}. Su desarrollo comenzó poco después de la publicación de GFS y Map Reduce. Inicialmente el proyecto en cuestión era Apache Nutch \cite{nutch} y tenía como objetivo desarrollar un buscador web libre. Sin embargo, el proyecto tenía muchos problemas cuando se ejecutaba sobre un clúster de computadores. La solución era implementar un sistema de archivos distribuido como GFS y Map Reduce. Este nuevo proyecto pasó a llamarse Hadoop en 2006. Como curiosidad, Hadoop es el nombre del elefante de peluche del hijo de Dough Cutting, director del proyecto.
 
 %-----------------------------------------------------------------------------------------------------
 %	SECCIÓN 3
