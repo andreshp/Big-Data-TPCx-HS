@@ -179,10 +179,10 @@
 	Todo este cúmulo de tecnologías y actividades ha dado lugar a que hoy en día haya más de $10$ zeta bytes de información almacenados ($1$ ZB = $10^{12}$ GB). La Figura \ref{fig:zeta-bytes} muestra la evolución histórica de la cantidad de información acumulada por el ser humano. Podemos observar que cada año se generan varios zeta bytes de información, el crecimiento es exponencial. Hasta 2003 se habían almacenado en total $5$ exa bytes de información ($1$ EB = $10^9$ GB). Actualmente, generamos esta cantidad de datos en dos días \cite{big-data}. Podemos decir que vivimos en una sociedad digital o sociedad de la información.
 
 	\begin{figure}[H]
-	       	\centering
-	       	\includegraphics[width=14cm]{./images/Data.png}
-	       	\caption{Evolución histórica del número de Zeta Bytes de información almacenados y predicción para los próximos años \cite{zeta-bytes}.} 
-	       	\label{fig:zeta-bytes}
+       	\centering
+       	\includegraphics[width=14cm]{./images/Data.png}
+       	\caption{Evolución histórica del número de Zeta Bytes de información almacenados y predicción para los próximos años \cite{zeta-bytes}.} 
+       	\label{fig:zeta-bytes}
 	 \end{figure}
 
 	En resumen, a pesar de la evolución de los computadores en todas sus facetas, la cantidad de datos e información a procesar y almacenar crece incluso a mayor velocidad. Por ejemplo, encontramos empresas como Facebook y Google cuyos usuarios generan una gran cantidad de datos diariamente. Estos datos deben ser tratados en tiempo real para poder mantener los sistemas de recomendaciones asociados. En estos casos se requieren servidores de altas prestaciones para poder tratar tal cantidad de datos en un tiempo razonable. Estos conjuntos de datos adquieren el calificativo ``masivos''. El desarrollo de nuevas tecnologías, algoritmos y herramientas para tratar de forma eficiente conjuntos de datos masivos es lo que se conoce como Big Data \cite{big-data-herrera}.
@@ -193,34 +193,52 @@
 
 \section{Big Data} \label{sec:big-data}
 	
-	En la Sección \ref{sec:introduction} hemos incidido en la rápida evolución que han sufrido los computadores. Sin embargo, en muchas aplicaciones encontramos conjuntos de datos que ponen a prueba a los ordenadores más pontentes. Estos conjuntos de datos se denominan masivos. El tratamiento de datos masivos tiene dos problemas claros. El primero de ellos es la memoria. Necesitamos computadores con suficiente memoria principal para procesar de forma eficiente un gran flujo de datos. El segundo problema es la capacidad de cómputo necesaria para aplicar algoritmos sobre estos conjuntos de datos. 
+	En esta sección profundizamos en el concepto de big data y en su relación con la ingeniería de servidores. En primer lugar, en la Sección \ref{sec:big-data:que-es} describimos qué es Big Data y qué tipos de problemas involucra. Además, destacamos la importancia de Big Data en el ámbito empresarial y científico. Por último, en la Sección \ref{sec:big-data:ise} mostramos que la ingeniería de servidores es esencial en Big Data debido al uso de los servidores de altas prestaciones para el tratamiento de conjuntos de datos masivos.
+
+	\subsection{¿Qué es Big Data?} \label{sec:big-data:que-es}
 	
-	Big Data engloba el tratamiento de datos masivos desde el punto de vista tecnológico y algorítmico. En palabras de Michael J. Franklin, profesor de informática en la universidad de Berkley \cite{bd-definition}:
-	
-	\textit{``Un problema sobre datos entra en el ámbito de Big Data cuando la aplicación de las actuales tecnologías no permite al usuario obtener soluciones  rápidas, efectivas en costo y de calidad''}
-
-	Por tanto, Big Data es un concepto relativo a la situación tecnológica de la sociedad. Lo que hoy es Big Data puede no serlo dentro de varios años. Esto asegura que Big Data será un tema recurrente de la literatura especializada. La resolución de problemas de Big Data no cierra su desarrollo sino que abre nuevos retos, siempre habrá un conjunto de datos lo suficientemente grande como para poner a prueba los últimos logros del estado del arte.
-
-	Los problemas que entran en el ámbito de Big Data surgen de manera natural en el mundo actual. En palabras de Francisco Herrera triguero, investigador de la Universidad de Granada  \cite{big-data-herrera}:
-	
-	\textit{``Vivimos en la era de la información. El progreso y la innovación no se ve obstaculizado por la capacidad de recopilar datos sino por la capacidad de gestionar, analizar, sintetizar y descubrir el conocimiento subyacente en dichos datos. Este es el reto de las tecnologías de Big Data.''}
-	
-	A veces se utiliza el término Big Data para referirse meramente a conjuntos de datos masivos. Sin embargo, los problemas de Big Data constan de múltiples características que los hacen todavía más complejos. En la literatura especializada estas características se denominan las 3 V's de Big Data \cite{big-data}:
-
-	\begin{itemize}
-		\item \textbf{Volumen.} El tamaño de los conjuntos de datos a procesar es cada vez mayor, por ejemplo, facebook procesa cada día 500 TB de información. Este volumen de datos requiere tecnologías específicas para que los servidores de altas prestaciones puedan manejar la información con éxito.
-		\item \textbf{Velocidad.} Necesitamos herramientas que permitan procesar y analizar conjuntos de datos masivos en poco tiempo. Además, es habitual que el procesamiento de los datos deba ser incluso en tiempo real, esto es, los datos llegan al sistema de forma continua y este debe agregar la información de los mismos.
-		\item \textbf{Variedad.} Los datos a tratar provienen de una gran variedad de fuentes. Por tanto, las herramientas Big Data deben permitir procesar a la vez datos de diferentes características y tamaños. Es más, habitualmente encontramos datos de tres tipos: estructurados, semi estructurados y sin estructurar. Los datos estructurados son sencillos de clasificar. Sin embargo, los datos sin estructurar son aleatorios y difíciles de analizar. Por su parte, los datos semi estructurados requieren técnicas avanzadas para poder clasificarlos correctamente.
-	\end{itemize}
-
-	Algunos autores han extendido estas características hasta utilizar un total de 9 V's: veracidad, valor, viabilidad y visualización entre otras \cite{understanding-big-data}. De esta forma se destacan diferentes aspectos del tratamiento de conjuntos de datos masivos como mantener y analizar la veracidad de los datos y poner en valor el conocimiento subyacente.
-
-	El término Big Data ha tomado peso en el ámbito empresarial. Actualmente forma parte del área de conocimiento que se denomina inteligencia de negocio (business intelligence) \cite{business-intelligence}. La inteligencia de negocio cubre aquellos problemas relacionados con datos que se resuelven en organizaciones empresariales. Las empresas almacenan información de sus clientes y de toda la actividad realizada. Esta información contiene conocimiento que es valioso para determinar nuevas estrategias de negocio. Podemos decir que el análisis de datos es crucial para que las decisiones tomadas en la empresa sean efectivas. 
-
-	Big Data también se considera parte del área denominada ciencia de datos \cite{data-science}. Esta es una temática emergente que aglutina todas las áreas científicas que se encargan del tratamiento de los datos y de la extracción de conocimiento de los mismos. En este contexto, algunos autores denominan Big Data Analytics a la aplicación de Big Data al análisis de datos \cite{big-data-trends}. La ciencia de datos y la inteligencia de negocio están muy relacionadas, siendo el último término más popular en el ámbito empresarial. La importancia de estas áreas de conocimiento ha dado lugar a una nueva profesión, el científico de datos, que es considerada una de las profesiones más valoradas del siglo XXI \cite{data-scientist}.
-	
-	Cuando uno se enfrenta a un problema de Big Data necesita estudiar y desarrollar tecnologías que permitan el procesamiento de gran cantidades de datos de forma eficiente. Además, debe adaptar los algoritmos que pretenda utilizar a este nuevo ámbito, reduciendo en medida de lo posible complejidad algorítmica de los mismos. La dificultad de este proceso resolutivo es lo que hace que los expertos en Big Data sean muy valorados en el ámbito científico y empresarial. En el resto del documento presentaremos varias tecnologías que se utilizan de forma habitual en Big Data (Hadoop, Spark y Flink) así como un benchmark para Hadoop, denominado TPCx-HS.
+		En la Sección \ref{sec:introduction} hemos incidido en la rápida evolución que han sufrido los computadores. Sin embargo, en muchas aplicaciones encontramos conjuntos de datos que ponen a prueba a los ordenadores más pontentes. Estos conjuntos de datos se denominan masivos. El tratamiento de datos masivos tiene dos problemas claros. El primero de ellos es la memoria. Necesitamos computadores con suficiente memoria principal para procesar de forma eficiente un gran flujo de datos. El segundo problema es la capacidad de cómputo necesaria para aplicar algoritmos sobre estos conjuntos de datos. 
 		
+		Big Data engloba el tratamiento de datos masivos desde el punto de vista tecnológico y algorítmico. En palabras de Michael J. Franklin, profesor de informática en la universidad de Berkley \cite{bd-definition}:
+		
+		\textit{``Un problema sobre datos entra en el ámbito de Big Data cuando la aplicación de las actuales tecnologías no permite al usuario obtener soluciones  rápidas, efectivas en costo y de calidad''}
+	
+		Por tanto, Big Data es un concepto relativo a la situación tecnológica de la sociedad. Lo que hoy es Big Data puede no serlo dentro de varios años. Esto asegura que Big Data será un tema recurrente de la literatura especializada. La resolución de problemas de Big Data no cierra su desarrollo sino que abre nuevos retos, siempre habrá un conjunto de datos lo suficientemente grande como para poner a prueba los últimos logros del estado del arte.
+	
+		Los problemas que entran en el ámbito de Big Data surgen de manera natural en el mundo actual. En palabras de Francisco Herrera triguero, investigador de la Universidad de Granada  \cite{big-data-herrera}:
+		
+		\textit{``Vivimos en la era de la información. El progreso y la innovación no se ve obstaculizado por la capacidad de recopilar datos sino por la capacidad de gestionar, analizar, sintetizar y descubrir el conocimiento subyacente en dichos datos. Este es el reto de las tecnologías de Big Data.''}
+		
+		A veces se utiliza el término Big Data para referirse meramente a conjuntos de datos masivos. Sin embargo, los problemas de Big Data constan de múltiples características que los hacen todavía más complejos. En la literatura especializada estas características se denominan las 3 V's de Big Data \cite{big-data}:
+	
+		\begin{itemize}
+			\item \textbf{Volumen.} El tamaño de los conjuntos de datos a procesar es cada vez mayor, por ejemplo, facebook procesa cada día 500 TB de información. Este volumen de datos requiere tecnologías específicas para que los servidores de altas prestaciones puedan manejar la información con éxito.
+			\item \textbf{Velocidad.} Necesitamos herramientas que permitan procesar y analizar conjuntos de datos masivos en poco tiempo. Además, es habitual que el procesamiento de los datos deba ser incluso en tiempo real, esto es, los datos llegan al sistema de forma continua y este debe agregar la información de los mismos.
+			\item \textbf{Variedad.} Los datos a tratar provienen de una gran variedad de fuentes. Por tanto, las herramientas Big Data deben permitir procesar a la vez datos de diferentes características y tamaños. Es más, habitualmente encontramos datos de tres tipos: estructurados, semi estructurados y sin estructurar. Los datos estructurados son sencillos de clasificar. Sin embargo, los datos sin estructurar son aleatorios y difíciles de analizar. Por su parte, los datos semi estructurados requieren técnicas avanzadas para poder clasificarlos correctamente.
+		\end{itemize}
+	
+		Algunos autores han extendido estas características hasta utilizar un total de 9 V's: veracidad, valor, viabilidad y visualización entre otras \cite{understanding-big-data}. De esta forma se destacan diferentes aspectos del tratamiento de conjuntos de datos masivos como mantener y analizar la veracidad de los datos y poner en valor el conocimiento subyacente.
+	
+		El término Big Data ha tomado peso en el ámbito empresarial. Actualmente forma parte del área de conocimiento que se denomina inteligencia de negocio (business intelligence) \cite{business-intelligence}. La inteligencia de negocio cubre aquellos problemas relacionados con datos que se resuelven en organizaciones empresariales. Las empresas almacenan información de sus clientes y de toda la actividad realizada. Esta información contiene conocimiento que es valioso para determinar nuevas estrategias de negocio. Podemos decir que el análisis de datos es crucial para que las decisiones tomadas en la empresa sean efectivas. 
+	
+		Big Data también se considera parte del área denominada ciencia de datos \cite{data-science}. Esta es una temática emergente que aglutina todas las áreas científicas que se encargan del tratamiento de los datos y de la extracción de conocimiento de los mismos. En este contexto, algunos autores denominan Big Data Analytics a la aplicación de Big Data al análisis de datos \cite{big-data-trends}. La ciencia de datos y la inteligencia de negocio están muy relacionadas, siendo el último término más popular en el ámbito empresarial. La importancia de estas áreas de conocimiento ha dado lugar a una nueva profesión, el científico de datos, que es considerada una de las profesiones más valoradas del siglo XXI \cite{data-scientist}.
+		
+		Cuando uno se enfrenta a un problema de Big Data necesita estudiar y desarrollar tecnologías que permitan el procesamiento de gran cantidades de datos de forma eficiente. Además, debe adaptar los algoritmos que pretenda utilizar a este nuevo ámbito, reduciendo en medida de lo posible complejidad algorítmica de los mismos. La dificultad de este proceso resolutivo es lo que hace que los expertos en Big Data sean muy valorados en el ámbito científico y empresarial. En el resto del documento presentaremos varias tecnologías que se utilizan de forma habitual en Big Data (Hadoop, Spark y Flink) así como un benchmark para Hadoop, denominado TPCx-HS.
+		
+	\subsection{Ingeniería de servidores en Big Data: servidores de altas prestaciones} \label{sec:big-data:ise}
+	
+		En la Sección \ref{sec:big-data:que-es} destacábamos dos problemas del tratamiento de conjuntos de datos masivos: el conjunto de datos puede no caber en memoria principal y se necesita una gran capacidad de cómputo para ejecutar algoritmos sobre este. La solución a este problema suele ser utilizar servidores de altas prestaciones con procesamiento en paralelo y distribuido.
+			
+		Los servidores de altas prestaciones (alguna descripción). .... 
+		
+		Sin embargo, el uso de servidores de altas prestaciones no soluciona de forma directa el problema. Supóngase que una empresa compra un servidor en el cual ejecuta un algoritmo distribuido con eficiencia $\theta(n^2)$ sobre conjuntos de datos masivos. En el momento en el que se compra el hardware consiguen ejecutar el algoritmo en 8 horas, obteniendo resultados en el mismo día. Sin embargo, siguiendo la tendencia mostrada en la Figura \ref{fig:zeta-bytes}, es probable que el conjunto de datos a utilizar se duplique en tamaño dentro de un año. En tal caso el servidor puede tener problemas desde el punto de vista de la memoria y el flujo de dato debido a los cuellos de botella que pueda mostrar el hardware. Por otro lado, aunque no hubiese problemas con la memoria, el algoritmo tardará como mínimo 4 veces más en ejecutarse al tener complejidad cuadrática. Por tanto, la ejecución pasará a durar 32 horas, no pudiendo obtener resultados en un mismo día. 
+				
+		El ejemplo anterior muestra un problema de escalabilidad inherente a Big Data. Aunque esta claro que el procesamiento distribuido en servidores de altas prestaciones es la solución, el crecimiento de los conjuntos de datos hace que el hardware se quede obsoleto en poco tiempo. Una solución puede ser actualizarlo cada año. Sin embargo, una empresa no puede permitirse renovar el hardware anualmente pues esto supondría un aumento de costes, consumo eléctrico, mantenimiento y, además, requiere una gran cantidad de espacio. Consecuentemente, el buen aprovechamiento de los recursos del servidor es necesario para obtener resultados satisfactorios en Big Data. Necesitamos comprar desde un inicio aquel servidor que proporcione el mayor rendimiento para el manejo de datos de manera que la inversión sea rentable a largo plazo. La ingeniería de servidores es clave en esta cuestión.
+		
+		Por último, hay que destacar que los servidores a utilizar contendrán ingentes cantidades de información de vital importancia. Por tanto, se necesita almacenar los datos en un sistema de archivos tolerante a errores. Esto es, si un nodo o disco duro del servidor se estropea, no se pueden perder datos ni provocar una caída del servidor. En esta situación se encontró Google a principios de este siglo cuando desarrolló Google File System, GFS, que fue presentado oficialmente en 2003 \cite{gfs}. Este es un sistema de archivos escalable y distribuido que utilizan para aplicaciones distribuidas que requieran conjuntos de datos masivos. El sistema proporciona tolerancia ante fallos de forma automática y administra de forma eficiente grandes conjuntos de datos en el servidor, no necesitando que este sea especialmente caro. Además, proporciona escalabilidad en el sentido de que se pueden añadir o eliminar nodos o discos duros sin problemas. De esta forma, se consigue un correcto almacenamiento de los datos en el servidor.
+				
+		Google File System es un software privado. Basándose en las ideas de este, la fundación Apache ha desarrollado HDFS (Hadoop Distributed File System) \cite{hdfs}. Incidiremos en este en la Sección \ref{sec:mr-hadoop:hadoop}, pues una herramienta esencial dentro de Hadoop.
+				
 	
 %-----------------------------------------------------------------------------------------------------
 %	SECCIÓN 2
@@ -228,34 +246,20 @@
 
 \section{Map Reduce. Hadoop} \label{sec:mr-hadoop}
 
-		Supóngase que una empresa compra un servidor en el cual ejecuta un algoritmo distribuido con eficiencia $\theta(n^2)$ sobre conjuntos de datos masivos. En el momento en el que se compra el hardware consiguen ejecutar el algoritmo en 8 horas, obteniendo resultados en el mismo día. Sin embargo, siguiendo la tendencia mostrada en la Figura \ref{fig:zeta-bytes}, es probable que al año el conjunto de datos a utilizar se duplique en tamaño dentro de un año. En tal caso el servidor puede tener problemas desde el punto de vista de la memoria y el flujo de datos. Es habitual que el hardware tenga cuellos de botella que provoquen que determinadas operaciones relacionadas con la memoria lleven mucho tiempo.  Por otro lado, el algoritmo tardará de todas formas 4 veces más en ejecutarse al ser cuadrático. Por tanto, la ejecución pasará a durar 32 horas, no pudiendo obtener resultados en un mismo día. 
-		
-		El ejemplo anterior muestra un problema de escalabilidad inherente a Big Data. Aunque esta claro que el procesamiento distribuido es la solución, el crecimiento de los conjuntos de datos hace que el hardware se quede obsoleto en poco tiempo. Una solución puede ser actualizarlo cada año. Sin embargo, una empresa no puede permitirse renovar el hardware anualmente pues esto supondría un aumento de costes, consumo eléctrico, mantenimiento y, además, requiere una gran cantidad de espacio. Otra solución consiste en reformular el algoritmo en cuestión, mejorando su eficiencia y escalabilidad.
-		
-		En cualquier caso, la solución que se tome implicará un gran trabajo para adaptar el software existente al nuevo hardware o para implementar nuevos algoritmos distribuidos. Cada nueva implementación conlleva multitud de líneas de código para manejar el conjunto de datos y realizar los cómputos distribuidos. Además, la implementación debe conseguir que el sistema sea tolerante ante fallos, esto es, si un nodo se estropea, entonces el sistema debe no perder la información y reasignar el trabajo del nodo a otro.
-
-	\subsection{Servidores de altas prestaciones. Sistemas de archivos distribuidos} \label{sec:mr-hadoop:servidores}
-
-		En la Sección \ref{sec:big-data} destacábamos dos problemas del tratamiento de conjuntos de datos masivos: el conjunto de datos puede no caber en memoria principal y se necesita una gran capacidad de cómputo para ejecutar algoritmos sobre este. La solución a este problema suele ser utilizar servidores de altas prestaciones con procesamiento en paralelo y distribuido.
-	
-		Los servidores de altas prestaciones (alguna descripción). .... 
-		
-		Los servidores a utilizar contendrán ingentes cantidades de información de vital importancia. Por tanto, se necesita almacenar la información en un sistema de archivos tolerante a errores. Esto es, si un nodo o disco duro del servidor se estropea, no se pueden perder datos ni provocar una caída del servidor. En esta situación se encontró Google a principios de este siglo cuando desarrolló Google File System, GFS, que fue presentado oficialmente en 2003 \cite{gfs}. Este es un sistema de archivos escalable y distribuido que utilizan para aplicaciones distribuidas que requieran conjuntos de datos masivos. El sistema proporciona tolerancia ante fallos de forma automática y administra de forma eficiente grandes conjuntos de datos en el servidor, no necesitando que este sea especialmente caro. Además, proporciona escalabilidad en el sentido de que se pueden añadir o eliminar nodos o discos duros sin problemas. De esta forma, se consigue un correcto almacenamiento de los datos en el servidor.
-		
-		Google File System es un software privado. Basándose en las ideas de este, la fundación Apache ha desarrollado HDFS (Hadoop Distributed File System) \cite{hdfs}. Incidiremos en este en la Sección \ref{sec:mr-hadoop:hadoop}, pues una herramienta esencial dentro de Hadoop.				
+	En esta sección introducimos Map Reduce, un nuevo paradigma de programación distribuida que es básico en el ámbito de Big Data. En la Sección \ref{sec:mr-hadoop:map-reduce} explicamos el paradigma mientras que en la Sección \ref{sec:mr-hadoop:hadoop} destacamos uno de los softwares libres que lo implementan.
 
 	\subsection{Map Reduce} \label{sec:mr-hadoop:map-reduce}
 
-		Además de un sistema de archivos distribuido que asegure un correcto almacenamiento de la información en el servidor, se necesitan herramientas y librerías que permitan programar algoritmos paralelos y distribuidos. Las librerías OPEN MP y MPI son muy conocidas \cite{openmpmpi}. OPEN MP permite paralelizar cálculos vectoriales. Por su parte, MPI se basa en el paso de mensajes entre hebras como mecanismo para realizar implementaciones distribuidas. Estas librerías operan a bajo nivel y funcionan principalmente con lenguajes de programación como c y c++ \cite{openmp}. 
+		En la Sección \ref{sec:big-data:ise} destacábamos el papel central de los servidores de altas prestaciones y la programación distribuida en Big Data. Por tanto, la implementación de algoritmos para Big Data requiere herramientas y librerías que permitan realizar implementaciones distribuidas. Las librerías OPEN MP y MPI son muy conocidas \cite{openmpmpi, openmp}. OPEN MP permite paralelizar cálculos vectoriales. Por su parte, MPI se basa en el paso de mensajes entre hebras como mecanismo para realizar implementaciones distribuidas. Estas librerías operan a bajo nivel y funcionan principalmente con lenguajes de programación como c y c++. 
 		
 		La implementación de un algoritmo distribuido utilizando estas librerías es muy costosa. El programador debe indicar expresamente el tratamiento distribuido de los datos y cómo se paralelizan los cómputos. Además, tiene que crear las hebras asociadas y encargarse de que el sistema funcione correctamente. Nótese que si durante la ejecución del algoritmo un nodo se estropea, entonces la implementación puede dejar de funcionar a no ser que el programador le haya dedicado mucho tiempo para conseguir que sea tolerante ante fallos. Es más, si uno implementa varios algoritmos distribuidos esencialmente se está implementando el mismo tipo de paralelización una y otra vez.
 	
-		Ante esta situación en Google se dieron cuenta de la necesidad de desarrollar un nuevo paradigma de programación distribuida. Este debía proporcionar una interfaz que permitiese al programador implementar algoritmos distribuidos de forma simple y eficiente sin tener que centrarse en cuestiones de bajo nivel. La distribución de los datos en los nodos y la tolerancia ante los fallos serían llevadas a cabo por el propio lenguaje de programación de manera que el programador solamente tiene que desarrollar el algoritmo en cuestión. Gracias a esta idea surge el paradigma de programación Map Reduce, que Google hizo público en 2004 \cite{map-reduce1, map-reduce2, map-reduce3}.
+		Recordemos en este punto el problema de escalabilidad de Big Data, destacado en la Sección \ref{sec:big-data:ise}. Es claro que una solución a este problema consiste en reformular los algoritmos a utilizar, mejorando la eficiencia y escalabilidad. Sin embargo, esto implica un gran trabajo de implementación dada la dificultad de la programación distribuida. Ante esta situación en Google se dieron cuenta de la necesidad de desarrollar un nuevo paradigma de programación distribuida. Este debía proporcionar una interfaz que permitiese al programador implementar algoritmos distribuidos de forma simple y eficiente sin tener que centrarse en cuestiones de bajo nivel. La distribución de los datos en los nodos y la tolerancia ante los fallos serían llevadas a cabo por el propio lenguaje de programación de manera que el programador solamente tiene que desarrollar el algoritmo en cuestión. Gracias a esta idea surge el paradigma de programación Map Reduce, que Google hizo público en 2004 \cite{map-reduce1, map-reduce2, map-reduce3}.
 	
 		Map Reduce se basa en un proceso de abstracción a la hora de implementar algoritmos distribuidos. Los creadores de este paradigma se inspiraron en las funciones map y reduce que suelen estar presentes como primitivas en múltiples lenguajes de programación funcional. En primer lugar, la entrada y la salida de un algoritmo se conciben como dos listas de parejas (clave,valor), que pueden tener tipos distintos. El programador debe proporcionar el código de las funciones map y reduce. Estas funciones se ejecutarán en paralelo en los diferentes nodos del clúster.
 		
 		\begin{itemize}
-			\item La función \textbf{map} toma como entrada una pareja (clave, valor) y produce un conjunto de parejas, denominado conjunto intermedio. La función map se aplica en paralelo a cada una de las parejas que conforman la entrada del algoritmo. Tras la ejecución de todos los maps, el sistema ordena y filtra los conjuntos intermedios de parejas de manera que a cada posible clave se le asigna una lista con todos los valores que tenía asociados como pareja.
+			\item La función \textbf{map} toma como entrada una pareja (clave, valor) y produce un nuevo conjunto de parejas (clave, valor), denominado conjunto intermedio. La función map se aplica en paralelo a cada una de las parejas que conforman la entrada del algoritmo. Tras la ejecución de todos los maps, el sistema ordena y filtra los conjuntos intermedios de parejas de manera que a cada posible clave se le asigna una lista con todos los valores que tenía asociados como pareja.
 			\item La función \textbf{reduce} toma una clave y una lista de valores asociados a la clave. Se aplica a cada una de las salidas que se han obtenido tras la ordenación y el filtrado de los resultados de los maps. Los valores de cada clave se mezclan mediante el procedimiento indicado por el programador. Este debe devolver al final cero o más parejas formadas por la clave y cada uno de los valores obtenidos tras la mezcla. La lista de valores que se proporciona como argumento a reduce se representa en la implementación mediante un iterador. De esta forma se puede trabajar con listas de valores tan grandes que no quepan en memoria principal.
 		\end{itemize}  
 		
@@ -302,23 +306,15 @@
 			\label{fig:map-reduce}
 		\end{figure}
 
-
-		La implementación de Map Reduce se lleva a cabo siguiendo el paradigma maestro - esclavo. La Figura \ref{fig:map-reduce:master-workers} muestra el proceso que se realiza de forma interna en una ejecución de Map Reduce. El primer paso es el particionamiento de la entrada. Tras realizarse este se crea una hebra denominada maestro que se encarga de controlar toda la ejecución. Además, se lanzan tantas hebras como tareas haya que realizar, en total $M+R$. Estas hebras son los esclavos que son de dos tipos: mappers y reducers. Los esclavos se almacenan en una cola en la que tienen prioridad los mappers.
+		La implementación de Map Reduce se lleva a cabo siguiendo el paradigma maestro - esclavo. La Figura \ref{fig:map-reduce:master-workers} (véase el anexo) muestra el proceso que se realiza de forma interna en una ejecución de Map Reduce con $M=3$ y $R=2$. El primer paso es el particionamiento de la entrada. Tras realizarse este se crea una hebra denominada maestro que se encarga de controlar toda la ejecución. Además, se lanzan tantas hebras como tareas haya que realizar, en total $M+R$. Estas hebras se llaman esclavos y son de dos tipos: mappers y reducers. Los esclavos se almacenan en una cola en la que tienen prioridad los mappers.
 		
 		Las hebras de la cola se van asignando a los nodos del sistema y los mappers comienzan a ejecutarse. Cada mapper genera parejas intermedias que se almacenan en un buffer de la memoria. Periódicamente, el buffer se vacía, escribiendo las parejas en un disco duro asociado al mapper. En cada disco duro se utilizan $R$ regiones, numeradas desde el $0$ al $R-1$. Las parejas se reparten entre estas regiones utilizando una función hash sobre las claves. De esta manera parejas con la misma clave irán a la misma región disco duro. 
 
-		Como consecuencia, si los datos generados no están uniformemente distribuidos en todas las claves puede suceder que una región contenga mucho más trabajo que otra. A cambio, se consigue un proceso eficiente para conseguir que todas las parejas con la misma clave vayan a la misma región.
+		Como consecuencia, si los datos generados no están uniformemente distribuidos en todas las claves puede suceder que una región contenga mucho más trabajo que otra. A cambio, se obtiene un proceso eficiente para conseguir que todas las parejas con la misma clave vayan a la misma región.
 		
-		La localización de estas regiones en los discos es pasada al maestro. Cuando un reducer pasa a ejecutarse, el maestro le notifica de la localización de las regiones de los discos que les corresponden (aquellas que tienen el mismo índice que el reducer). Posteriormente, el esclavo llama a los discos para obtener los datos. Tras esto, ordena todos sus datos por clave y agrupa aquellos valores que pertenezcan a la misma clave en conjuntos. Si el tamaño de los datos es demasiado grande, entonces una ordenación externa es utilizada.
+		La localización de estas regiones en los discos es enviada al maestro. Cuando un reducer pasa a ejecutarse, el maestro le notifica de la localización de las regiones de los discos que les corresponden (aquellas que tienen el mismo índice que el reducer). Posteriormente, el esclavo llama a los discos para obtener las regiones correspondientes. Nótese que de esta forma todos las parejas con igual clave van al mismo reducer. Tras la obtención de los datos, el reducer los ordena por clave y agrupa aquellos valores que pertenezcan a la misma clave en conjuntos. Si el tamaño de los datos es demasiado grande, entonces una ordenación externa es utilizada.
 		
 		Cuando todos los mappers se han ejecutado, los reducers comienzan a aplicar la función reduce a sus correspondientes parejas. Cada hebra produce un archivo de salida con los resultados obtenidos. Tras finalizar la ejecución de estas, el control vuelve al usuario. Normalmente se deberían unir los $R$ archivos generados en uno nuevo, para lo cual se requeriría una nueva llamada a MapReduce u otra aplicación distribuida que permita realizar este proceso.
-
-		\begin{figure}[H]
-			\centering
-			\includegraphics[width=14cm]{./images/MapReduce-MasterWorkers.png}
-			\caption{Funcionamiento interno de Map Reduce.} 
-			\label{fig:map-reduce:master-workers}
-		\end{figure}
 
 		En este contexto se implementa la tolerancia a errores como sigue. Periódicamente el maestro realiza un ping a cada uno de los esclavos. Si algunos de ellos no le responde, entonces se asume que el nodo ha fallado y se envía su correspondiente trabajo al primer nodo que se encuentre disponible. En caso de que falle un mapper, los reducers son informados de que deben leer los datos de este mapper desde la nueva localización en disco a no ser que ya hayan completado la lectura de los datos de la ejecución errada.
 
@@ -327,7 +323,11 @@
 
 	\subsection{Hadoop} \label{sec:mr-hadoop:hadoop}
 
-		La implementación de Google del paradigma de programación Map Reduce es privada. Sin embargo, las publicaciones que hiceron los trabajadores de Google sobre este paradigma han inspirado implementaciones libres de Map Reduce. La más importante sin duda es Hadoop \cite{hadoop-book}. Su desarrollo comenzó poco después de la publicación de GFS y Map Reduce. Inicialmente el proyecto en cuestión era Apache Nutch \cite{nutch} y tenía como objetivo desarrollar un buscador web libre. Sin embargo, el proyecto tenía muchos problemas cuando se ejecutaba sobre un clúster de computadores. La solución era implementar un sistema de archivos distribuido como GFS y Map Reduce. Este nuevo proyecto pasó a llamarse Hadoop en 2006. Como curiosidad, Hadoop es el nombre del elefante de peluche del hijo de Dough Cutting, director del proyecto.
+		La implementación de Google del paradigma de programación Map Reduce es privada. Sin embargo, las publicaciones que hiceron los trabajadores de Google sobre este paradigma han inspirado implementaciones libres de Map Reduce. La más importante sin duda es Hadoop \cite{hadoop-book}. Su desarrollo comenzó poco después de la publicación de GFS y Map Reduce. Inicialmente el proyecto en cuestión era Apache Nutch \cite{nutch} y tenía como objetivo desarrollar un buscador web libre. Sin embargo, el software tenía muchos problemas cuando se ejecutaba sobre un clúster de computadores. La solución era implementar un sistema de archivos distribuido como GFS y Map Reduce. Este nuevo proyecto pasó a llamarse Hadoop en 2006. Como curiosidad, Hadoop es el nombre del elefante de peluche del hijo de Dough Cutting, director del proyecto.
+		
+		Hadoop está implementado en Java y opera sobre la máquina virtual de este. EL núcleo principal de Hadoop es el sistema de archivos denominado Hadoop Distributed File System (HDFS) que imita las ideas dadas utilizadas por Google en GFS.
+		
+		Por otro lado Hadoop presenta una implementación del paradigma MapReduce que funciona de forma similar a la versión explicada por Google. Las implementaciones de las funciones map y reduce y del módulo de particionamiento de la entrada las realiza el programador en Java. Además, Hadoop posibilita una alta configuración permitiendo modificar la ordenación y filtrado de los datos.
 
 %-----------------------------------------------------------------------------------------------------
 %	SECCIÓN 3
@@ -344,7 +344,7 @@
 
 	La variedad de computadores es bastante heterogénea. Cada uno realiza de forma eficiente un determinado conjunto de operaciones a consta de presentar peores resultados en otros factores. Por tanto, la comparación entre diferentes modelos de computadores es compleja. Consecuentemente, se han creado benchmarks con el objetivo de aportar elementos de juicio con los que se discernir entre el uso de un computador u otro para una determinada aplicación. Habitualmente el benchmarking se define como la obtención de información útil mediante pruebas empíricas que ayude a una organización a mejorar sus procesos \cite{benchmarking}. Sin embargo, el benchmarking de computadores es un proceso costoso computacionalmente. Gasta tanto energía como mucho tiempo de cómputo. Por tanto, se ha de reservar para cuestiones sean importantes y no para evaluar tareas simples \cite{desv-bench}.
 	
-	Una técnica utilizada para ver qué sistema nos da más prestaciones son los benchmarks, uno de ellos es TPC. TPC es una organización sin ánimo de lucro que estudia el proceso de transacción y los benchmarks para las bases de datos. El término transacción se suele atribuir a aspectos bancarios, pero si pensamos en este concepto como una función que tienen los ordenadores, una transacción puede ser un conjunto de operaciones que incluyen lectura y escritura en disco, llamadas a funciones del sistema operativo, o cualquier forma de transferencia de datos de un sistema a otro. Este es el ámbito en el que se mueve TPC, que produce benchmarks que miden el proceso de transacción y el rendimiento de las bases de datos en términos de: dados un sistema y una base de datos, ¿cuántas transacciones pueden hacer por unidad de tiempo?\cite{intro-tpc}
+	Una técnica utilizada para ver qué sistema nos da más prestaciones son los benchmarks, uno de ellos es TPC. TPC es una organización sin ánimo de lucro que estudia el proceso de transacción y desarrolla benchmarks para bases de datos. El término transacción se suele atribuir a aspectos bancarios. Sin embargo, en este contexto una transacción es un conjunto de operaciones de un computador que incluyen lectura y escritura en disco, llamadas a funciones del sistema operativo, o cualquier forma de transferencia de datos de un sistema a otro. Los benchmarks que produce TPC miden el proceso de transacción y el rendimiento de las bases de datos en términos del número transacciones que se pueden hacer por unidad de tiempo \cite{intro-tpc}.
 	
 	TPCx-HS se desarrolló para proveer de un rendimiento fiable, rendimiento relación precio, disponibilidad y, opcionalmente, datos de consumo de energía de los sistemas de Big Data. TPCx-HS fue el primer benchmark objetivo que permitía medir tanto hardware como software, como el Hadoop Runtime. \cite{info-tpc}
 	
@@ -353,7 +353,7 @@
 		La carga de trabajo de TPCx-HS consiste en los siguientes módulos \cite{tpcxhs}:
 		
 		\begin{itemize}
-			\item HSGen: es un programa que genera los datos según factor de escala, que suele estar entre un 1TB y 10000TB(se denota TB como terabytes).
+			\item HSGen: es un programa que genera los datos según factor de escala, que suele estar entre un 1TB y 10000TB (se denota TB como terabytes).
 			\item HSDataCheck: es un programa que comprueba el cumplimiento del conjunto de datos.
 			\item HSSort: es un programa que ordena los datos según un orden total.
 			\item HSValidate: es un programa que valida la salida, es decir, los resultados obtenidos.
@@ -361,16 +361,16 @@
 	
 	\subsection{Fases de ejecución del benchmark}
 	
-		Una ejecución válida consiste en cinco fases separadas que corren secuencialmente. Estas fases no se solapan en su ejecución, es decir, el comienzo de la fase 2 no puede darse hasta que la fase 1 esté completa. Para que comience cada fase se necesita de un script llamado <TPCx-HS-master> que es el que inicia cada fase y que puede ser ejecutado desde cualquier nodo del sistema que se está bajo test \cite{tpcxhs}.
+		Una ejecución válida consiste en cinco fases separadas que corren secuencialmente. Estas fases no se solapan en su ejecución, es decir, el comienzo de la fase 2 no puede darse hasta que la fase 1 esté completa. Para que comience cada fase se necesita de un script llamado <TPCx-HS-master> que es el que inicia cada fase y que puede ser ejecutado desde cualquier nodo del sistema que esté bajo el test \cite{tpcxhs}.
 		
 		Las fases de ejecución son las siguientes:
 		
 		\begin{itemize}
-			\item Fase 1: se generan los datos de entrada usando HSGen. Se han de copiar en un soporte duradero y hacer la copia replicada en tres discos (llamado \textit{"3-ways replication"}), que suelen ser el principal, el secundario y uno de respaldo\cite{replication}.
+			\item Fase 1: se generan los datos de entrada usando HSGen. Se han de copiar en un soporte duradero y hacer la copia replicada en tres discos (llamado \textit{"3-ways replication"}), que suelen ser el principal, el secundario y uno de respaldo \cite{replication}.
 			\item Fase 2: se verifica la validez del conjunto de datos usando HSDataCheck. El programa sirve para verificar la cardinalidad, tamaño y el factor de réplica de los datos generados. Si el programa reporta un fallo, entonces la ejecución no es válida y se deberá volver a empezar.
 			\item Fase 3: se lanza el programa HSSort con el que se ordena los datos de entrada. Esta fase muestra los datos de entrada y los datos de salida (los datos ya ordenados). Al igual que en la fase 1, se han de copiar los datos en un soportde duradero y hacer el \textit{"3-ways replication"}.
 			\item Fase 4: se comprueba la viabilidad del conjunto de datos usando HSDataCheck. El programa comprueba la cardinalidad de los datos, tamaño y el factor de replicación de los datos ordenados. Si el programa reporta un fallo, entonces la ejecución no es válida y se deberá volver a empezar.
-			\item Fase 5: validación de los datos con HSValidate. Como su nombre indica, HSValidate comprueba que los datos de salida sean correctos y si reporta el fallo consisten en que el HSSort no generó el correcto orden de salida, la ejecución se considerará inválida.
+			\item Fase 5: validación de los datos con HSValidate. Como su nombre indica, HSValidate comprueba que los datos de salida sean correctos. si reporta el fallo consisten en que el HSSort no generó el correcto orden de salida, la ejecución se considerará inválida.
 		\end{itemize}
 		
 		El benchmark consiste en dos ejecuciones (ver la Figura \ref{fig:ejecucionesTPC}) y cada vez que se ejecuta una fase se ha de especificar el tiempo que ha llevado la ejecución. Entre la primera ejecución de las cinco fases y la segunda, hay una fase intermedia que sirve para limpiar el sistema, conocida como \textit{"file system cleanup"} y, lógicamente, no se permite ninguna actividad durante dicha fase. Una vez realizadas las dos ejecuciones se obtiene el tiempo total de ejecución que servirá para calcular datos en la fase de medición.
@@ -438,9 +438,22 @@
 	Podemos decir que Big Data es un área que aúna tanto la ingeniería del software como la ingeniería de servidores y la ciencia de datos.
 
 %-----------------------------------------------------------------------------------------------------
-%	SECCIÓN X: REFERENCIAS
+%	SECCIÓN 6: REFERENCIAS
 %-----------------------------------------------------------------------------------------------------
 
 \printbibliography
+
+%-----------------------------------------------------------------------------------------------------
+%	SECCIÓN 7: ANEXO
+%-----------------------------------------------------------------------------------------------------
+
+\section*{Anexo}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=14cm]{./images/MapReduce-MasterWorkers.png}
+		\caption{Funcionamiento interno de Map Reduce.} 
+		\label{fig:map-reduce:master-workers}
+	\end{figure}
 
 \end{document}
