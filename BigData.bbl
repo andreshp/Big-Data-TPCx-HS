@@ -404,6 +404,24 @@
   \endverb
 \endentry
 
+\entry{flink}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {news}{n.}%
+     {KDNuggets}{K.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{nK1}
+  \strng{fullhash}{nK1}
+  \field{sortinit}{N}
+  \field{title}{Fast Big Data: Apache Flink vs Apache Spark for Streaming Data}
+  \verb{url}
+  \verb http://www.kdnuggets.com/2015/11/fast-big-data-apache-flink-spark-strea
+  \verb ming.html
+  \endverb
+\endentry
+
 \entry{desv-bench}{misc}{}
   \name{author}{1}{}{%
     {{}%
@@ -609,6 +627,23 @@
   TPCx-HS, the First Vendor-Neutral, Industry Standard Big Data Benchmark}
   \verb{url}
   \verb http://www.tpc.org/information/other/tpcx-hs_press_release_final.pdf
+  \endverb
+\endentry
+
+\entry{spark}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {University}{U.}%
+     {Big~Data}{B.~D.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{UBD1}
+  \strng{fullhash}{UBD1}
+  \field{sortinit}{U}
+  \field{title}{Spark Fundamentals I}
+  \verb{url}
+  \verb http://bigdatauniversity.com/courses/spark-fundamentals/
   \endverb
 \endentry
 

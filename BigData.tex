@@ -335,7 +335,17 @@
 
 \section{Spark y Flink} \label{sec:spark-flink}
 
-
+	Spark es un sistema de computación de código abierto enfocado a la rapidez y facilidad de uso. Es ideal si se tiene una gran cantidad de datos para los que se requiere un procesamiento de baja latencia, lo cual un programa de Map Reduce no provee. Por ello, Spark es una alternativa que trabaja cien veces más rápido de lo que lo hace Map Reduce para, por ejemplo, algoritmos iterativos. Spark aporta velocidad en la computación con clusters en memoria(no sé si esta bien traducido esta última frase)\cite{spark}.
+	
+	Spark combina SQL, continuos y complejos análisis de la misma aplicación para manejar un amplio rango de los escenarios que surgen al procesar los datos.
+	
+	Flink es una herramienta de procesamiento para Big Data y es conocida por procesar grades cantidades de datos rápidamente con baja latencia y con una alta tolerancia de fallos en sistemas distribuidos de larga escala. La característica que lo define es la habilidad de procesar flujos de datos en tiempo real. Flink surgió como un proyecto académico de código abierto conocido como Stratosphere \cite{flink}.
+	
+	\subsection{Comparación de Spark y Flink}
+	
+	En cuanto al procesamiento de datos, Spark realiza un procesamiento por lotes mientras que Flink procesa los datos en tiempo real. Spark procesa bloques de data mientras que Flink puede procesar filas tras filas de datos en tiempo real, por lo que hay un mínimo de latencia con Spark, lo que no ocurre con Flink.
+	
+	En cuanto a las iteraciones, Spark permite iteraciones de datos en lotes, pero Flink puede iterar sobre los datos usando su arquitectura en tiempo real.
 %-----------------------------------------------------------------------------------------------------
 %	SECCIÓN 4
 %-----------------------------------------------------------------------------------------------------
