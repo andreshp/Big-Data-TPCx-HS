@@ -229,7 +229,7 @@
 	
 		En la Sección \ref{sec:big-data:que-es} destacábamos dos problemas del tratamiento de conjuntos de datos masivos: el conjunto de datos puede no caber en memoria principal y se necesita una gran capacidad de cómputo para ejecutar algoritmos sobre este. La solución a este problema suele ser utilizar servidores de altas prestaciones con procesamiento en paralelo y distribuido.
 			
-		Los servidores de altas prestaciones (alguna descripción). .... 
+		Los computadores NUMA sirven para la computación de altas prestaciones, entonces, ¿por qué usar servidores de altas prestaciones? ?????....  Los servidores de altas prestaciones se usan debido a que, como se trabaja con muchos datos, se necesita una gran capacidad de computación y por ello, se usan estos servidores que suelen tener un elevado número de cores, lo que permite una mayor velocidad a la hora de computar los datos. 
 		
 		Sin embargo, el uso de servidores de altas prestaciones no soluciona de forma directa el problema. Supóngase que una empresa compra un servidor en el cual ejecuta un algoritmo distribuido con eficiencia $\theta(n^2)$ sobre conjuntos de datos masivos. En el momento en el que se compra el hardware consiguen ejecutar el algoritmo en 8 horas, obteniendo resultados en el mismo día. Sin embargo, siguiendo la tendencia mostrada en la Figura \ref{fig:zeta-bytes}, es probable que el conjunto de datos a utilizar se duplique en tamaño dentro de un año. En tal caso el servidor puede tener problemas desde el punto de vista de la memoria y el flujo de dato debido a los cuellos de botella que pueda mostrar el hardware. Por otro lado, aunque no hubiese problemas con la memoria, el algoritmo tardará como mínimo 4 veces más en ejecutarse al tener complejidad cuadrática. Por tanto, la ejecución pasará a durar 32 horas, no pudiendo obtener resultados en un mismo día. 
 				
@@ -346,7 +346,7 @@
 	
 	Una técnica utilizada para ver qué sistema nos da más prestaciones son los benchmarks, uno de ellos es TPC. TPC es una organización sin ánimo de lucro que estudia el proceso de transacción y desarrolla benchmarks para bases de datos. El término transacción se suele atribuir a aspectos bancarios. Sin embargo, en este contexto una transacción es un conjunto de operaciones de un computador que incluyen lectura y escritura en disco, llamadas a funciones del sistema operativo, o cualquier forma de transferencia de datos de un sistema a otro. Los benchmarks que produce TPC miden el proceso de transacción y el rendimiento de las bases de datos en términos del número transacciones que se pueden hacer por unidad de tiempo \cite{intro-tpc}.
 	
-	TPCx-HS se desarrolló para proveer de un rendimiento fiable, rendimiento relación precio, disponibilidad y, opcionalmente, datos de consumo de energía de los sistemas de Big Data. TPCx-HS fue el primer benchmark objetivo que permitía medir tanto hardware como software, como el Hadoop Runtime. \cite{info-tpc}
+	TPCx-HS (Transaction Processing Performance Council Express Hadoop System) se desarrolló para proveer de una medida del rendimiento fiable, rendimiento relación precio, disponibilidad y, opcionalmente, datos de consumo de energía de los sistemas de Big Data que usen Hadoop. TPCx-HS fue el primer benchmark objetivo que permitía medir tanto hardware como software, como el Hadoop Runtime. \cite{info-tpc}
 	
 	\subsection{Carga de trabajo de TPCx-HS}
 	
@@ -360,12 +360,10 @@
 		\end{itemize}
 	
 	\subsection{Fases de ejecución del benchmark}
-	
-<<<<<<< HEAD
 		Una ejecución válida consiste en cinco fases separadas que corren secuencialmente. Estas fases no se solapan en su ejecución, es decir, el comienzo de la fase 2 no puede darse hasta que la fase 1 esté completa. Para que comience cada fase se necesita de un script llamado $<TPCx-HS-master>$ que es el que inicia cada fase y que puede ser ejecutado desde cualquier nodo del sistema que se está bajo test \cite{tpcxhs}.
-=======
+		
 		Una ejecución válida consiste en cinco fases separadas que corren secuencialmente. Estas fases no se solapan en su ejecución, es decir, el comienzo de la fase 2 no puede darse hasta que la fase 1 esté completa. Para que comience cada fase se necesita de un script llamado <TPCx-HS-master> que es el que inicia cada fase y que puede ser ejecutado desde cualquier nodo del sistema que esté bajo el test \cite{tpcxhs}.
->>>>>>> origin/master
+
 		
 		Las fases de ejecución son las siguientes:
 		
@@ -374,7 +372,7 @@
 			\item Fase 2: se verifica la validez del conjunto de datos usando HSDataCheck. El programa sirve para verificar la cardinalidad, tamaño y el factor de réplica de los datos generados. Si el programa reporta un fallo, entonces la ejecución no es válida y se deberá volver a empezar.
 			\item Fase 3: se lanza el programa HSSort con el que se ordena los datos de entrada. Esta fase muestra los datos de entrada y los datos de salida (los datos ya ordenados). Al igual que en la fase 1, se han de copiar los datos en un soportde duradero y hacer el \textit{"3-ways replication"}.
 			\item Fase 4: se comprueba la viabilidad del conjunto de datos usando HSDataCheck. El programa comprueba la cardinalidad de los datos, tamaño y el factor de replicación de los datos ordenados. Si el programa reporta un fallo, entonces la ejecución no es válida y se deberá volver a empezar.
-			\item Fase 5: validación de los datos con HSValidate. Como su nombre indica, HSValidate comprueba que los datos de salida sean correctos. si reporta el fallo consisten en que el HSSort no generó el correcto orden de salida, la ejecución se considerará inválida.
+			\item Fase 5: una vez que en la fase 4 se ha comprobado la cardinalidad de los datos antes y después de ordenarlos, se procede a la validación de los datos con HSValidate. Como su nombre indica, HSValidate comprueba que los datos de salida sean correctos, es decir, se realiza la verificación de la replicación de los datos. Si reporta el fallo consisten en que el HSSort no generó el correcto orden de salida, la ejecución se considerará inválida.
 		\end{itemize}
 		
 		El benchmark consiste en dos ejecuciones (ver la Figura \ref{fig:ejecucionesTPC}) y cada vez que se ejecuta una fase se ha de especificar el tiempo que ha llevado la ejecución. Entre la primera ejecución de las cinco fases y la segunda, hay una fase intermedia que sirve para limpiar el sistema, conocida como \textit{"file system cleanup"} y, lógicamente, no se permite ninguna actividad durante dicha fase. Una vez realizadas las dos ejecuciones se obtiene el tiempo total de ejecución que servirá para calcular datos en la fase de medición.
@@ -408,11 +406,12 @@
 			\item T es el tiempo total que se obtuvo al sumar el tiempo de las dos ejecuciones. \\
 		\end{itemize}	
 		
-		La medida del rendimiento-precio se puede calcular con la siguiente fórmula:
+		La medida del rendimiento-precio se puede calcular con la siguiente fórmula. Dicha medida usa una lógica negativa ya que a menor valor se tiene un mejor rendimiento-precio.
 		
 		$$ \$/HSph@SF = \frac{P}{HSph@SF} $$
 		
 		donde P es el costo del sistema en el que se han hecho las ejecuciones.
+		
 		
 		\subsection{Comparación de la medida}
 		
@@ -424,14 +423,7 @@
 		\end{itemize}
 		
 		
-		Se presenta a continuación una tabla con los resultados para algunas compañías donde se puede ver el factor de escala usado, el sistema y los resultados obtenidos tras la ejecución del benchmark.
-		
-		\begin{figure}[H]
-			\centering
-			\includegraphics[width=15cm]{./images/examples.png}
-			\caption{Tabla de resultados obtenidos con TPCx-HS \cite{ejemplos}.} 
-			\label{fig:ejemplo}
-		\end{figure}
+		La figura \ref{fig:ejemplo} (véase el anexo) presenta una tabla con los resultados para algunas compañías donde se puede ver el factor de escala usado, el sistema y los resultados obtenidos tras la ejecución del benchmark.
 
 %-----------------------------------------------------------------------------------------------------
 %	SECCIÓN 5: CONCLUSIÓN
@@ -460,4 +452,11 @@
 		\label{fig:map-reduce:master-workers}
 	\end{figure}
 
+			
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=15cm]{./images/examples.png}
+		\caption{Tabla de resultados obtenidos con TPCx-HS \cite{ejemplos}.} 
+		\label{fig:ejemplo}
+	\end{figure}
 \end{document}
