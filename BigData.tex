@@ -119,12 +119,23 @@
 %\usepackage{title2}
 %\usepackage{title3}
 
+% Primera letra más grande
+\usepackage{lettrine}
+
+% Primera página diferente
+\fancypagestyle{plain}
+{
+	\fancyhf{}
+	\renewcommand{\headrule}{}
+	\rfoot{Página\ \thepage\ de\ \protect\pageref{LastPage}}
+}
+
 %-----------------------------------------------------------------------------------------------------
 %	TÍTULO, AUTOR Y OTROS DATOS DEL DOCUMENTO
 %-----------------------------------------------------------------------------------------------------
 
 % Título del documento.
-\newcommand{\doctitle}{Big Data y TPCx-HS}
+\newcommand{\doctitle}{Big Data: tecnologías y benchmarks}
 % Subtítulo.0
 \newcommand{\docsubtitle}{}
 % Fecha.
@@ -143,32 +154,51 @@
 % Resumen del documento. Va en la portada.
 % Puedes también dejarlo vacío, en cuyo caso no aparece en la portada.
 %\newcommand{\docabstract}{}
-\newcommand{\docabstract}{En este texto puedes incluir un resumen del documento. Este informa al lector sobre el contenido del texto, indicando el objetivo del mismo y qué se puede aprender de él.}
+\newcommand{\docabstract}{
+	\setlength\parindent{0pt}
+	
+	El término Big Data se ha vuelto muy popular, pudiendo encontrarlo a menudo en múltiples noticias de la prensa tecnológica. Estas noticias destacan principalmente dos aspectos de Big Data: la gran cantidad de datos a analizar y las posibles aplicaciones. Sin embargo, las tecnologías subyacentes son menos conocidas.
+
+	\kern2mm
+	En este trabajo presentamos una introducción a Big Data destacando el papel que ejerce en este ámbito la ingeniería de servidores. En primer lugar, motivamos y definimos el concepto de Big Data, mostrando la necesidad del desarrollo de nuevas tecnologías que permitan abordar los problemas asociados. Estas tecnologías se encuentran inherentemente ligadas a la ingeniería de servidores y a la computación con altas prestaciones. Posteriormente, explicamos map reduce, un nuevo paradigma de programación distribuida, y varias de las tecnologías que lo utilizan más importantes del estado del arte (Hadoop, Spark y Flink). Por último, introducimos TPCx-HS, un benchmark para máquinas que utilicen Hadoop y destacamos el trabajo que queda por hacer en este ámbito.}
+
+	\providecommand{\keywords}[1]{\textbf{\textit{Palabras clave---}} #1
+}
 
 \begin{document}
 
 \makeatletter\renewcommand{\ALG@name}{Algoritmo}
 
-\maketitle
+%\maketitle
 
-%-----------------------------------------------------------------------------------------------------
-%	ÍNDICE
-%-----------------------------------------------------------------------------------------------------
+\thispagestyle{plain}
 
-% Profundidad del Índice:
-%\setcounter{tocdepth}{1}
+\begin{center}
+	\huge{\textbf{\doctitle}}	
+\end{center}
 
-\newpage
-\tableofcontents
-\newpage
+\vspace*{0.5cm}
+
+\noindent\fbox{
+	\parbox{\textwidth}{
+		\kern3mm
+		\begin{abstract} 
+			\docabstract
+		\end{abstract}
+		\vspace*{0.3cm}
+		\centering\keywords{Big Data, map reduce, tecnología, benchmarks, ingeniería de servidores}
+
+		\kern3mm
+	}
+}
 
 %-----------------------------------------------------------------------------------------------------
 %	SECCIÓN 1: INTRODUCCIÓN
 %-----------------------------------------------------------------------------------------------------
 
 \section{Introducción} \label{sec:introduction}
-
-	Desde hace miles de años el ser humano ha investigado la manera de almacenar y recopilar información. Durante muchos siglos la escritura y la pintura eran los únicos mecanismos existentes. Posteriormente surgió la fotografía, los discos de vinilo... Sin embargo, poca información seguía ocupando mucho volumen físico. Gracias a los avances tecnológicos de las últimos décadas, hoy en día disponemos dispositivos electrónicos para el almacenamiento de datos binarios. Además, la evolución de estos dispositivos ha sido frenética. IBM comercializó el primer disco duro en 1956. Este constaba solamente de 5 mega bytes de capacidad \cite{hard-disks} mientras que actualmente podemos utilizar discos duros con más de 1 tera byte.
+	
+	\lettrine[lraise=0.1, nindent=0em, slope=-.5em]{D}{}esde hace miles de años el ser humano ha investigado la manera de almacenar y recopilar información. Durante muchos siglos la escritura y la pintura eran los únicos mecanismos existentes. Posteriormente surgió la fotografía, los discos de vinilo... Sin embargo, poca información seguía ocupando mucho volumen físico. Gracias a los avances tecnológicos de las últimos décadas, hoy en día disponemos dispositivos electrónicos para el almacenamiento de datos binarios. Además, la evolución de estos dispositivos ha sido frenética. IBM comercializó el primer disco duro en 1956. Este constaba solamente de 5 mega bytes de capacidad \cite{hard-disks} mientras que actualmente podemos utilizar discos duros con más de 1 tera byte.
 
 	La capacidad de cómputo y procesamiento de los computadores también ha crecido de forma exponencial. El primer ordenador comercial se presentó en 1951 y se conoce como  UNIVAC 1 \cite{first-commercial-computer}. Este computador tenía una frecuencia de $2.25$ mega hercios y $1000$ palabras de memoria principal o RAM \cite{caract}. Actualmente utilizamos procesadores con más de 2 giga hercios de frecuencia de reloj. Además, es habitual encontrar computadores con $8$ o más giga bytes de memoria principal, lo que permite trabajar con bastante información de forma eficiente. 
 
