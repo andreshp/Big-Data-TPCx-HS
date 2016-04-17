@@ -154,6 +154,14 @@
   \field{year}{2008}
 \endentry
 
+\entry{hadoop-doc}{misc}{}
+  \field{sortinit}{D}
+  \field{title}{Documentación oficial de Hadoop}
+  \verb{url}
+  \verb http://hadoop.apache.org/
+  \endverb
+\endentry
+
 \entry{benchmarking}{misc}{}
   \name{author}{1}{}{%
     {{}%
@@ -484,6 +492,29 @@
   \field{sortinit}{S}
   \field{title}{Doing data science: Straight talk from the frontline}
   \field{year}{2013}
+\endentry
+
+\entry{hpc}{book}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Severance}{S.}%
+     {Charles}{C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Dowd}{D.}%
+     {Kevin}{K.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {O'Reilly Media}%
+  }
+  \strng{namehash}{SCDK1}
+  \strng{fullhash}{SCDK1}
+  \field{sortinit}{S}
+  \field{title}{High Performance Computing}
+  \field{year}{1998}
 \endentry
 
 \entry{internet}{misc}{}
