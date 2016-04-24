@@ -71,13 +71,9 @@
 %-----------------------------------------------------------------------------------------------------
 
 % Colours
-\definecolor{backg}{HTML}{F2F2F2}    % Background
-\definecolor{title}{HTML}{bdc3d1}    % Titles
-\definecolor{comments}{HTML}{BDBDBD} % Comments
-\definecolor{keywords}{HTML}{08388c} % Keywords
-\definecolor{strings}{HTML}{FA5858}  % Strings
-\definecolor{links}{HTML}{2C2C95}    % Links
-\definecolor{bars}{HTML}{045FB4}     % Bars (graphics)
+\definecolor{ChetwodeBlue}{HTML}{6b77ad}    % Background
+\definecolor{Jaguar}{HTML}{262731}    % Titles
+\definecolor{TurkishRose}{HTML}{b46275} % Comments
 
 % New commands
 \newcommand{\importsection}[1]{\input{./Sections/#1}}           % Include sections from sections directory.
@@ -98,19 +94,29 @@
 %----------------------------------------------------------------------------------------
 
 % Theme and colour theme
-  \usetheme{Dresden}
-  \usecolortheme{dolphin}
-  \useinnertheme{circles}
-  \setbeamercovered{transparent}
+\usetheme{Dresden}
+\usecolortheme{dolphin}
+\useinnertheme{circles}
+\setbeamercovered{transparent}
+
+\setbeamercolor{title}{fg=ChetwodeBlue}
+\setbeamercolor{frametitle}{fg=ChetwodeBlue}
+\setbeamercolor{structure}{fg=Jaguar}
+
+\setbeamertemplate{itemize item}{\color{TurkishRose}$\bullet$}
+\setbeamertemplate{itemize subitem}{\color{ChetwodeBlue}$\circ$}
+\setbeamercolor{section number projected}{bg=TurkishRose}
+
 % Blocks colour
-  \setbeamercolor{block title}{bg=title,fg=links}
-  \setbeamercolor{block body}{bg=backg,fg=black}
-  \setbeamercolor{block title alerted}{fg=red!70!black,bg=title!92!red}
-  \setbeamercolor{block body alerted}{fg=black,bg=backg}
-  \setbeamercolor{block title example}{fg=green!70!black,bg=title!92!green}
-  \setbeamercolor{block body example}{fg=black,bg=backg}
+%\setbeamercolor{structure}{bg=ChetwodeBlue,fg=Jaguar}
+%\setbeamercolor{block title}{bg=ChetwodeBlue,fg=ChetwodeBlue}
+%\setbeamercolor{block body}{bg=backg,fg=black}
+%\setbeamercolor{block title alerted}{fg=red!70!black,bg=title!92!red}
+%\setbeamercolor{block body alerted}{fg=black,bg=backg}
+%\setbeamercolor{block title example}{fg=green!70!black,bg=title!92!green}
+%\setbeamercolor{block body example}{fg=black,bg=backg}
 % Links (tex.stackexchange.com/questions/13423)
-\hypersetup{colorlinks,linkcolor=,urlcolor=links}
+\hypersetup{colorlinks,linkcolor=,urlcolor=TurkishRose}
 % Remove navigation links (stackoverflow.com/questions/3017030)
 \setbeamertemplate{navigation symbols}{}
 
@@ -127,88 +133,25 @@
 %	TITLE PAGE
 %-----------------------------------------------------------------------------------------------------
 
+\usepackage[framemethod=tikz]{mdframed}
+
+\newmdenv[tikzsetting={draw=Jaguar,fill=white,fill opacity=0.7, line width=4pt},
+backgroundcolor=none,leftmargin=100,rightmargin=0,innertopmargin=4pt]
+{titleBox}
+
 % Define the title page.
 \defbeamertemplate*{title page}{customized}[1][] {
-	
-	\begingroup
-	\centering
-	
-	% Top images.
-	\begin{columns}[c]
+
+		\vspace{0.48\paperheight}
+		\begin{titleBox}
+			\begin{beamercolorbox}[sep=2pt,center]{title}	
+				\usebeamerfont{title}\textbf{\inserttitle}\par
+			\end{beamercolorbox}
+			\begin{beamercolorbox}[sep=4pt,center]{author}	
+				\usebeamerfont{author}\insertauthor
+			\end{beamercolorbox}
+		\end{titleBox}
 		
-		\column{.25\textwidth}
-		
-		\includegraphics[width=\textwidth]{./Images/Logos/caepia.png}
-		
-		\column{.65\textwidth}
-		
-		\includegraphics[width=\textwidth]{./Images/Wallpapers/CAEPIA2015.png}
-		
-	\end{columns}
-	
-	% Gray bar after images.	
-	{\color{gray}\rule{\textwidth}{4pt}}
-	
-	% Title
-	\begin{beamercolorbox}[sep=2pt,center]{title}
-		%		\tikz[remember picture,overlay]\node[opacity=0.3]  {\includegraphics[width=\paperwidth,height=3cm]{./Images/Wallpapers/01.jpg}};
-		
-		\usebeamerfont{title}\textbf{\inserttitle}\par
-	\end{beamercolorbox}
-	
-	% Gray bar after title.
-	{\color{gray}\rule{\textwidth}{4pt}}
-	
-	\begin{beamercolorbox}[sep=4pt,center]{author}	
-		\usebeamerfont{author}\insertauthor
-	\end{beamercolorbox}
-	
-	\begin{tcolorbox}[colback=white,colframe=green!40!black]
-		
-		\begin{beamercolorbox}[sep=0pt]{institute}
-			
-			\begin{columns}[c]
-				
-				\column{.3\textwidth}
-				
-				\centering	
-				
-				\includegraphics[width=1.5cm]{./Images/Logos/ugr.jpg}
-				
-				\kern 2mm
-				
-				\includegraphics[width=1cm]{./Images/Logos/decsai.jpg}
-				
-				\column{.4\textwidth}
-				
-				\centering	
-				
-				\usebeamerfont{institute} Research Group on Soft Computing and Information Intelligent Systems (SCI2S)
-				
-				\kern 2mm
-				
-				\url{http://sci2s.ugr.es}
-				
-				\kern 2mm
-				
-				\usebeamerfont{institute} Dept. of Computer Science and Articifial Intelligence
-				
-				\kern 2mm
-				
-				\usebeamerfont{institute} University of Granada, Spain
-				
-				\column{.3\textwidth}
-				
-				\centering	
-				
-				\includegraphics[width=0.8\textwidth]{./Images/Logos/sci2s.png}
-				
-			\end{columns}
-		\end{beamercolorbox}
-	\end{tcolorbox}
-	
-	\endgroup
-	\vfill	
 }
 
 %----------------------------------------------------------------------------------------
@@ -216,7 +159,7 @@
 %----------------------------------------------------------------------------------------
 
 % Title
-\title{Big Data: Map Reduce y TCPx-HS}
+\title{Big Data, Map Reduce y TCPx-HS}
 
 % Authors, e-mails and addresses.
 \author[Andrés Herrera Poyatos, Javier Poyatos Amador]{
@@ -235,9 +178,12 @@
 \begin{document}
 
 	% Title page.
-	\begin{frame}[plain]
-		\titlepage
-	\end{frame}
+	{
+		\usebackgroundtemplate{\includegraphics[width=1\paperwidth]{./Images/Wallpapers/BigDataCropped.jpg}}
+		\begin{frame}[plain]
+			\titlepage
+		\end{frame}			
+	}
 
 	% Work motivation. Population diverisity. Target.
 	\importsection{Motivacion.tex}

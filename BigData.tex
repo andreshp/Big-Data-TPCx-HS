@@ -115,7 +115,7 @@
 
 % Elija uno de los siguientes formatos.
 % No olvide incluir los archivos .sty asociados en el directorio del documento.
-\usepackage{title1}
+%\usepackage{title1}
 %\usepackage{title2}
 %\usepackage{title3}
 
@@ -135,7 +135,7 @@
 %-----------------------------------------------------------------------------------------------------
 
 % Título del documento.
-\newcommand{\doctitle}{Big Data: tecnologías y benchmarks}
+\newcommand{\doctitle}{Big Data, Map Reduce y TPCx-HS}
 % Subtítulo.0
 \newcommand{\docsubtitle}{}
 % Fecha.
@@ -160,7 +160,7 @@
 	El término Big Data se ha vuelto muy popular, pudiendo encontrarlo a menudo en múltiples noticias de la prensa tecnológica. Estas noticias destacan principalmente dos aspectos de Big Data: la gran cantidad de datos a analizar y las posibles aplicaciones. Sin embargo, las tecnologías subyacentes son menos conocidas.
 
 	\kern2mm
-	En este trabajo presentamos una introducción a Big Data destacando el papel que ejerce en este ámbito la ingeniería de servidores. En primer lugar, motivamos y definimos el concepto de Big Data, mostrando la necesidad de desarrollar nuevas tecnologías que permitan abordar problemas de este campo. El desarrollo de estas tecnologías se encuentra ligado a la ingeniería de servidores y a la computación de altas prestaciones. Posteriormente, explicamos map reduce, un nuevo paradigma de programación distribuida, y varias de las tecnologías que lo utilizan más importantes del estado del arte (Hadoop, Spark y Flink). Por último, introducimos TPCx-HS, un benchmark para máquinas que usen Hadoop, y destacamos el trabajo que queda por hacer en este ámbito.}
+	En este trabajo presentamos una introducción a Big Data destacando el papel que ejerce en este ámbito la ingeniería de servidores. En primer lugar, motivamos y definimos el concepto de Big Data, mostrando la necesidad de desarrollar nuevas tecnologías que permitan abordar problemas de este campo. El desarrollo de estas tecnologías se encuentra ligado a la ingeniería de servidores y a la computación de altas prestaciones. Posteriormente, explicamos map reduce, un nuevo paradigma de programación distribuida, y Hadoop, una de las tegnologías que implementa Map Reduce más importantes del estado del arte. Por último, introducimos TPCx-HS, un benchmark para computadores que utilicen Hadoop, y destacamos el trabajo que queda por hacer en este ámbito.}
 
 	\providecommand{\keywords}[1]{\textbf{\textit{Palabras clave---}} #1
 }
@@ -186,7 +186,7 @@
 			\docabstract
 		\end{abstract}
 		\vspace*{0.3cm}
-		\centering\keywords{Big Data, map reduce, benchmarks, ingeniería de servidores}
+		\centering\keywords{Big Data, Map Reduce, Hadoop, TPCx-HS, benchmarks, ingeniería de servidores}
 
 		\kern3mm
 	}
@@ -200,13 +200,13 @@
 	
 	\lettrine[lraise=0.1, nindent=0em, slope=-.5em]{D}{}esde hace miles de años el ser humano ha investigado la manera de almacenar y recopilar información. Durante muchos siglos la escritura y la pintura eran los únicos mecanismos existentes. Posteriormente surgió la fotografía, los discos de vinilo... Sin embargo, poca información seguía ocupando mucho volumen físico. Gracias a los avances tecnológicos de las últimos décadas, hoy en día disponemos dispositivos electrónicos para el almacenamiento de datos binarios. Además, la evolución de estos dispositivos ha sido frenética. IBM comercializó el primer disco duro en 1956. Este constaba solamente de 5 mega bytes de capacidad \cite{hard-disks} mientras que actualmente podemos utilizar discos duros con más de 1 tera byte.
 
-	La capacidad de cómputo y procesamiento de los computadores también ha crecido de forma exponencial. El primer ordenador comercial se presentó en 1951 y se conoce como  UNIVAC 1 \cite{first-commercial-computer}. Este computador tenía una frecuencia de $2.25$ mega hercios y $1000$ palabras de memoria principal o RAM \cite{caract}. Actualmente utilizamos procesadores con más de 2 giga hercios de frecuencia de reloj. Además, es habitual encontrar computadores con $8$ o más giga bytes de memoria principal, lo que permite trabajar con bastante información de forma eficiente. 
+	La capacidad de cómputo y procesamiento de los computadores también ha crecido de forma exponencial. El primer ordenador comercial se presentó en 1951 y se conoce como  UNIVAC 1 \cite{first-commercial-computer}. Este computador tenía una frecuencia de $2.25$ mega hercios y $1000$ palabras de memoria principal o RAM \cite{caract}. Actualmente utilizamos procesadores con más de $2$ giga hercios de frecuencia de reloj. Además, es habitual encontrar computadores con $8$ o más giga bytes de memoria principal, lo que permite trabajar con bastante información de forma eficiente. 
 
 	Estas nuevas tecnologías han posibilitado que el almacenamiento de datos sea mucho más sencillo. Podemos guardar multitud de archivos en un dispositivo de unos centímetros y compartirlos con cualquier usuario. Además, el procesamiento de estos archivos a nivel de usuario es eficiente gracias a la velocidad de los computadores. 
 	
 	El mayor flujo de datos es producido en Internet. Aunque es relativamente joven, se hizo público en 1993, actualmente existen más de mil millones de páginas webs \cite{internet}. Además, multitud de dispositivos electrónicos se conectan e interaccionan con Internet (lo que se denomina Internet de las cosas \cite{big-data-internet-cosas}). Los usuarios de estos dispositivos utilizan aplicaciones web y redes sociales, publicando textos y archivos multimedia. 
 	
-	Todo este cúmulo de tecnologías y actividades ha dado lugar a que hoy en día haya más de $10$ zeta bytes de información almacenados ($1$ ZB = $10^{12}$ GB). La Figura \ref{fig:zeta-bytes} muestra la evolución histórica de la cantidad de información acumulada por el ser humano. Podemos observar que cada año se generan varios zeta bytes de información, el crecimiento es exponencial. Hasta 2003 se habían almacenado en total $5$ exa bytes de información ($1$ EB = $10^9$ GB). Actualmente, generamos esta cantidad de datos en dos días \cite{big-data}. Podemos decir que vivimos en una sociedad digital o sociedad de la información.
+	Todo este cúmulo de tecnologías y actividades ha dado lugar a que hoy en día haya más de $10$ zeta bytes de información almacenados ($1$ ZB = $10^{12}$ GB). La Figura \ref{fig:zeta-bytes} muestra la evolución histórica de la cantidad de información acumulada por el ser humano. Podemos observar que cada año se generan varios zeta bytes de información, el crecimiento es exponencial. Hasta 2003 se habían almacenado en total $5$ exa bytes de información ($1$ EB = $10^9$ GB). Actualmente, generamos esta cantidad de datos en dos días \cite{big-data}. Por tanto, podemos concluir que vivimos en una sociedad digital o sociedad de la información.
 
 	\begin{figure}[H]
        	\centering
@@ -217,13 +217,13 @@
 
 	En resumen, a pesar de la evolución de los computadores en todas sus facetas, la cantidad de datos e información a procesar y almacenar crece incluso a mayor velocidad. Por ejemplo, encontramos empresas como Facebook y Google cuyos usuarios generan una gran cantidad de datos diariamente. Estos datos deben ser tratados en tiempo real para poder mantener los sistemas de recomendaciones asociados. En estos casos se requieren servidores de altas prestaciones para poder tratar tal cantidad de datos en un tiempo razonable. Estos conjuntos de datos adquieren el calificativo ``masivos''. El desarrollo de nuevas tecnologías, algoritmos y herramientas para tratar de forma eficiente conjuntos de datos masivos es lo que se conoce como Big Data \cite{big-data-herrera}.
 	
-	En este trabajo presentamos una introducción a Big Data y a las diferentes herramientas software existentes, destacando el papel de la ingeniería de servidores en este contexto. En particular, incidimos en la importancia del desarrollo de nuevos benchmarks que permitan evaluar las tecnologías de Big Data de forma clara y objetiva.
+	En este trabajo presentamos una introducción a Big Data y a varias herramientas software existentes, destacando el papel de la ingeniería de servidores en este contexto. En particular, incidimos en la importancia del desarrollo de nuevos benchmarks que permitan evaluar las tecnologías de Big Data de forma clara y objetiva.
 
-	El resto del texto se organiza como sigue. La Sección \ref{sec:big-data} contiene una descripción del concepto de Big Data. En la Sección \ref{sec:mr-hadoop} introducimos el paradigma de programación map reduce y la tecnología libre que lo implementa, denominada Hadoop. En la Sección \ref{sec:spark-flink} describimos las nuevas tecnologías que han surgido para cohesionar la filosofía map reduce con el procesamiento iterativo. Estas se denominan Spark y Flink. En la Sección \ref{sec:tpcx-hs} explicamos uno de los benchmarks existentes para las tecnologías Big Data, denominado TPCx-HS. Por último, en la Sección \ref{sec:conclusion} presentamos las conclusiones obtenidas.
+	El resto del texto se organiza como sigue. La Sección \ref{sec:big-data} contiene una descripción del concepto de Big Data. En la Sección \ref{sec:mr-hadoop} introducimos el paradigma de programación distribuida Map Reduce y una de las tecnologías libres que lo implementa, denominada Hadoop. En la Sección \ref{sec:tpcx-hs} explicamos uno de los benchmarks existentes para las tecnologías Big Data, denominado TPCx-HS. Por último, en la Sección \ref{sec:conclusion} presentamos las conclusiones obtenidas.
 
 \section{Big Data} \label{sec:big-data}
 	
-	En esta sección profundizamos en el concepto de big data y en su relación con la ingeniería de servidores. En primer lugar, en la Sección \ref{sec:big-data:que-es} describimos qué es Big Data y qué tipos de problemas involucra. Además, destacamos la importancia de Big Data en el ámbito empresarial y científico. Por último, en la Sección \ref{sec:big-data:ise} mostramos que la ingeniería de servidores es esencial en Big Data debido al uso de los servidores de altas prestaciones para el tratamiento de conjuntos de datos masivos.
+	En esta sección profundizamos en el concepto de big data y en su relación con la ingeniería de servidores. En primer lugar, en la Sección \ref{sec:big-data:que-es} describimos qué es Big Data y qué tipos de problemas involucra. Además, destacamos la importancia de Big Data en el ámbito empresarial y científico. Por último, en la Sección \ref{sec:big-data:ise} mostramos que la ingeniería de servidores es esencial en Big Data debido al uso de la computación de altas prestaciones para el tratamiento de conjuntos de datos masivos.
 
 	\subsection{¿Qué es Big Data?} \label{sec:big-data:que-es}
 	
@@ -369,43 +369,6 @@
 		
 		Además de estos módulos básicos, Hadoop incluye otros subproyectos como Hive, que utiliza Map Reduce para realizar búsquedas SQL sobre los datos almacenados con HDFS, o Spark, que estudiaremos en la Sección \ref{sec:spark-flink}.
 		
-
-%-----------------------------------------------------------------------------------------------------
-%	SECCIÓN 3
-%-----------------------------------------------------------------------------------------------------
-
-\section{Spark y Flink} \label{sec:spark-flink}
-
-	El paradigma de programación distribuida Map Reduce presenta varios problemas. En primer lugar, no todos los algoritmos pueden formularse de forma eficiente utilizando las funciones map y reduce. Por ejemplo, encontramos algoritmos iterativos de machine learning como boosting cuyas iteraciones dependen de los resultados anteriores. En cada iteración habría que ejecutar de nuevo Map Reduce, teniendo que distribuir el conjunto de datos de nuevo en memoria, lo que supone un gran tiempo perdido.
-
-Apache Spark [7] started as a research project at UC Berkeley
-in the AMPLab, was started with a goal to design a
-programming model that supports a much wider class of
-applications than MapReduce, while maintaining its automatic
-fault tolerance.
-Spark offers an abstraction called Resilient distributed
-Datasets (RDDs) [8] to support these applications efficiently.
-RDDs can be stored in memory between queries without
-requiring replication. Instead, they rebuild lost data on failure
-using lineage: each RDD remembers how it was built from
-other datasets (by transformations like map, join or groupBy)
-to rebuild itself. RDDs allow Spark to outperform existing
-models by up to 100x in multi-pass analytics. RDDs can
-support a wide variety of iterative algorithms, as well as
-interactive data mining and a highly efficient SQL engine
-Shark [9].
-
-	Spark es un sistema de computación de código abierto enfocado a la rapidez y facilidad de uso. Es ideal si se tiene una gran cantidad de datos para los que se requiere un procesamiento de baja latencia, lo cual un programa de Map Reduce no provee. Por ello, Spark es una alternativa que trabaja cien veces más rápido de lo que lo hace Map Reduce para, por ejemplo, algoritmos iterativos. Spark aporta velocidad en la computación con clusters en memoria(no sé si esta bien traducido esta última frase)\cite{spark}.
-	
-	Spark combina SQL, continuos y complejos análisis de la misma aplicación para manejar un amplio rango de los escenarios que surgen al procesar los datos.
-	
-	Flink es una herramienta de procesamiento para Big Data y es conocida por procesar grades cantidades de datos rápidamente con baja latencia y con una alta tolerancia de fallos en sistemas distribuidos de larga escala. La característica que lo define es la habilidad de procesar flujos de datos en tiempo real. Flink surgió como un proyecto académico de código abierto conocido como Stratosphere \cite{flink}.
-	
-	\subsection{Comparación de Spark y Flink}
-	
-	En cuanto al procesamiento de datos, Spark realiza un procesamiento por lotes mientras que Flink procesa los datos en tiempo real. Spark procesa bloques de data mientras que Flink puede procesar filas tras filas de datos en tiempo real, por lo que hay un mínimo de latencia con Spark, lo que no ocurre con Flink.
-	
-	En cuanto a las iteraciones, Spark permite iteraciones de datos en lotes, pero Flink puede iterar sobre los datos usando su arquitectura en tiempo real.
 %-----------------------------------------------------------------------------------------------------
 %	SECCIÓN 4
 %-----------------------------------------------------------------------------------------------------
