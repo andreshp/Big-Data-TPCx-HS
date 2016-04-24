@@ -1,17 +1,22 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Authors: A. Herrera-Poyatos, F. Herrera
-% Tittle: Algoritmo memético equilibrado con diversificación voraz
-% 							 CAEPIA 2015
+% Authors: A. Herrera Poyatos, J. Poyatos Amador
+% Tittle: Big Data: Map Reduce y TPCx-HS
+% Date: April - 2016
+% University of Granada, Servers Engineering
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%----------------------------------------------------------------------------------------
-%	PACKAGES AND OTHER CONFIGURATIONS
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------------------------
+%	ESSENTIAL PACKAGES
+%-----------------------------------------------------------------------------------------------------
 
 % Beamer
 \PassOptionsToPackage{unicode}{hyperref}      % Avoid mistakes with non-ASCII characters.
 \PassOptionsToPackage{naturalnames}{hyperref} % tex.stackexchange.com/questions/10555
 \documentclass[compress]{beamer}
+
+%-----------------------------------------------------------------------------------------------------
+%	LANGUAGE CONFIGURATION
+%-----------------------------------------------------------------------------------------------------
 
 % Language
 \usepackage[spanish, es-tabla]{babel} % Translations
@@ -20,6 +25,10 @@
 \usepackage[T1]{fontenc}    % Allow copying and avoid errors
 \uselanguage{Spanish}       % Translations for beamer
 \languagepath{Spanish}      % (tex.stackexchange.com/questions/168208)
+
+%-----------------------------------------------------------------------------------------------------
+%	OTHER PACKAGES
+%-----------------------------------------------------------------------------------------------------
 
 % Mathematics
 \usepackage{amsfonts}
@@ -44,9 +53,6 @@
 % Color box
 \usepackage{tcolorbox}
 
-% Tables
-\usepackage{booktabs}
-
 % Notes
 \usepackage{todonotes}
 
@@ -60,9 +66,9 @@
     alt/.code args={<#1>#2#3}{\alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}}},
 }
 
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------------------------
 %	COMMANDS
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------------------------
 
 % Colours
 \definecolor{backg}{HTML}{F2F2F2}    % Background
@@ -80,11 +86,12 @@
 \newcommand{\twopartdef}[2]{ % Two parts defintion.
 	$\left\{
 	\begin{array}{l}
-		\text{#1} \\
-		\text{#2}
+	\text{#1} \\
+	\text{#2}
 	\end{array}
 	\right.$
 }
+
 % Background block
 \makeatletter
 \newbox\@backgroundblock
@@ -125,106 +132,110 @@
 % Avoid warnings in itemize
 \renewcommand\textbullet{\ensuremath{\bullet}}
 
-%----------------------------------------------------------------------------------------
-%	TITLE, AUTHOR AND OTHER INFO
-%----------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------------------------------
+%	TITLE PAGE
+%-----------------------------------------------------------------------------------------------------
 
 % Define the title page.
 \defbeamertemplate*{title page}{customized}[1][] {
 	
 	\begingroup
 	\centering
-
+	
 	% Top images.
 	\begin{columns}[c]
-
+		
 		\column{.25\textwidth}
 		
 		\includegraphics[width=\textwidth]{./Images/Logos/caepia.png}
 		
 		\column{.65\textwidth}
-
+		
 		\includegraphics[width=\textwidth]{./Images/Wallpapers/CAEPIA2015.png}
-
+		
 	\end{columns}
-
+	
 	% Gray bar after images.	
 	{\color{gray}\rule{\textwidth}{4pt}}
-
+	
 	% Title
 	\begin{beamercolorbox}[sep=2pt,center]{title}
-%		\tikz[remember picture,overlay]\node[opacity=0.3]  {\includegraphics[width=\paperwidth,height=3cm]{./Images/Wallpapers/01.jpg}};
+		%		\tikz[remember picture,overlay]\node[opacity=0.3]  {\includegraphics[width=\paperwidth,height=3cm]{./Images/Wallpapers/01.jpg}};
 		
 		\usebeamerfont{title}\textbf{\inserttitle}\par
 	\end{beamercolorbox}
-
+	
 	% Gray bar after title.
 	{\color{gray}\rule{\textwidth}{4pt}}
 	
 	\begin{beamercolorbox}[sep=4pt,center]{author}	
-	  	\usebeamerfont{author}\insertauthor
-    \end{beamercolorbox}
-
-	\begin{tcolorbox}[colback=white,colframe=green!40!black]
-
-	\begin{beamercolorbox}[sep=0pt]{institute}
-
-		\begin{columns}[c]
-
-			\column{.3\textwidth}
-
-			\centering	
-
-		  	\includegraphics[width=1.5cm]{./Images/Logos/ugr.jpg}
-		  	
-		  	\kern 2mm
-		  				
-		  	\includegraphics[width=1cm]{./Images/Logos/decsai.jpg}
-			
-			\column{.4\textwidth}
-	
-			\centering	
-						
-			\usebeamerfont{institute} Research Group on Soft Computing and Information Intelligent Systems (SCI2S)
-	
-			\kern 2mm
-					
-			\url{http://sci2s.ugr.es}
-
-			\kern 2mm
-	
-			\usebeamerfont{institute} Dept. of Computer Science and Articifial Intelligence
-			
-			\kern 2mm
-						
-			\usebeamerfont{institute} University of Granada, Spain
-
-			\column{.3\textwidth}
-
-			\centering	
-				
-			\includegraphics[width=0.8\textwidth]{./Images/Logos/sci2s.png}
-
-		\end{columns}
+		\usebeamerfont{author}\insertauthor
 	\end{beamercolorbox}
+	
+	\begin{tcolorbox}[colback=white,colframe=green!40!black]
+		
+		\begin{beamercolorbox}[sep=0pt]{institute}
+			
+			\begin{columns}[c]
+				
+				\column{.3\textwidth}
+				
+				\centering	
+				
+				\includegraphics[width=1.5cm]{./Images/Logos/ugr.jpg}
+				
+				\kern 2mm
+				
+				\includegraphics[width=1cm]{./Images/Logos/decsai.jpg}
+				
+				\column{.4\textwidth}
+				
+				\centering	
+				
+				\usebeamerfont{institute} Research Group on Soft Computing and Information Intelligent Systems (SCI2S)
+				
+				\kern 2mm
+				
+				\url{http://sci2s.ugr.es}
+				
+				\kern 2mm
+				
+				\usebeamerfont{institute} Dept. of Computer Science and Articifial Intelligence
+				
+				\kern 2mm
+				
+				\usebeamerfont{institute} University of Granada, Spain
+				
+				\column{.3\textwidth}
+				
+				\centering	
+				
+				\includegraphics[width=0.8\textwidth]{./Images/Logos/sci2s.png}
+				
+			\end{columns}
+		\end{beamercolorbox}
 	\end{tcolorbox}
-
+	
 	\endgroup
-    \vfill	
+	\vfill	
 }
 
+%----------------------------------------------------------------------------------------
+%	TITLE, AUTHOR AND OTHER INFO
+%----------------------------------------------------------------------------------------
+
 % Title
-\title{Algoritmo Memético Equilibrado \\ con Diversificación Voraz}
+\title{Big Data: Map Reduce y TCPx-HS}
 
 % Authors, e-mails and addresses.
-\author[Andrés Herrera-Poyatos, Francisco Herrera]{
-	Andrés Herrera-Poyatos, Francisco Herrera \texorpdfstring{\\
-		\href{mailto:andreshp9@gmail.com}{andreshp9@gmail.com}, \href{mailto:herrera@decsai.ugr.es}{herrera@decsai.ugr.es}
+\author[Andrés Herrera Poyatos, Javier Poyatos Amador]{
+	Andrés Herrera Poyatos, Javier Poyatos Amador \texorpdfstring{\\
+		\href{mailto:andreshp9@gmail.com}{andreshp9@gmail.com}, \href{mailto:poyatosamador@gmail.com}{poyatosamador@gmail.com}
 	}{}
 }
 
 % Date
-\date{10 de Noviembre de 2015}
+\date{10 de Mayo de 2016}
 
 %----------------------------------------------------------------------------------------
 %	SLIDES STRUCTURE
@@ -238,7 +249,7 @@
 	\end{frame}
 
 	% Work motivation. Population diverisity. Target.
-	\importsection{Motivation.tex}
+	\importsection{Motivacion.tex}
 
 	% Index.
 	\begin{frame}{Índice}
@@ -246,17 +257,11 @@
 		\tableofcontents
 	\end{frame}
 	
-	% Genetic Algorithm with Diversity Equilibrium based on Greedy Diversification.
-	\importsection{AGEDV.tex}
+	\importsection{BigData.tex}
 
-	% Memetic algorithms.
-	\importsection{MemeticAlgorithms.tex}
+	\importsection{MapReduce.tex}
 
-	% Menetic Algorithm with Diversity Equilibrium based on Greedy Diversification.
-	\importsection{AMEDV.tex}
-
-	% Experimental analysis.
-	\importsection{ExperimentalAnalysis.tex}
+	\importsection{TPCx-HS.tex}
 
 	% Conclusion.
 	\importsection{Conclusion.tex}

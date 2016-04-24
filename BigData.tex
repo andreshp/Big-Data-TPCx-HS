@@ -369,13 +369,31 @@
 		
 		Además de estos módulos básicos, Hadoop incluye otros subproyectos como Hive, que utiliza Map Reduce para realizar búsquedas SQL sobre los datos almacenados con HDFS, o Spark, que estudiaremos en la Sección \ref{sec:spark-flink}.
 		
-		
 
 %-----------------------------------------------------------------------------------------------------
 %	SECCIÓN 3
 %-----------------------------------------------------------------------------------------------------
 
 \section{Spark y Flink} \label{sec:spark-flink}
+
+	El paradigma de programación distribuida Map Reduce presenta varios problemas. En primer lugar, no todos los algoritmos pueden formularse de forma eficiente utilizando las funciones map y reduce. Por ejemplo, encontramos algoritmos iterativos de machine learning como boosting cuyas iteraciones dependen de los resultados anteriores. En cada iteración habría que ejecutar de nuevo Map Reduce, teniendo que distribuir el conjunto de datos de nuevo en memoria, lo que supone un gran tiempo perdido.
+
+Apache Spark [7] started as a research project at UC Berkeley
+in the AMPLab, was started with a goal to design a
+programming model that supports a much wider class of
+applications than MapReduce, while maintaining its automatic
+fault tolerance.
+Spark offers an abstraction called Resilient distributed
+Datasets (RDDs) [8] to support these applications efficiently.
+RDDs can be stored in memory between queries without
+requiring replication. Instead, they rebuild lost data on failure
+using lineage: each RDD remembers how it was built from
+other datasets (by transformations like map, join or groupBy)
+to rebuild itself. RDDs allow Spark to outperform existing
+models by up to 100x in multi-pass analytics. RDDs can
+support a wide variety of iterative algorithms, as well as
+interactive data mining and a highly efficient SQL engine
+Shark [9].
 
 	Spark es un sistema de computación de código abierto enfocado a la rapidez y facilidad de uso. Es ideal si se tiene una gran cantidad de datos para los que se requiere un procesamiento de baja latencia, lo cual un programa de Map Reduce no provee. Por ello, Spark es una alternativa que trabaja cien veces más rápido de lo que lo hace Map Reduce para, por ejemplo, algoritmos iterativos. Spark aporta velocidad en la computación con clusters en memoria(no sé si esta bien traducido esta última frase)\cite{spark}.
 	
