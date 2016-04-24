@@ -31,11 +31,11 @@
 					\column{.6\textwidth}
 					
 					\begin{itemize}
-						\item Fase 1: se generan los datos de entrada con HSGen.
-						\item Fase 2: se verifica la validez del conjunto de datos usando HSDataCheck.
-						\item Fase 3: se lanza el programa HSSort con el que se ordena los datos de entrada.
-						\item Fase 4: se comprueba la viabilidad del conjunto de datos usando HSDataCheck.
-						\item Fase 5: se procede a la validación de los datos con HSValidate.
+						\item Fase 1: Generación de los datos.
+						\item Fase 2: Verificación de la validez de los datos.
+						\item Fase 3: Ordena de los datos.
+						\item Fase 4: Verificación de la viabilidad de los datos.
+						\item Fase 5: Validación de los datos.
 					\end{itemize}
 					
 					\column{.7\textwidth}
@@ -50,11 +50,13 @@
 		
 	\subsection*{Medida del rendimiento}	
 			
-		\begin{frame}{Rendimiento}
-			Para hacer el análisis de la medida del rendimiento, TPCx-HS define las siguientes medidas:
-			
-			\color{ChetwodeBlue}\large Medida del rendimiento
-			
+		\begin{frame}{Rendimiento}		
+			\color{ChetwodeBlue}\large Medida del rendimiento. 
+								
+					$$ HSph@SF = \frac{SF}{T/3600} $$				
+				
 			\color{ChetwodeBlue}\large Medida del rendimiento-precio.
+			
+					$$ \$/HSph@SF = \frac{P}{HSph@SF} $$
 		\end{frame}
 				 
