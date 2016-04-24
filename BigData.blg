@@ -1,21 +1,8 @@
-This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
-Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
-The top-level auxiliary file: BigData.aux
+This is BibTeX, Version 0.99dThe top-level auxiliary file: BigData.aux
 The style file: biblatex.bst
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: BigData-blx.bib
 Database file #2: references.bib
-Biblatex version: 3.0
+Biblatex version: 3.3
 Name 1 in "Mario Tascón, and Arantza Coullaut" has a comma at the end for entry big-data-internet-cosas
 while executing---line 2513 of file biblatex.bst
 Name 1 in "Mario Tascón, and Arantza Coullaut" has a comma at the end for entry big-data-internet-cosas
@@ -524,8 +511,6 @@ Name 1 in "J. Dean, and S. Ghemawat" has a comma at the end for entry map-reduce
 while executing---line 2595 of file biblatex.bst
 Name 1 in "R. Khare, and D. Cutting, and K.Sitaker, and A. Rifkin" has a comma at the end for entry nutch
 while executing---line 2595 of file biblatex.bst
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
 Name 1 in "H. Chen, and R. H. Chiang, and V. C. Storey" has a comma at the end for entry business-intelligence
 while executing---line 2659 of file biblatex.bst
 Name 1 in "H. Chen, and R. H. Chiang, and V. C. Storey" has a comma at the end for entry business-intelligence
@@ -878,45 +863,4 @@ Name 1 in "Zikopoulos, P., and C. Eaton" has a comma at the end for entry unders
 while executing---line 2659 of file biblatex.bst
 Name 1 in "Zikopoulos, P., and C. Eaton" has a comma at the end for entry understanding-big-data
 while executing---line 2659 of file biblatex.bst
-You've used 35 entries,
-            6047 wiz_defined-function locations,
-            1278 strings with 12425 characters,
-and the built_in function-call counts, 98857 in all, are:
-= -- 3700
-> -- 3403
-< -- 1052
-+ -- 961
-- -- 1208
-* -- 6581
-:= -- 5835
-add.period$ -- 0
-call.type$ -- 35
-change.case$ -- 451
-chr.to.int$ -- 34
-cite$ -- 68
-duplicate$ -- 11294
-empty$ -- 10673
-format.name$ -- 2034
-if$ -- 22828
-int.to.chr$ -- 0
-int.to.str$ -- 85
-missing$ -- 0
-newline$ -- 716
-num.names$ -- 1563
-pop$ -- 11082
-preamble$ -- 1
-purify$ -- 521
-quote$ -- 0
-skip$ -- 6199
-stack$ -- 0
-substring$ -- 1582
-swap$ -- 3355
-text.length$ -- 932
-text.prefix$ -- 34
-top$ -- 1
-type$ -- 1318
-warning$ -- 0
-while$ -- 631
-width$ -- 0
-write$ -- 680
 (There were 430 error messages)
