@@ -27,6 +27,12 @@
 \languagepath{Spanish}      % (tex.stackexchange.com/questions/168208)
 
 %-----------------------------------------------------------------------------------------------------
+%	FONTS
+%-----------------------------------------------------------------------------------------------------
+
+\usepackage{marvosym}
+
+%-----------------------------------------------------------------------------------------------------
 %	OTHER PACKAGES
 %-----------------------------------------------------------------------------------------------------
 
@@ -108,14 +114,6 @@
 \setbeamercolor{section number projected}{bg=TurkishRose}
 
 % Blocks colour
-%\setbeamercolor{structure}{bg=ChetwodeBlue,fg=Jaguar}
-%\setbeamercolor{block title}{bg=ChetwodeBlue,fg=ChetwodeBlue}
-%\setbeamercolor{block body}{bg=backg,fg=black}
-%\setbeamercolor{block title alerted}{fg=red!70!black,bg=title!92!red}
-%\setbeamercolor{block body alerted}{fg=black,bg=backg}
-%\setbeamercolor{block title example}{fg=green!70!black,bg=title!92!green}
-%\setbeamercolor{block body example}{fg=black,bg=backg}
-% Links (tex.stackexchange.com/questions/13423)
 \hypersetup{colorlinks,linkcolor=,urlcolor=TurkishRose}
 % Remove navigation links (stackoverflow.com/questions/3017030)
 \setbeamertemplate{navigation symbols}{}
@@ -135,9 +133,7 @@
 
 \usepackage[framemethod=tikz]{mdframed}
 
-\newmdenv[tikzsetting={draw=Jaguar,fill=white,fill opacity=0.7, line width=4pt},
-backgroundcolor=none,leftmargin=100,rightmargin=0,innertopmargin=4pt]
-{titleBox}
+\newmdenv[tikzsetting={draw=Jaguar,fill=white,fill opacity=0.7, line width=2pt}, backgroundcolor=none,leftmargin=100,rightmargin=0,innertopmargin=4pt, roundcorner=15pt] {titleBox}
 
 % Define the title page.
 \defbeamertemplate*{title page}{customized}[1][] {
@@ -147,9 +143,14 @@ backgroundcolor=none,leftmargin=100,rightmargin=0,innertopmargin=4pt]
 			\begin{beamercolorbox}[sep=2pt,center]{title}	
 				\usebeamerfont{title}\textbf{\inserttitle}\par
 			\end{beamercolorbox}
-			\begin{beamercolorbox}[sep=4pt,center]{author}	
-				\usebeamerfont{author}\insertauthor
-			\end{beamercolorbox}
+			\begin{columns}
+				\column{0.05\textwidth}
+				\href{https://github.com/andreshp/Big-Data-TPCx-HS}{\includegraphics[width=40pt]{./Images/Logos/github.png}}
+				\column{0.95\textwidth}
+				\begin{beamercolorbox}[sep=4pt,center]{author}	
+					\usebeamerfont{author}\authors
+				\end{beamercolorbox}
+			\end{columns}
 		\end{titleBox}
 		
 }
@@ -162,11 +163,13 @@ backgroundcolor=none,leftmargin=100,rightmargin=0,innertopmargin=4pt]
 \title{Big Data, Map Reduce y TCPx-HS}
 
 % Authors, e-mails and addresses.
-\author[Andrés Herrera Poyatos, Javier Poyatos Amador]{
-	Andrés Herrera Poyatos, Javier Poyatos Amador \texorpdfstring{\\
-		\href{mailto:andreshp9@gmail.com}{andreshp9@gmail.com}, \href{mailto:poyatosamador@gmail.com}{poyatosamador@gmail.com}
-	}{}
+\newcommand{\authors}{
+	Andrés Herrera Poyatos \\ \Letter \ \href{mailto:andreshp9@gmail.com}{andreshp9@gmail.com}
+	
+	Javier Poyatos Amador \\ \Letter \ \href{mailto:poyatosamador@gmail.com}{poyatosamador@gmail.com}
 }
+
+
 
 % Date
 \date{10 de Mayo de 2016}
