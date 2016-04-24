@@ -28,14 +28,20 @@
 
 		\begin{frame}{Ejecución de TPCx-HS}
 				\begin{columns}[c]
+					\column{.6\textwidth}
+					
 					\begin{itemize}
-						\item Consiste en dos ejecuciones compuestas de cincos fases cada una.
+						\item Fase 1: se generan los datos de entrada con HSGen.
+						\item Fase 2: se verifica la validez del conjunto de datos usando HSDataCheck.
+						\item Fase 3: se lanza el programa HSSort con el que se ordena los datos de entrada.
+						\item Fase 4: se comprueba la viabilidad del conjunto de datos usando HSDataCheck.
+						\item Fase 5: se procede a la validación de los datos con HSValidate.
 					\end{itemize}
 					
-					\column{.4\textwidth}
+					\column{.7\textwidth}
 					\begin{figure}[H]
 						\centering
-						\includegraphics[width=2cm]{./Images/executionsTPC.png}
+						\includegraphics[width=5cm]{./Images/executionsTPC.png}
 					\end{figure}
 
 				\end{columns}
@@ -45,6 +51,10 @@
 	\subsection*{Medida del rendimiento}	
 			
 		\begin{frame}{Rendimiento}
+			Para hacer el análisis de la medida del rendimiento, TPCx-HS define las siguientes medidas:
 			
+			\color{ChetwodeBlue}\large Medida del rendimiento
+			
+			\color{ChetwodeBlue}\large Medida del rendimiento-precio.
 		\end{frame}
 				 
