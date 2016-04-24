@@ -31,7 +31,7 @@
 
 % Fuente utilizada.
 \usepackage{microtype}                  % Mejora la letra final de cara al lector.
-\usepackage{helvet}
+\usepackage{helvet}                     % Incluye Arial
 
 \renewcommand{\familydefault}{\sfdefault}
 
@@ -92,10 +92,28 @@
 %	BIBLIOGRAFÍA
 %-----------------------------------------------------------------------------------------------------
 
-\usepackage[backend=bibtex]{biblatex}
+\usepackage[backend=bibtex, style=numeric]{biblatex}
 \usepackage{csquotes}
 
 \addbibresource{references.bib}
+
+%-----------------------------------------------------------------------------------------------------
+%	ENLACES
+%-----------------------------------------------------------------------------------------------------
+
+\usepackage{hyperref}
+
+\hypersetup{
+	colorlinks   = true,   % Quita las cajas y añade un color al texto.
+	% Tipos de enlaces cuyo color se puede configurar:
+	linkcolor    = black,        % Por defecto red
+	anchorcolor  = black,        % Por defecto black
+	citecolor    = magenta,     % Por defecto green
+	filecolor    = red,         % Por defecto cyan
+	menucolor    = green,       % Por defecto red
+	runcolor     = red,         % Por defecto cyan
+	urlcolor     = cyan        % Por defecto magenta
+}
 
 %-----------------------------------------------------------------------------------------------------
 %	ALGORITMOS
@@ -200,7 +218,7 @@
 	
 	\lettrine[lraise=0.1, nindent=0em, slope=-.5em]{D}{}esde hace miles de años el ser humano ha investigado la manera de almacenar y recopilar información. Durante muchos siglos la escritura y la pintura eran los únicos mecanismos existentes. Posteriormente surgió la fotografía, los discos de vinilo... Sin embargo, poca información seguía ocupando mucho volumen físico. Gracias a los avances tecnológicos de las últimos décadas, hoy en día disponemos dispositivos electrónicos para el almacenamiento de datos binarios. Además, la evolución de estos dispositivos ha sido frenética. IBM comercializó el primer disco duro en 1956. Este constaba solamente de 5 mega bytes de capacidad \cite{hard-disks} mientras que actualmente podemos utilizar discos duros con más de 1 tera byte.
 
-	La capacidad de cómputo y procesamiento de los computadores también ha crecido de forma exponencial. El primer ordenador comercial se presentó en 1951 y se conoce como  UNIVAC 1 \cite{first-commercial-computer}. Este computador tenía una frecuencia de $2.25$ mega hercios y $1000$ palabras de memoria principal o RAM \cite{caract}. Actualmente utilizamos procesadores con más de $2$ giga hercios de frecuencia de reloj. Además, es habitual encontrar computadores con $8$ o más giga bytes de memoria principal, lo que permite trabajar con bastante información de forma eficiente. 
+	La capacidad de cómputo y procesamiento de los computadores también ha crecido de forma exponencial. El primer ordenador comercial se presentó en 1951 y se conoce como  UNIVAC 1 \cite{caract}. Este computador tenía una frecuencia de $2.25$ mega hercios y $1000$ palabras de memoria principal o RAM. Actualmente utilizamos procesadores con más de $2$ giga hercios de frecuencia de reloj. Además, es habitual encontrar computadores con $8$ o más giga bytes de memoria principal, lo que permite trabajar con bastante información de forma eficiente. 
 
 	Estas nuevas tecnologías han posibilitado que el almacenamiento de datos sea mucho más sencillo. Podemos guardar multitud de archivos en un dispositivo de unos centímetros y compartirlos con cualquier usuario. Además, el procesamiento de estos archivos a nivel de usuario es eficiente gracias a la velocidad de los computadores. 
 	
@@ -215,9 +233,9 @@
        	\label{fig:zeta-bytes}
 	 \end{figure}
 
-	En resumen, a pesar de la evolución de los computadores en todas sus facetas, la cantidad de datos e información a procesar y almacenar crece incluso a mayor velocidad. Por ejemplo, encontramos empresas como Facebook y Google cuyos usuarios generan una gran cantidad de datos diariamente. Estos datos deben ser tratados en tiempo real para poder mantener los sistemas de recomendaciones asociados. En estos casos se requieren servidores de altas prestaciones para poder tratar tal cantidad de datos en un tiempo razonable. Estos conjuntos de datos adquieren el calificativo ``masivos''. El desarrollo de nuevas tecnologías, algoritmos y herramientas para tratar de forma eficiente conjuntos de datos masivos es lo que se conoce como Big Data \cite{big-data-herrera}.
+	En resumen, a pesar de la evolución de los computadores en todas sus facetas, la cantidad de datos e información a procesar y almacenar crece incluso a mayor velocidad. Por ejemplo, encontramos empresas como Facebook y Google cuyos usuarios generan una gran cantidad de datos diariamente. Además, estos datos deben ser tratados en tiempo real para poder mantener los sistemas de recomendaciones asociados. En estos casos se requieren servidores de altas prestaciones para poder tratar tal cantidad de datos en un tiempo razonable. Estos conjuntos de datos adquieren el calificativo ``masivos''. El desarrollo de nuevas tecnologías, algoritmos y herramientas para tratar de forma eficiente conjuntos de datos masivos es lo que se conoce como Big Data \cite{big-data-herrera}.
 	
-	En este trabajo presentamos una introducción a Big Data y a varias herramientas software existentes, destacando el papel de la ingeniería de servidores en este contexto. En particular, incidimos en la importancia del desarrollo de nuevos benchmarks que permitan evaluar las tecnologías de Big Data de forma clara y objetiva.
+	En este trabajo presentamos una introducción a Big Data y las tecnologías asociadas, destacando el papel de la ingeniería de servidores en este contexto. En particular, incidimos en la importancia del desarrollo de nuevos benchmarks que permitan evaluar las tecnologías de Big Data de forma clara y objetiva.
 
 	El resto del texto se organiza como sigue. La Sección \ref{sec:big-data} contiene una descripción del concepto de Big Data. En la Sección \ref{sec:mr-hadoop} introducimos el paradigma de programación distribuida Map Reduce y una de las tecnologías libres que lo implementa, denominada Hadoop. En la Sección \ref{sec:tpcx-hs} explicamos uno de los benchmarks existentes para las tecnologías Big Data, denominado TPCx-HS. Por último, en la Sección \ref{sec:conclusion} presentamos las conclusiones obtenidas.
 
