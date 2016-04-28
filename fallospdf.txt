@@ -1,0 +1,6 @@
+1.En el resumen se pone map reduce y luego Map Reduce y es el mismo término, luego o todo en mayus o todo en minus (creo que sería guay y better en mayus)
+2.En las 3 V's de big data, la frase "este debe agregar la ...", este se refiere al sistema y es un pronombre demostrativo, así que debería llevar tilde, pero la rae dice que hagamos lo que queramos, así que, ¿que hacemos?
+3. Final de la sección 2.1: se habla de spark y flink como tecnologías que se van a presentar y NO las vamos a presentar.
+4.sección 2.2 es el mismo pronombre que en el 2.
+5."en el servidor, no necesitando que este sea especialmente caro." lo mismo que el 2.
+6. "Google File System es un software privado. Basándose en las ideas de este," lo mismo que 2 e igual para "Incidiremos en este" justo después del anterior.
