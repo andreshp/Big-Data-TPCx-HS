@@ -299,7 +299,7 @@
 
 	\subsection{Map Reduce} \label{sec:mr-hadoop:map-reduce}
 
-		En la Sección \ref{sec:big-data:ise} destacábamos el papel central de los servidores de altas prestaciones y la programación distribuida en Big Data. Por tanto, la implementación de algoritmos para Big Data requiere herramientas y librerías que permitan realizar implementaciones distribuidas. Las librerías OPEN MP y MPI son muy conocidas \cite{openmpmpi, openmp}. OPEN MP permite paralelizar cálculos vectoriales. Por su parte, MPI se basa en el paso de mensajes entre hebras como mecanismo para realizar implementaciones distribuidas. Estas librerías operan a bajo nivel y funcionan principalmente con lenguajes de programación como c y c++. 
+		En la Sección \ref{sec:big-data:ise} destacábamos el papel central de los servidores de altas prestaciones y la programación distribuida en Big Data. Por tanto, la implementación de algoritmos para Big Data requiere herramientas y librerías que permitan realizar implementaciones distribuidas. Las librerías OPEN MP y MPI son muy conocidas \cite{openmpmpi, openmp}. OPEN MP permite paralelizar cálculos vectoriales. Por su parte, MPI se basa en el paso de mensajes entre hebras como mecanismo para realizar implementaciones distribuidas. Estas librerías operan a bajo nivel y funcionan principalmente con lenguajes de programación como C y C++. 
 		
 		La implementación de un algoritmo distribuido utilizando estas librerías es muy costosa. El programador debe indicar expresamente el tratamiento distribuido de los datos y cómo se paralelizan los cómputos. Además, tiene que crear las hebras asociadas y encargarse de que el sistema funcione correctamente. Nótese que si durante la ejecución del algoritmo un nodo se estropea, entonces la implementación puede dejar de funcionar a no ser que el programador le haya dedicado mucho tiempo para conseguir que sea tolerante ante fallos. Es más, si uno implementa varios algoritmos distribuidos esencialmente se está implementando el mismo tipo de paralelización una y otra vez.
 	
@@ -355,13 +355,13 @@
 			\label{fig:map-reduce}
 		\end{figure}
 
-		La implementación de Map Reduce se lleva a cabo siguiendo el paradigma maestro - esclavo. La Figura \ref{fig:map-reduce:master-workers} (véase el anexo) muestra el proceso que se realiza de forma interna en una ejecución de Map Reduce con $M=3$ y $R=2$. El primer paso es el particionamiento de la entrada. Tras realizarse este se crea una hebra denominada maestro que se encarga de controlar toda la ejecución. Además, se lanzan tantas hebras como tareas haya que realizar, en total $M+R$. Estas hebras se llaman esclavos y son de dos tipos: mappers y reducers. Los esclavos se almacenan en una cola en la que tienen prioridad los mappers.
+		La implementación de Map Reduce se lleva a cabo siguiendo el paradigma maestro - esclavo. La Figura \ref{fig:map-reduce:master-workers} (véase el anexo) muestra el proceso que se realiza de forma interna en una ejecución de Map Reduce con $M=3$ y $R=2$. El primer paso es el particionamiento de la entrada. Tras realizarse este particionamiento se crea una hebra denominada maestro que se encarga de controlar toda la ejecución. Además, se lanzan tantas hebras como tareas haya que realizar, en total $M+R$. Estas hebras se llaman esclavos y son de dos tipos: mappers y reducers. Los esclavos se almacenan en una cola en la que tienen prioridad los mappers.
 		
 		Las hebras de la cola se van asignando a los nodos del sistema y los mappers comienzan a ejecutarse. Cada mapper genera parejas intermedias que se almacenan en un buffer de la memoria. Periódicamente, el buffer se vacía, escribiendo las parejas en un disco duro asociado al mapper. En cada disco duro se utilizan $R$ regiones, numeradas desde el $0$ al $R-1$. Las parejas se reparten entre estas regiones utilizando una función hash sobre las claves. De esta manera parejas con la misma clave irán a la misma región disco duro. 
 
 		Como consecuencia, si los datos generados no están uniformemente distribuidos en todas las claves puede suceder que una región contenga mucho más trabajo que otra. A cambio, se obtiene un proceso eficiente para conseguir que todas las parejas con la misma clave vayan a la misma región.
 		
-		La localización de estas regiones en los discos es enviada al maestro. Cuando un reducer pasa a ejecutarse, el maestro le notifica de la localización de las regiones de los discos que les corresponden (aquellas que tienen el mismo índice que el reducer). Posteriormente, el esclavo llama a los discos para obtener las regiones correspondientes. Nótese que de esta forma todos las parejas con igual clave van al mismo reducer. Tras la obtención de los datos, el reducer los ordena por clave y agrupa aquellos valores que pertenezcan a la misma clave en conjuntos. Si el tamaño de los datos es demasiado grande, entonces una ordenación externa es utilizada.
+		La localización de estas regiones en los discos es enviada al maestro. Cuando un reducer pasa a ejecutarse, el maestro le notifica la localización de las regiones de los discos que les corresponden (aquellas regiones que tienen el mismo índice que el reducer). Posteriormente, el esclavo llama a los discos para obtener las regiones correspondientes. Nótese que de esta forma todos las parejas con igual clave van al mismo reducer. Tras la obtención de los datos, el reducer los ordena por clave y agrupa aquellos valores que pertenezcan a la misma clave en conjuntos. Si el tamaño de los datos es demasiado grande, entonces una ordenación externa es utilizada.
 		
 		Cuando todos los mappers se han ejecutado, los reducers comienzan a aplicar la función reduce a sus correspondientes parejas. Cada hebra produce un archivo de salida con los resultados obtenidos. Tras finalizar la ejecución de estas, el control vuelve al usuario. Normalmente se deberían unir los $R$ archivos generados en uno nuevo, para lo cual se requeriría una nueva llamada a MapReduce u otra aplicación distribuida que permita realizar este proceso.
 
@@ -376,7 +376,7 @@
 		
 		Hadoop comenzó a desarrollarse poco después de la publicación de GFS y Map Reduce. Inicialmente el proyecto en cuestión era Apache Nutch \cite{nutch} y tenía como objetivo desarrollar un buscador web libre. El proyecto estaba siendo desarrollado por Doug Cutting entre otros. Sin embargo, el software tenía muchos problemas cuando se ejecutaba sobre un clúster de computadores. Con el fin de solucionar este problema comenzaron a implementar un sistema de archivos distribuidos basado en GFS y una versión de Map Reduce. Este nuevo proyecto pasó a llamarse Hadoop en 2006. Como curiosidad, Hadoop es el nombre del elefante de peluche del hijo de Dough Cutting, que fue director del proyecto.
 		
-		Hadoop está implementado principalmente en Java, aunque utiliza de forma minoritaria C y utilidades de la línea de comandos. Se encuentra disponible para Windows y los sistemas Unix, aunque solo incluye soporte para Linux. Hadoop incluye 4 módulos básicos \cite{hadoop-doc}:
+		Hadoop está implementado principalmente en Java, aunque utiliza de forma minoritaria C y utilidades de la línea de comandos. Se encuentra disponible para Windows y los sistemas Unix, aunque solamente incluye soporte para Linux. Hadoop incluye 4 módulos básicos \cite{hadoop-doc}:
 		 
 		\begin{enumerate}
 			\item \textbf{Hadoop Common.} Librería con las funciones y utilidades comunes al resto de módulos.
@@ -393,9 +393,9 @@
 
 \section{Benchmarks: TPCx-HS} \label{sec:tpcx-hs}
 
-	La variedad de computadores es bastante heterogénea. Cada uno realiza de forma eficiente un determinado conjunto de operaciones a consta de presentar peores resultados en otros factores. Por tanto, la comparación entre diferentes modelos de computadores es compleja. Consecuentemente, se han creado benchmarks con el objetivo de aportar elementos de juicio con los que se discernir entre el uso de un computador u otro para una determinada aplicación. Habitualmente el benchmarking se define como la obtención de información útil mediante pruebas empíricas que ayude a una organización a mejorar sus procesos \cite{benchmarking}. Sin embargo, el benchmarking de computadores es un proceso costoso computacionalmente. Gasta tanto energía como mucho tiempo de cómputo. Por tanto, se ha de reservar para cuestiones sean importantes y no para evaluar tareas simples \cite{desv-bench}.
+	La variedad de computadores es bastante heterogénea. Cada uno realiza de forma eficiente un determinado conjunto de operaciones a consta de presentar peores resultados en otros factores. Por tanto, la comparación entre diferentes modelos de computadores es compleja. Consecuentemente, se han creado benchmarks con el objetivo de aportar elementos de juicio con los que se puede discernir entre el uso de un computador u otro para una determinada aplicación. Habitualmente el benchmarking se define como la obtención de información útil mediante pruebas empíricas que ayude a una organización a mejorar sus procesos \cite{benchmarking}. Sin embargo, el benchmarking de computadores es un proceso costoso computacionalmente. Gasta tanto energía como mucho tiempo de cómputo. Por tanto, se ha de reservar para cuestiones sean importantes y no para evaluar tareas simples \cite{desv-bench}.
 	
-	Una técnica utilizada para ver qué sistema nos da más prestaciones son los benchmarks, uno de ellos es TPC. TPC es una organización sin ánimo de lucro que estudia el proceso de transacción y desarrolla benchmarks para bases de datos. El término transacción se suele atribuir a aspectos bancarios. Sin embargo, en este contexto una transacción es un conjunto de operaciones de un computador que incluyen lectura y escritura en disco, llamadas a funciones del sistema operativo, o cualquier forma de transferencia de datos de un sistema a otro. Los benchmarks que produce TPC miden el proceso de transacción y el rendimiento de las bases de datos en términos del número transacciones que se pueden hacer por unidad de tiempo \cite{intro-tpc}.
+	Una técnica utilizada para ver qué sistema nos da más prestaciones es el uso de los benchmarks, uno de ellos es TPCx-HS. TPC es una organización sin ánimo de lucro que estudia el proceso de transacción y desarrolla benchmarks para bases de datos. El término transacción se suele atribuir a aspectos bancarios. Sin embargo, en este contexto una transacción es un conjunto de operaciones de un computador que incluyen lectura y escritura en disco, llamadas a funciones del sistema operativo, o cualquier forma de transferencia de datos de un sistema a otro. Los benchmarks que produce TPC miden el proceso de transacción y el rendimiento de las bases de datos en términos del número transacciones que se pueden hacer por unidad de tiempo \cite{intro-tpc}.
 	
 	TPCx-HS (Transaction Processing Performance Council Express Hadoop System) se desarrolló para proveer de una medida del rendimiento fiable, rendimiento relación precio, disponibilidad y, opcionalmente, datos de consumo de energía de los sistemas de Big Data que usen Hadoop. TPCx-HS fue el primer benchmark objetivo que permitía medir tanto hardware como software, como el Hadoop Runtime. \cite{info-tpc}
 	
@@ -412,9 +412,6 @@
 	
 	\subsection{Fases de ejecución del benchmark}
 		Una ejecución válida consiste en cinco fases separadas que corren secuencialmente. Estas fases no se solapan en su ejecución, es decir, el comienzo de la fase 2 no puede darse hasta que la fase 1 esté completa. Para que comience cada fase se necesita de un script llamado $<TPCx-HS-master>$ que es el que inicia cada fase y que puede ser ejecutado desde cualquier nodo del sistema que se está bajo test \cite{tpcxhs}.
-		
-		Una ejecución válida consiste en cinco fases separadas que corren secuencialmente. Estas fases no se solapan en su ejecución, es decir, el comienzo de la fase 2 no puede darse hasta que la fase 1 esté completa. Para que comience cada fase se necesita de un script llamado $<TPCx-HS-master>$ que es el que inicia cada fase y que puede ser ejecutado desde cualquier nodo del sistema que esté bajo el test \cite{tpcxhs}.
-
 		
 		Las fases de ejecución son las siguientes:
 		
@@ -462,12 +459,12 @@
 		Un resultado dado por la ejecución de TPCx-HS sólo puede ser comparado con otro resultado que provenga de la ejecución de este benchmark y que tenga el mismo factor de escala. Otras consideraciones a tener en cuenta son:
 		
 		\begin{itemize}
-			\item Los resultados producidos por test que tienen diferente factor de escala no son comparables, debido a los \textit{retos} computacionales encontrados en volúmenes de datos de distinto tamaño.
+			\item Los resultados producidos por el test que tienen diferente factor de escala no son comparables, debido a los retos computacionales encontrados en volúmenes de datos de distinto tamaño.
 			\item Si los resultados medidos con diferentes factores de escalas aparecen impresos o en algún documento electrónico, entonces cada referencia que se haga a uno de estos resultados se ha de especificar claramente el factor de escala que se usó para obtener esos resultados. Si los resultados aparecen de forma gráfica, el factor de escala en el que se basó dicha medición se deberá poder discernir, por ejemplo usando una etiqueta en uno de los ejes.
 		\end{itemize}
 		
 		
-		La figura \ref{fig:ejemplo} (véase el anexo) presenta una tabla con los resultados para algunas compañías donde se puede ver el factor de escala usado, el sistema y los resultados obtenidos tras la ejecución del benchmark.
+		La Figura \ref{fig:ejemplo} (véase el anexo) presenta una tabla con los resultados para algunas compañías donde se puede ver el factor de escala usado, el sistema y los resultados obtenidos tras la ejecución del benchmark.
 
 %-----------------------------------------------------------------------------------------------------
 %	SECCIÓN 5: CONCLUSIÓN

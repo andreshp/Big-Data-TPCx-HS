@@ -4,3 +4,12 @@
 4.sección 2.2 es el mismo pronombre que en el 2.
 5."en el servidor, no necesitando que este sea especialmente caro." lo mismo que el 2.
 6. "Google File System es un software privado. Basándose en las ideas de este," lo mismo que 2 e igual para "Incidiremos en este" justo después del anterior.
+7. c y c++ con las C en mayus??? (YA LO HE CORREGIDO).
+8. Seccion 3.1 el mismo fallo que en 2. "Este debía proporcionar una interfaz " la tilde.
+9. funcion reduce misma tilde "Este debe devolver al final c".
+10. un poco mas adelante, "el pseudo-código de este." la tilde.
+11. lo mismo de 2.  "ras finalizar la ejecución de estas, el".
+12.
+
+
+IMPORTANTE: CAMBIAR EL TITULO DEL TRABAJO QUE NO ES ESE!!!!!!!! ES ESTE TPCx-HS; Servidores y Big Data
