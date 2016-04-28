@@ -427,14 +427,6 @@
 		\end{itemize}
 		
 		El benchmark consiste en dos ejecuciones (ver la Figura \ref{fig:ejecucionesTPC} en el anexo) y cada vez que se ejecuta una fase se ha de especificar el tiempo que ha llevado la ejecución. Entre la primera ejecución de las cinco fases y la segunda, hay una fase intermedia que sirve para limpiar el sistema, conocida como \textit{"file system cleanup"} y, lógicamente, no se permite ninguna actividad durante dicha fase. Una vez realizadas las dos ejecuciones se obtiene el tiempo total de ejecución que servirá para calcular datos en la fase de medición.
-		
-				
-				\begin{figure}[h]
-					\centering
-					\includegraphics[width=5cm]{./images/executionsTPC.png}
-					\caption{Gráfico de las ejecuciones de TPCx-HS} 
-					\label{fig:ejecucionesTPC}
-				\end{figure}
 			
 		Como consideraciones finales en la ejecución, el sistema bajo test no puede ser reconfigurado o cambiado durante o entre cualquiera de las fases de la ejecución ni tampoco entre la primera y la segunda ejecución. Cualquier cambio que se haga en el sistema se deberá realizar antes del comienzo de la fase 1 de la primera ejecución. El factor de escala usado en el conjunto de datos del test debe ser escogido del conjunto de factores de escala definido como sigue: 1TB, 3TB, 10TB, 30TB, 100TB, 300TB, 1000TB, 3000TB, 10000TB.
 	
@@ -512,3 +504,10 @@
 		\label{fig:ejemplo}
 	\end{figure}
 	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=10cm]{./images/executionsTPC.png}
+		\caption{Gráfico de las ejecuciones de TPCx-HS} 
+		\label{fig:ejecucionesTPC}
+	\end{figure}
+\end{document}
