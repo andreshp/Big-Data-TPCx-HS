@@ -260,7 +260,7 @@
 		A veces se utiliza el término Big Data para referirse meramente a conjuntos de datos masivos. Sin embargo, los problemas de Big Data constan de múltiples características que los hacen todavía más complejos. En la literatura especializada estas características se denominan las 3 V's de Big Data \cite{big-data}:
 	
 		\begin{itemize}
-			\item \textbf{Volumen.} El tamaño de los conjuntos de datos a procesar es cada vez mayor, por ejemplo, facebook procesa cada día 500 TB de información. Este volumen de datos requiere tecnologías específicas para que los servidores de altas prestaciones puedan manejar la información con éxito.
+			\item \textbf{Volumen.} El tamaño de los conjuntos de datos a procesar es cada vez mayor, por ejemplo, Facebook procesa cada día 500 TB de información. Este volumen de datos requiere tecnologías específicas para que los servidores de altas prestaciones puedan manejar la información con éxito.
 			\item \textbf{Velocidad.} Necesitamos herramientas que permitan procesar y analizar conjuntos de datos masivos en poco tiempo. Además, es habitual que el procesamiento de los datos deba ser incluso en tiempo real, esto es, los datos llegan al sistema de forma continua y este debe agregar la información de los mismos.
 			\item \textbf{Variedad.} Los datos a tratar provienen de una gran variedad de fuentes. Por tanto, las herramientas Big Data deben permitir procesar a la vez datos de diferentes características y tamaños. Es más, habitualmente encontramos datos de tres tipos: estructurados, semi estructurados y sin estructurar. Los datos estructurados son sencillos de clasificar. Sin embargo, los datos sin estructurar son aleatorios y difíciles de analizar. Por su parte, los datos semi estructurados requieren técnicas avanzadas para poder clasificarlos correctamente.
 		\end{itemize}
@@ -426,15 +426,8 @@
 			\item Fase 5: una vez que en la fase 4 se ha comprobado la cardinalidad de los datos antes y después de ordenarlos, se procede a la validación de los datos con HSValidate. Como su nombre indica, HSValidate comprueba que los datos de salida sean correctos, es decir, se realiza la verificación de la replicación de los datos. Si reporta el fallo consisten en que el HSSort no generó el correcto orden de salida, la ejecución se considerará inválida.
 		\end{itemize}
 		
-		El benchmark consiste en dos ejecuciones (ver la Figura \ref{fig:ejecucionesTPC}) y cada vez que se ejecuta una fase se ha de especificar el tiempo que ha llevado la ejecución. Entre la primera ejecución de las cinco fases y la segunda, hay una fase intermedia que sirve para limpiar el sistema, conocida como \textit{"file system cleanup"} y, lógicamente, no se permite ninguna actividad durante dicha fase. Una vez realizadas las dos ejecuciones se obtiene el tiempo total de ejecución que servirá para calcular datos en la fase de medición.
-		
-		\begin{figure}[h]
-			\centering
-			\includegraphics[width=5cm]{./images/executionsTPC.png}
-			\caption{Gráfico de las ejecuciones de TPCx-HS} 
-			\label{fig:ejecucionesTPC}
-		\end{figure}
-		
+		El benchmark consiste en dos ejecuciones (ver la Figura \ref{fig:ejecucionesTPC} en el anexo) y cada vez que se ejecuta una fase se ha de especificar el tiempo que ha llevado la ejecución. Entre la primera ejecución de las cinco fases y la segunda, hay una fase intermedia que sirve para limpiar el sistema, conocida como \textit{"file system cleanup"} y, lógicamente, no se permite ninguna actividad durante dicha fase. Una vez realizadas las dos ejecuciones se obtiene el tiempo total de ejecución que servirá para calcular datos en la fase de medición.
+			
 		Como consideraciones finales en la ejecución, el sistema bajo test no puede ser reconfigurado o cambiado durante o entre cualquiera de las fases de la ejecución ni tampoco entre la primera y la segunda ejecución. Cualquier cambio que se haga en el sistema se deberá realizar antes del comienzo de la fase 1 de la primera ejecución. El factor de escala usado en el conjunto de datos del test debe ser escogido del conjunto de factores de escala definido como sigue: 1TB, 3TB, 10TB, 30TB, 100TB, 300TB, 1000TB, 3000TB, 10000TB.
 	
 	\subsection{Medida del rendimiento}
@@ -510,4 +503,10 @@
 		\caption{Tabla de resultados obtenidos con TPCx-HS \cite{ejemplos}.} 
 		\label{fig:ejemplo}
 	\end{figure}
-\end{document}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=5cm]{./images/executionsTPC.png}
+		\caption{Gráfico de las ejecuciones de TPCx-HS} 
+		\label{fig:ejecucionesTPC}
+	\end{figure}
