@@ -16,7 +16,16 @@
 		\end{frame}
 
 		\begin{frame}{Las 3 Vs de Big Data}
-			
+			\kern -0.5cm
+			\fontsize{6}{8}\selectfont
+			\begin{tikzpicture}
+			\node (img1) {\includegraphics[width=\textwidth]{./Images/big-data-vs.png}};
+			\node [fill=Grandis!80, circle,inner sep=0.5pt, text width=1.35cm, align=center, above right = 2cm and 2cm of $(img1)$] (vel) {Velocidad};
+			\node [fill=TurkishRose!80, circle,inner sep=0.5pt, text width=1.35cm, align=center, right= 1.6cm of $(vel)$] (var) {Variedad};
+			\node [fill=ChetwodeBlue!80, circle, inner sep=0.5pt, text width=1.35cm, align=center, above = 9mm of $(vel)!0.5!(var)$] (vol) {Volumen};
+			\node [fill=Jaguar!85, circle, inner sep=0.5pt, text width=1.5cm, align=center, below = 4mm of $(vol)$] (bd) {\color{white}{\textbf{Big Data}}};
+			\end{tikzpicture}
+
 		\end{frame}
 
 	
