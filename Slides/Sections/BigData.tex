@@ -26,11 +26,13 @@
 			
 		\end{frame}
 
-		\begin{frame}{Las 3 Vs de Big Data}
+		\begin{frame}{Características: las 3 Vs de Big Data}
 			\kern -0.5cm
 			\fontsize{6}{8}\selectfont
 			\begin{tikzpicture}
 			\node (img1) {\includegraphics[width=\textwidth]{./Images/big-data-vs.png}};
+			\node [above left = 2.2cm and 3cm of $(img1)$] (img2) {\includegraphics[width=0.3\textwidth]{./Images/escalabilidad.png}};
+			\node [below = 8mm of $(img2)$] (es) {\textbf{Escalabilidad}};
 			\node [fill=Grandis!80, circle,inner sep=0.5pt, text width=1.35cm, align=center, above right = 2cm and 1.8cm of $(img1)$] (vel) {Velocidad};
 			\node [fill=TurkishRose!80, circle,inner sep=0.5pt, text width=1.35cm, align=center, right= 1.6cm of $(vel)$] (var) {Variedad};
 			\node [fill=ChetwodeBlue!80, circle, inner sep=0.5pt, text width=1.35cm, align=center, above = 9mm of $(vel)!0.5!(var)$] (vol) {Volumen};
@@ -62,6 +64,8 @@
 				\begin{figure}
 					\includegraphics[width=\textwidth]{./Images/cluster.jpg}
 				\end{figure}
+				\fontsize{9}{8}\selectfont	
+				\textbf{Selección de un servidor}
 
 			\end{columns}
 			
