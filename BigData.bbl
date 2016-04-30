@@ -296,6 +296,39 @@
   \field{year}{1999}
 \endentry
 
+\entry{hadoop-cons}{book}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Grover}{G.}%
+     {M.}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Malaska}{M.}%
+     {T.}{T.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Seidman}{S.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Shapira}{S.}%
+     {G.}{G.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {O'Reilly Media}%
+  }
+  \strng{namehash}{GM+1}
+  \strng{fullhash}{GMMTSJSG1}
+  \field{sortinit}{G}
+  \field{title}{Hadoop Application Architectures}
+  \field{year}{2015}
+\endentry
+
 \entry{big-data-herrera}{book}{}
   \name{author}{1}{}{%
     {{}%
@@ -393,6 +426,24 @@
   \verb{url}
   \verb https://www.drbd.org/en/doc/users-guide-83/s-three-way-repl
   \endverb
+\endentry
+
+\entry{spark-rdd}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Matei~Zaharia}{M.~Z.}%
+     {et~al.}{e.~a.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{MZea1}
+  \strng{fullhash}{MZea1}
+  \field{sortinit}{M}
+  \field{title}{Resilient distributed datasets: A fault-tolerant abstraction
+  for in-memory cluster computing}
+  \field{journaltitle}{Proceedings of the 9th USENIX conference on Networked
+  Systems Design and Implementation. USENIX Association}
+  \field{year}{2012}
 \endentry
 
 \entry{desv-bench}{misc}{}
@@ -642,6 +693,42 @@
   \field{sortinit}{W}
   \field{title}{Hadoop: The definitive guide.}
   \field{year}{2012}
+\endentry
+
+\entry{spark-cluster}{article}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Zaharia}{Z.}%
+     {M.}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Chowdhury}{C.}%
+     {M.}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Franklin}{F.}%
+     {M.~J.}{M.~J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Shenker}{S.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Stoica}{S.}%
+     {I.}{I.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{ZM+1}
+  \strng{fullhash}{ZMCMFMJSSSI1}
+  \field{sortinit}{Z}
+  \field{title}{Spark: Cluster Computing with Working Sets}
+  \field{journaltitle}{HotCloud}
+  \field{year}{2010}
 \endentry
 
 \entry{understanding-big-data}{book}{}

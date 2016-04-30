@@ -96,6 +96,8 @@
 \usepackage{csquotes}
 
 \addbibresource{references.bib}
+% Font's size
+\renewcommand*{\bibfont}{\footnotesize}
 
 %-----------------------------------------------------------------------------------------------------
 %	ENLACES
@@ -271,14 +273,13 @@
 	
 		Big Data también se considera parte del área denominada ciencia de datos \cite{data-science}. Esta es una temática emergente que aglutina todas las áreas científicas que se encargan del tratamiento de los datos y de la extracción de conocimiento de los mismos. En este contexto, algunos autores denominan Big Data Analytics a la aplicación de Big Data al análisis de datos \cite{big-data-trends}. La ciencia de datos y la inteligencia de negocio están muy relacionadas, siendo el último término más popular en el ámbito empresarial. La importancia de estas áreas de conocimiento ha dado lugar a una nueva profesión, el científico de datos, que es considerada una de las profesiones más valoradas del siglo XXI \cite{data-scientist}.
 		
-		Cuando uno se enfrenta a un problema de Big Data necesita estudiar y desarrollar tecnologías que permitan el procesamiento de gran cantidades de datos de forma eficiente. Además, debe adaptar los algoritmos que pretenda utilizar a este nuevo ámbito, reduciendo en medida de lo posible complejidad algorítmica de los mismos. La dificultad de este proceso resolutivo es lo que hace que los expertos en Big Data sean muy valorados en el ámbito científico y empresarial. En el resto del documento presentaremos varias tecnologías que se utilizan de forma habitual en Big Data (Hadoop, Spark y Flink) así como un benchmark para Hadoop, denominado TPCx-HS.
+		Cuando uno se enfrenta a un problema de Big Data necesita estudiar y desarrollar tecnologías que permitan el procesamiento de gran cantidades de datos de forma eficiente. Además, debe adaptar los algoritmos que pretenda utilizar a este nuevo ámbito, reduciendo en medida de lo posible complejidad algorítmica de los mismos. La dificultad de este proceso resolutivo es lo que hace que los expertos en Big Data sean muy valorados en el ámbito científico y empresarial. En el resto del documento presentaremos explicaremos cómo abordar los problemas de Big Data e introduciremos Map Reduce (paradigma de programación distribuida) y Hadoop (software libre que implementa Map Reduce) así como un benchmark para Hadoop, denominado TPCx-HS.
 		
 	\subsection{Ingeniería de servidores en Big Data: computación de altas prestaciones} \label{sec:big-data:ise}
 	
 		En la Sección \ref{sec:big-data:que-es} destacábamos dos problemas del tratamiento de conjuntos de datos masivos: el conjunto de datos puede no caber en memoria principal y se necesita una gran capacidad de cómputo para ejecutar algoritmos sobre éste. La solución a este problema suele ser la aplicación de la computación de altas prestaciones \cite{hpc}.
 		
-		El término computación de altas prestaciones se refiere a la agregación de varios computadores con el fin de obtener una mayor potencia y rendimiento. Cada uno de los computadores utilizados se denomina nodo mientras que al conjunto de todos los nodos se le llama clúster o servidor de altas prestaciones. La agregación de la capacidad de cómputo de los nodos se consigue gracias a la paralelización y programación distribuida. Todos los nodos realizan tareas simultáneamente que ayudan a la resolución de un problema. El conjunto de todas las tareas a realizar conforma el algoritmo que se ejecuta en el servidor. De esta forma el trabajo a realizar se reparte entre los nodos, obteniendo un menor tiempo de ejecución.
-		
+		El término computación de altas prestaciones se refiere a la agregación de varios computadores con el fin de obtener una mayor potencia y rendimiento. Cada uno de los computadores utilizados se denomina nodo mientras que al conjunto de todos los nodos se le llama clúster o servidor de altas prestaciones. La agregación de la capacidad de cómputo de los nodos se consigue gracias a la paralelización y programación distribuida. Todos los nodos realizan simultáneamente tareas que ayudan a la resolución de un problema. El conjunto de todas las tareas a realizar conforma el algoritmo que se ejecuta en el servidor. De esta forma el trabajo se reparte entre los nodos, obteniendo un menor tiempo de ejecución.
 		
 		Sin embargo, el uso de la computación de altas prestaciones no soluciona de forma directa el problema. Supóngase que una empresa compra un servidor en el cual se ejecuta un algoritmo distribuido con eficiencia $\theta(n^2)$ sobre conjuntos de datos masivos. En el momento en el que se compra el hardware consiguen ejecutar el algoritmo en 8 horas, obteniendo resultados en el mismo día. Sin embargo, siguiendo la tendencia mostrada en la Figura \ref{fig:zeta-bytes}, es probable que el conjunto de datos a utilizar se duplique en tamaño dentro de un año. En tal caso el servidor puede tener problemas desde el punto de vista de la memoria y el flujo de datos debido a los cuellos de botella que pueda mostrar el hardware. Por otro lado, aunque no hubiese problemas con la memoria, el algoritmo tardará como mínimo 4 veces más en ejecutarse al tener complejidad cuadrática. Por tanto, la ejecución pasará a durar 32 horas, no pudiendo obtener resultados en un mismo día. 
 				
@@ -309,7 +310,7 @@
 		
 		\begin{itemize}
 			\item La función \textbf{map} toma como entrada una pareja (clave, valor) y produce un nuevo conjunto de parejas (clave, valor), denominado conjunto intermedio. La función map se aplica en paralelo a cada una de las parejas que conforman la entrada del algoritmo. Tras la ejecución de todos los maps, el sistema ordena y filtra los conjuntos intermedios de parejas de manera que a cada posible clave se le asigna una lista con todos los valores que tenía asociados como pareja.
-			\item La función \textbf{reduce} toma una clave y una lista de valores asociados a la clave. Se aplica a cada una de las salidas que se han obtenido tras la ordenación y el filtrado de los resultados de los maps. Los valores de cada clave se mezclan mediante el procedimiento indicado por el programador. Éste debe devolver al final cero o más parejas formadas por la clave y cada uno de los valores obtenidos tras la mezcla. La lista de valores que se proporciona como argumento a reduce se representa en la implementación mediante un iterador. De esta forma se puede trabajar con listas de valores tan grandes que no quepan en memoria principal.
+			\item La función \textbf{reduce} toma una clave y una lista de valores asociados a la clave. Se aplica a cada una de las salidas que se han obtenido tras la ordenación y el filtrado de los resultados de los maps. Reduce mezcla los valores de cada clave mediante el procedimiento indicado por el programador. Al final la función devuelve cero o más parejas formadas por la clave y cada uno de los valores obtenidos tras la mezcla. La lista de valores que se proporciona como argumento a reduce se representa en la implementación mediante un iterador. De esta forma se puede trabajar con listas de valores tan grandes que no quepan en memoria principal.
 		\end{itemize}  
 		
 		Para ejemplificar el funcionamiento de Map Reduce mostraremos un algoritmo distribuido que cuenta el número de ocurrencias de cada una de las palabras de un documento. El Algoritmo \ref{alg:map-reduce} contiene el pseudo-código de éste. La función map toma como parámetros el nombre del documento y una string con parte del texto asociado. Por cada palabra que encuentra emite una pareja con la palabra y un 1. La función reduce suma todas las ocurrencias encontradas de la palabra, devolviendo la pareja (palabra, número total de ocurrencias).
@@ -361,15 +362,15 @@
 
 		Como consecuencia, si los datos generados no están uniformemente distribuidos en todas las claves puede suceder que una región contenga mucho más trabajo que otra. A cambio, se obtiene un proceso eficiente para conseguir que todas las parejas con la misma clave vayan a la misma región.
 		
-		La localización de estas regiones en los discos es enviada al maestro. Cuando un reducer pasa a ejecutarse, el maestro le notifica la localización de las regiones de los discos que les corresponden (aquellas regiones que tienen el mismo índice que el reducer). Posteriormente, el esclavo llama a los discos para obtener las regiones correspondientes. Nótese que de esta forma todos las parejas con igual clave van al mismo reducer. Tras la obtención de los datos, el reducer los ordena por clave y agrupa aquellos valores que pertenezcan a la misma clave en conjuntos. Si el tamaño de los datos es demasiado grande, entonces una ordenación externa es utilizada.
+		La localización de estas regiones en los discos es enviada al maestro. Cuando un reducer pasa a ejecutarse, el maestro le notifica la localización de las regiones de los discos que les corresponden (aquellas regiones que tienen el mismo índice que el reducer). Posteriormente, el esclavo llama a los discos para obtener las regiones correspondientes. Nótese que de esta forma todas las parejas con igual clave van al mismo reducer. Tras la obtención de los datos, el reducer los ordena por clave y agrupa aquellos valores que pertenezcan a la misma clave en conjuntos. Si el tamaño de los datos es demasiado grande, entonces una ordenación externa es utilizada.
 		
 		Cuando todos los mappers se han ejecutado, los reducers comienzan a aplicar la función reduce a sus correspondientes parejas. Cada hebra produce un archivo de salida con los resultados obtenidos. Tras finalizar la ejecución de éstas, el control vuelve al usuario. Normalmente se deberían unir los $R$ archivos generados en uno nuevo, para lo cual se requeriría una nueva llamada a MapReduce u otra aplicación distribuida que permita realizar este proceso.
 
 		En este contexto se implementa la tolerancia a errores como sigue. Periódicamente el maestro realiza un ping a cada uno de los esclavos. Si algunos de ellos no le responde, entonces se asume que el nodo ha fallado y se envía su correspondiente trabajo al primer nodo que se encuentre disponible. En caso de que falle un mapper, los reducers son informados de que deben leer los datos de este mapper desde la nueva localización en disco a no ser que ya hayan completado la lectura de los datos de la ejecución errada.
 
-		En definitiva, Map Reduce permite a los programadores con poca experiencia en sistemas distribuidos llevar a cabo implementaciones eficientes para grandes cantidades de datos. De esta manera se ahorra trabajo de implementación, pudiendo dedicarse el programador a mejorar la eficiencia de los algoritmos. Cómo 
+		En definitiva, Map Reduce permite a los programadores con poca experiencia en sistemas distribuidos llevar a cabo implementaciones eficientes para grandes cantidades de datos. De esta manera se ahorra trabajo de implementación, pudiendo dedicarse el programador a mejorar la eficiencia de los algoritmos.
 		
-		Sin embargo, no cualquier algoritmo puede implementarse en Map Reduce. La paralelización de los cómputos en Map Reduce se consigue gracias a que las distintas ejecuciones de la función map son independientes entre sí. Claramente los maps podrían implementarse en un bucle for de forma iterativa. Sin embargo, no todo bucle for puede ser imlementado mediante una función map. En efecto, basta considerar un bucle for en el que cada iteración dependa de alguna de las iteraciones anteriores. Este bucle no es paralelizable y, por tanto, no puede implementarse de forma explícita en Map Reduce. En tal caso, podemos intentar redefinir el algoritmo y buscar una versión que sí sea paralelizable en Map Reduce. No obstante, siempre hay que tener en cuenta las limitaciones de Map Reduce pues a veces caemos en la siguiente sentencia: ``\textit{Cuando tu única herramienta es un martillo, todo te parece un clavo}''.
+		Sin embargo, no cualquier algoritmo puede implementarse en Map Reduce. La paralelización de los cómputos en Map Reduce se consigue gracias a que las distintas ejecuciones de la función map son independientes entre sí. Claramente los maps podrían implementarse en un bucle for de forma iterativa. Sin embargo, no todo bucle for puede ser implementado mediante una función map. En efecto, basta considerar un bucle for en el que cada iteración dependa de alguna de las iteraciones anteriores. Este bucle no es paralelizable y, por tanto, no puede implementarse de forma explícita en Map Reduce. En tal caso, podemos intentar redefinir el algoritmo y buscar una versión que sí sea paralelizable. No obstante, siempre hay que tener en cuenta las limitaciones de Map Reduce pues a veces podemos caer en la siguiente sentencia: ``\textit{Cuando tu única herramienta es un martillo, todo te parece un clavo}'' \cite{hadoop-cons}.
 
 
 	\subsection{Hadoop} \label{sec:mr-hadoop:hadoop}
@@ -378,7 +379,7 @@
 		
 		Hadoop comenzó a desarrollarse poco después de la publicación de GFS y Map Reduce. Inicialmente el proyecto en cuestión era Apache Nutch \cite{nutch} y tenía como objetivo desarrollar un buscador web libre. El proyecto estaba siendo desarrollado por Doug Cutting entre otros. Sin embargo, el software tenía muchos problemas cuando se ejecutaba sobre un clúster de computadores. Con el fin de solucionar este problema comenzaron a implementar un sistema de archivos distribuidos basado en GFS y una versión de Map Reduce. Este nuevo proyecto pasó a llamarse Hadoop en 2006. Como curiosidad, Hadoop es el nombre del elefante de peluche del hijo de Dough Cutting, que fue director del proyecto.
 		
-		Hadoop está implementado principalmente en Java, aunque utiliza de forma minoritaria C y utilidades de la línea de comandos. Se encuentra disponible para Windows y los sistemas Unix, aunque solamente incluye soporte para Linux. Hadoop incluye 4 módulos básicos \cite{hadoop-doc}:
+		Hadoop está implementado principalmente en Java, aunque utiliza de forma minoritaria C y utilidades de la línea de comandos. Se encuentra disponible para Windows y los sistemas Unix, aunque solamente incluye soporte para Linux. Hadoop contiene 4 módulos básicos \cite{hadoop-doc}:
 		 
 		\begin{enumerate}
 			\item \textbf{Hadoop Common.} Librería con las funciones y utilidades comunes al resto de módulos.
@@ -387,7 +388,7 @@
 			\item \textbf{Hadoop MapReduce.} Implementación del paradigma Map Reduce en el ecosistema Hadoop. Utiliza YARN para procesar en paralelo de grandes conjuntos de datos. Funciona de forma similar a la explicación dada en la Sección \ref{sec:mr-hadoop:map-reduce}. El programador debe proporcionar la implementación de las funciones map y reduce y del módulo de particionamiento de la entrada. Aunque Hadoop está implementado principalmente en Java, permite utilizar Java, Python, Ruby y C++ para programar los algoritmos. Además, Hadoop MapReduce posibilita una alta configuración, como modificar las operaciones de ordenación y filtrado de los datos.
 		\end{enumerate}
 		
-		Además de estos módulos básicos, Hadoop incluye otros subproyectos como Hive, que utiliza Map Reduce para realizar búsquedas SQL sobre los datos almacenados con HDFS, o Spark. Este último combina el paradigma de programación Map Reduce con procesamiento iterativo para obtener implementaciones eficientes de algoritmos que no podían tradicionalmente desarrollarse con Map Reduce.
+		Además de estos módulos básicos, Hadoop incluye otros subproyectos como Hive, que utiliza Map Reduce para realizar búsquedas SQL sobre los datos almacenados con HDFS, o Spark. Este último combina el paradigma de programación Map Reduce con procesamiento iterativo \cite{spark-cluster} con el fin de obtener implementaciones eficientes de algoritmos que no podían tradicionalmente desarrollarse con Map Reduce. Este es el caso de gran parte de los algoritmos de machine learning y ciencia de datos. Además, Spark utiliza de forma exhaustiva la memoria principal \cite{spark-rdd}, obteniendo una gran velocidad de cómputo. Consecuente, Spark, a pesar de ser relativamente joven (2012), se ha convertido en un referente del estado del arte en Big Data.
 		
 %-----------------------------------------------------------------------------------------------------
 %	SECCIÓN 4
@@ -399,7 +400,7 @@
 	
 	Una técnica utilizada para ver qué sistema nos da más prestaciones es el uso de los benchmarks, uno de ellos es TPCx-HS. TPC es una organización sin ánimo de lucro que estudia el proceso de transacción y desarrolla benchmarks para bases de datos. El término transacción se suele atribuir a aspectos bancarios. Sin embargo, en este contexto una transacción es un conjunto de operaciones de un computador que incluyen lectura y escritura en disco, llamadas a funciones del sistema operativo, o cualquier forma de transferencia de datos de un sistema a otro. Los benchmarks que produce TPC miden el proceso de transacción y el rendimiento de las bases de datos en términos del número transacciones que se pueden hacer por unidad de tiempo \cite{intro-tpc}.
 	
-	TPCx-HS (Transaction Processing Performance Council Express Hadoop System) se desarrolló para proveer de una medida del rendimiento fiable, rendimiento relación precio, disponibilidad y, opcionalmente, datos de consumo de energía de los sistemas de Big Data que usen Hadoop. TPCx-HS fue el primer benchmark objetivo que permitía medir tanto hardware como software, como el Hadoop Runtime. \cite{info-tpc}
+	TPCx-HS (Transaction Processing Performance Council Express Hadoop System) se desarrolló para proveer de una medida del rendimiento fiable, rendimiento relación precio, disponibilidad y, opcionalmente, datos de consumo de energía de los sistemas de Big Data que usen Hadoop. TPCx-HS fue el primer benchmark objetivo que permitía medir tanto hardware como software, como el Hadoop Runtime \cite{info-tpc}. El benchmark se basa en la ejecución de un algoritmo de ordenación sobre un gran conjunto de datos en Hadoop Map Reduce.
 	
 	\subsection{Carga de trabajo de TPCx-HS}
 	
@@ -407,27 +408,28 @@
 		
 		\begin{itemize}
 			\item HSGen: es un programa que genera los datos según factor de escala, que suele estar entre un 1TB y 10000TB (se denota TB como terabytes).
-			\item HSDataCheck: es un programa que comprueba el cumplimiento del conjunto de datos.
+			\item HSDataCheck: es un programa que comprueba que el conjunto de datos generado es correcto y está perfectamente almacenado.
 			\item HSSort: es un programa que ordena los datos según un orden total.
-			\item HSValidate: es un programa que valida la salida, es decir, los resultados obtenidos.
+			\item HSValidate: es un programa que comprueba que la salida obtenida por el algoritmo es correcta
 		\end{itemize}
 	
 	\subsection{Fases de ejecución del benchmark}
-		Una ejecución válida consiste en cinco fases separadas que corren secuencialmente. Estas fases no se solapan en su ejecución, es decir, el comienzo de la fase 2 no puede darse hasta que la fase 1 esté completa. Para que comience cada fase se necesita de un script llamado $<TPCx-HS-master>$ que es el que inicia cada fase y que puede ser ejecutado desde cualquier nodo del sistema que se está bajo test \cite{tpcxhs}.
+	
+		Una ejecución válida consiste en cinco fases separadas que corren secuencialmente. Estas fases no se solapan en su ejecución, es decir, el comienzo de la fase 2 no puede darse hasta que la fase 1 esté completa. Para que comience cada fase se necesita de un script llamado $<TPCx-HS-master>$ que es el que inicia cada fase y que puede ser ejecutado desde cualquier nodo del sistema que está bajo test \cite{tpcxhs}.
 		
 		Las fases de ejecución son las siguientes:
 		
 		\begin{itemize}
 			\item Fase 1: se generan los datos de entrada usando HSGen. Se han de copiar en un soporte duradero y hacer la copia replicada en tres discos (llamado \textit{"3-ways replication"}), que suelen ser el principal, el secundario y uno de respaldo \cite{replication}.
-			\item Fase 2: se verifica la validez del conjunto de datos usando HSDataCheck. El programa sirve para verificar la cardinalidad, tamaño y el factor de réplica de los datos generados. Si el programa reporta un fallo, entonces la ejecución no es válida y se deberá volver a empezar.
-			\item Fase 3: se lanza el programa HSSort con el que se ordena los datos de entrada. Esta fase muestra los datos de entrada y los datos de salida (los datos ya ordenados). Al igual que en la fase 1, se han de copiar los datos en un soportde duradero y hacer el \textit{"3-ways replication"}.
-			\item Fase 4: se comprueba la viabilidad del conjunto de datos usando HSDataCheck. El programa comprueba la cardinalidad de los datos, tamaño y el factor de replicación de los datos ordenados. Si el programa reporta un fallo, entonces la ejecución no es válida y se deberá volver a empezar.
-			\item Fase 5: una vez que en la fase 4 se ha comprobado la cardinalidad de los datos antes y después de ordenarlos, se procede a la validación de los datos con HSValidate. Como su nombre indica, HSValidate comprueba que los datos de salida sean correctos, es decir, se realiza la verificación de la replicación de los datos. Si reporta el fallo consisten en que el HSSort no generó el correcto orden de salida, la ejecución se considerará inválida.
+			\item Fase 2: se verifica la validez del conjunto de datos usando HSDataCheck. El programa sirve para verificar la cardinalidad del conjunto de datos generado y comprobar que las réplicas realizadas son correctas. Si el programa reporta un fallo, entonces la ejecución no es válida y se deberá volver a empezar.
+			\item Fase 3: se lanza el programa HSSort con el que se ordenan los datos de entrada. Al igual que en la fase 1, se han de copiar los datos de salida en un soporte duradero y hacer el \textit{"3-ways replication"}.
+			\item Fase 4: se comprueba la viabilidad del conjunto de datos de salida usando HSDataCheck. Esta comprobación incluye corroborar que la salida contiene el mismo número de datos que la entrada y que las réplicas se han ejecutado correctamente. Si el programa reporta un fallo, entonces la ejecución no es válida y se deberá volver a empezar.
+			\item Fase 5: se ejecuta HSValidate, que comprueba que los datos de salida sean correctos. Esto es, se chequea que el algoritmo de ordenación se ha ejecutado correctamente y que, efectivamente, la salida está ordenada. Si reporta el fallo consisten en que el HSSort no generó el correcto orden de salida, la ejecución se considerará inválida.
 		\end{itemize}
 		
 		El benchmark consiste en dos ejecuciones (ver la Figura \ref{fig:ejecucionesTPC} en el anexo) y cada vez que se ejecuta una fase se ha de especificar el tiempo que ha llevado la ejecución. Entre la primera ejecución de las cinco fases y la segunda, hay una fase intermedia que sirve para limpiar el sistema, conocida como \textit{"file system cleanup"} y, lógicamente, no se permite ninguna actividad durante dicha fase. Una vez realizadas las dos ejecuciones se obtiene el tiempo total de ejecución que servirá para calcular datos en la fase de medición.
 			
-		Como consideraciones finales en la ejecución, el sistema bajo test no puede ser reconfigurado o cambiado durante o entre cualquiera de las fases de la ejecución ni tampoco entre la primera y la segunda ejecución. Cualquier cambio que se haga en el sistema se deberá realizar antes del comienzo de la fase 1 de la primera ejecución. El factor de escala usado en el conjunto de datos del test debe ser escogido del conjunto de factores de escala definido como sigue: 1TB, 3TB, 10TB, 30TB, 100TB, 300TB, 1000TB, 3000TB, 10000TB.
+		Como consideraciones finales en la ejecución, el sistema bajo test no puede ser reconfigurado o cambiado durante o entre cualquiera de las fases de la ejecución ni tampoco entre la primera y la segunda ejecución. Cualquier cambio que se haga en el sistema se deberá realizar antes del comienzo de la fase 1 de la primera ejecución. El tamaño del conjunto de datos utilizado en el benchmark puede tomar uno de los siguientes valores: 1TB, 3TB, 10TB, 30TB, 100TB, 300TB, 1000TB, 3000TB, 10000TB. A este valor se le denomina factor de escala.
 	
 	\subsection{Medida del rendimiento}
 	
@@ -439,19 +441,24 @@
 			\item Si se escoge la opción de \textit{"TPC-energy"}, la medida de la energía que hace TPCx-HS informa de la potencia por rendimiento. \\
 		\end{itemize}
 		
-		La medida del rendimiento se representa con HSph@SF, que se mide con la siguiente expresión:
+		La medida del rendimiento se representa con HSph@SF, y se mide con la siguiente expresión:
 		
 		$$ HSph@SF = \frac{SF}{T/3600} $$
 		
 		donde:
+		
 		\begin{itemize}
 			\item SF es el factor de escala escogido.
 			\item T es el tiempo total que se obtuvo al sumar el tiempo de las dos ejecuciones. \\
 		\end{itemize}	
 		
 		La medida del rendimiento-precio se puede calcular con la siguiente fórmula. Dicha medida usa una lógica negativa ya que a menor valor se tiene un mejor rendimiento-precio.
-		
+
+		\kern -2mm
+
 		$$ \$/HSph@SF = \frac{P}{HSph@SF} $$
+
+		\kern -2mm
 		
 		donde P es el costo del sistema en el que se han hecho las ejecuciones.
 		
@@ -474,11 +481,19 @@
 
 \section{Conclusión} \label{sec:conclusion}
 
-	Podemos decir que Big Data es un área que aúna tanto la ingeniería del software como la ingeniería de servidores y la ciencia de datos.
+	Podemos decir que Big Data es un área que agrupa la programación distribuida, la ingeniería de servidores y la ciencia de datos. La resolución de problemas de este ámbito es compleja y conlleva un proceso de selección de hardware y diseño e implementación de algoritmos distribuidos y escalables. Por tanto, la ingeniería de servidores forma parte de los conocimientos necesarios para resolver problemas de Big Data con resultados satisfactorios.
+	
+	Los problemas de Big Data son cada vez más complejos debido al incremento de la cardinalidad de los conjuntos de datos. El desarrollo de nuevas tecnologías para tratar los conjuntos de datos masivos forma parte del eje central de Big Data. En este trabajo hemos introducido el paradigma de programación distribuida Map Reduce y la implementación en software libre denominada Hadoop. Ambos son elementos clave del estado del arte de Big Data. En este contexto hemos comentado la importancia de Spark, proyecto que ha sido desarrollado en el ecosistema Hadoop. Se recomienda al lector que quiera especializarse en esta temática que estudie Spark en profundidad pues forma parte del futuro inmediato de Big Data.
+	
+	Por último, hay que destacar la necesidad de desarrollar nuevos benchmarks para discernir entre diferentes computadores en función del problema de Big Data que se pretenda resolver. En los últimos años están surgiendo nuevas tecnologías Big Data, como es el caso de Spark, que requieren benchmarks claros y objetivos. Además, se debe intentar conseguir benchmarks que permitan comparar diferentes tecnologías Big Data entre sí con el fin de determinar qué tecnología es más eficiente en una máquina dada. La ingeniería de servidores también es clave en la resolución de este problema. TPCx-HS es una pieza de este puzzle complejo que es Big Data. Sin embargo, todavía quedan muchas piezas por desarrollar. Consecuentemente, Big Data estará en el punto de mira de multitud de ingenieros y científicos en los próximos años.
+	
 
 %-----------------------------------------------------------------------------------------------------
 %	SECCIÓN 6: REFERENCIAS
 %-----------------------------------------------------------------------------------------------------
+
+
+\fontsize{5}{7}\selectfont
 
 \printbibliography
 
