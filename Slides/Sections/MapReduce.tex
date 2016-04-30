@@ -94,7 +94,31 @@
 
 	\subsection*{Software libre}
 	
-		\begin{frame}{Hadoop}
-			
-			
+		\begin{frame}{}
+			\kern-3mm
+			\begin{center}
+				\includegraphics[width=0.7\textwidth]{./Images/hadoop.png}
+				\kern-2mm
+				\begin{tcolorbox}[colback=ChetwodeBlue!10,colframe=ChetwodeBlue!60]
+					\fontsize{8}{8}\selectfont
+					\centering
+					\textbf{Open-source software for reliable, scalable, distributed computing}
+				\end{tcolorbox}
+			\end{center}
+	
+			\centering
+			\kern-3mm
+			\fontsize{6}{8}\selectfont
+			\begin{itemize}
+				\item HDFS: Sistema de archivos distribuido basado en Google File System (GFS).
+				\item YARN: Gestión de tareas, recursos y nodos.
+				\item SPARK: Map Reduce + procesamiento iterativo y en memoria.
+			\end{itemize}
+
+			\begin{tikzpicture}					
+				\node (img1) {\includegraphics[width=0.8\textwidth]{./Images/hadoop-enviroment.png}};
+				\node [above right = 0.5cm and 2cm of $(img1)$] (j) {\includegraphics[width=0.2\textwidth]{./Images/java.jpg}};
+
+			\end{tikzpicture}
+						
 		\end{frame}

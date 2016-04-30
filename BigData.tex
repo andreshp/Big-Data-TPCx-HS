@@ -344,20 +344,20 @@
 			\end{subalgorithm}
 		\end{algorithm}
 
-		La paralelización  la lleva  cabo el sistema de forma automática. Para ello la entrada debe particionarse en $M$ bloques en tiempo de ejecución. Cada uno de estos bloques contiene una lista de parejas (clave, valor). Map Reduce repartirá los bloques en distintos nodos del servidor de forma que cada uno de estos nodos ejecuta la función map sobre cada una de las parejas de su bloque. Las hebras que realizan esta acción se denomina mappers. El programador debe indicar tanto el número de bloques a utilizar ($M$) como definir la función utilizada para el particionamiento de la entrada. Habitualmente se recomienda que cada uno de los $M$ bloques contenga entre $16$ y $64$ MB. 
+		La paralelización  la lleva  cabo el sistema de forma automática. Para ello la entrada debe particionarse en $M$ bloques en tiempo de ejecución. Cada uno de estos bloques contiene una lista de parejas (clave, valor). Map Reduce repartirá los bloques en distintos nodos del servidor de forma que cada uno de estos nodos ejecuta la función map sobre cada una de las parejas de su bloque. Las hebras que realizan esta acción se denomina mappers. El programador debe indicar tanto el número de bloques a utilizar ($M$) como definir la función utilizada para el particionamiento de la entrada. En este ejemplo el particionamiento consiste en separar un texto en $M$ bloques distintos. Habitualmente se recomienda que cada uno de los $M$ bloques contenga entre $16$ y $64$ MB. 
 		
 		Conforme los maps terminan de ejecutarse se va realizando la fase de ordenación y filtrado de los resultados. En este ejemplo para cada palabra se obtiene una lista de unos con tantos elementos como el número de veces que se haya encontrado la palabra. Una vez han finalizado los mappers, se pueden ejecutar las hebras que aplican la función reduce. Estas se denominan reducers. Para ello el conjunto de claves intermedias se particiona en $R$ bloques. Cada uno de esto $R$ bloques se asigna a un nodo con un reducer, que ejecutará la función reduce sobre las parejas (clave, iterador) que le correspondan. El programador debe decidir el valor $R$ para obtener el mejor rendimiento posible del sistema. Tras la ejecución de los reduce se obtiene la lista de las palabras encontradas y el número de ocurrencias de las mismas.  La Figura \ref{fig:map-reduce} muestra de forma gráfica este proceso.
 
 		\begin{figure}[H]
 			\centering
-			\includegraphics[width=14cm]{./images/MapReduce.png}
+			\includegraphics[width=14cm]{./images/MapReduce.jpg}
 			\caption{Aplicación de Map Reduce sobre un conjunto de datos.} 
 			\label{fig:map-reduce}
 		\end{figure}
 
 		La implementación de Map Reduce se lleva a cabo siguiendo el paradigma maestro - esclavo. La Figura \ref{fig:map-reduce:master-workers} (véase el anexo) muestra el proceso que se realiza de forma interna en una ejecución de Map Reduce con $M=3$ y $R=2$. El primer paso es el particionamiento de la entrada. Tras realizarse este particionamiento se crea una hebra denominada maestro que se encarga de controlar toda la ejecución. Además, se lanzan tantas hebras como tareas haya que realizar, en total $M+R$. Estas hebras se llaman esclavos y son de dos tipos: mappers y reducers. Los esclavos se almacenan en una cola en la que tienen prioridad los mappers.
 		
-		Las hebras de la cola se van asignando a los nodos del sistema y los mappers comienzan a ejecutarse. Cada mapper genera parejas intermedias que se almacenan en un buffer de la memoria. Periódicamente, el buffer se vacía, escribiendo las parejas en un disco duro asociado al mapper. En cada disco duro se utilizan $R$ regiones, numeradas desde el $0$ al $R-1$. Las parejas se reparten entre estas regiones utilizando una función hash sobre las claves. De esta manera parejas con la misma clave irán a la misma región disco duro. 
+		Las hebras de la cola se van asignando a los nodos del sistema y, consecuentemente, los mappers comienzan a ejecutarse. Cada mapper genera parejas intermedias que se almacenan en un buffer de la memoria. Periódicamente, el buffer se vacía, escribiendo las parejas en un disco duro asociado al mapper. En cada disco duro se utilizan $R$ regiones, numeradas desde el $0$ al $R-1$. Las parejas se reparten entre estas regiones utilizando una función hash sobre las claves. De esta manera parejas con la misma clave irán a la misma región disco duro. 
 
 		Como consecuencia, si los datos generados no están uniformemente distribuidos en todas las claves puede suceder que una región contenga mucho más trabajo que otra. A cambio, se obtiene un proceso eficiente para conseguir que todas las parejas con la misma clave vayan a la misma región.
 		
@@ -367,7 +367,9 @@
 
 		En este contexto se implementa la tolerancia a errores como sigue. Periódicamente el maestro realiza un ping a cada uno de los esclavos. Si algunos de ellos no le responde, entonces se asume que el nodo ha fallado y se envía su correspondiente trabajo al primer nodo que se encuentre disponible. En caso de que falle un mapper, los reducers son informados de que deben leer los datos de este mapper desde la nueva localización en disco a no ser que ya hayan completado la lectura de los datos de la ejecución errada.
 
-		En definitiva, Map Reduce permite a los programadores con poca experiencia en sistemas distribuidos llevar a cabo implementaciones eficientes para grandes cantidades de datos. De esta manera se ahorra trabajo de implementación, pudiendo dedicarse el programador a mejorar la eficiencia de los algoritmos. Es más, una implementación típica de Map Reduce puede procesar varios tera bytes de datos en servidores con miles de nodos.
+		En definitiva, Map Reduce permite a los programadores con poca experiencia en sistemas distribuidos llevar a cabo implementaciones eficientes para grandes cantidades de datos. De esta manera se ahorra trabajo de implementación, pudiendo dedicarse el programador a mejorar la eficiencia de los algoritmos. Cómo 
+		
+		Sin embargo, no cualquier algoritmo puede implementarse en Map Reduce. La paralelización de los cómputos en Map Reduce se consigue gracias a que las distintas ejecuciones de la función map son independientes entre sí. Claramente los maps podrían implementarse en un bucle for de forma iterativa. Sin embargo, no todo bucle for puede ser imlementado mediante una función map. En efecto, basta considerar un bucle for en el que cada iteración dependa de alguna de las iteraciones anteriores. Este bucle no es paralelizable y, por tanto, no puede implementarse de forma explícita en Map Reduce. En tal caso, podemos intentar redefinir el algoritmo y buscar una versión que sí sea paralelizable en Map Reduce. No obstante, siempre hay que tener en cuenta las limitaciones de Map Reduce pues a veces caemos en la siguiente sentencia: ``\textit{Cuando tu única herramienta es un martillo, todo te parece un clavo}''.
 
 
 	\subsection{Hadoop} \label{sec:mr-hadoop:hadoop}
@@ -385,7 +387,7 @@
 			\item \textbf{Hadoop MapReduce.} Implementación del paradigma Map Reduce en el ecosistema Hadoop. Utiliza YARN para procesar en paralelo de grandes conjuntos de datos. Funciona de forma similar a la explicación dada en la Sección \ref{sec:mr-hadoop:map-reduce}. El programador debe proporcionar la implementación de las funciones map y reduce y del módulo de particionamiento de la entrada. Aunque Hadoop está implementado principalmente en Java, permite utilizar Java, Python, Ruby y C++ para programar los algoritmos. Además, Hadoop MapReduce posibilita una alta configuración, como modificar las operaciones de ordenación y filtrado de los datos.
 		\end{enumerate}
 		
-		Además de estos módulos básicos, Hadoop incluye otros subproyectos como Hive, que utiliza Map Reduce para realizar búsquedas SQL sobre los datos almacenados con HDFS, o Spark, que estudiaremos en la Sección \ref{sec:spark-flink}.
+		Además de estos módulos básicos, Hadoop incluye otros subproyectos como Hive, que utiliza Map Reduce para realizar búsquedas SQL sobre los datos almacenados con HDFS, o Spark. Este último combina el paradigma de programación Map Reduce con procesamiento iterativo para obtener implementaciones eficientes de algoritmos que no podían tradicionalmente desarrollarse con Map Reduce.
 		
 %-----------------------------------------------------------------------------------------------------
 %	SECCIÓN 4
@@ -488,7 +490,7 @@
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=14cm]{./images/MapReduce-MasterWorkers.png}
+		\includegraphics[width=14cm]{./images/MapReduce-MasterWorkers.jpg}
 		\caption{Funcionamiento interno de Map Reduce.} 
 		\label{fig:map-reduce:master-workers}
 	\end{figure}
@@ -496,14 +498,14 @@
 			
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=15cm]{./images/examples.png}
+		\includegraphics[width=0.95\textwidth]{./images/examples.png}
 		\caption{Tabla de resultados obtenidos con TPCx-HS \cite{ejemplos}.} 
 		\label{fig:ejemplo}
 	\end{figure}
 	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=10cm]{./images/executionsTPC.png}
+		\includegraphics[width=8cm]{./images/executionsTPC.png}
 		\caption{Gráfico de las ejecuciones de TPCx-HS} 
 		\label{fig:ejecucionesTPC}
 	\end{figure}
