@@ -98,6 +98,17 @@
 }{\egroup\egroup\egroup}
 \addtobeamertemplate{background}{\box\@backgroundblock}{}
 
+% Two part definitions
+\newcommand{\twopartdef}[2]
+{
+	\left\{
+	\begin{array}{ll}
+		#1 \\
+		#2
+	\end{array}
+	\right.
+}
+
 %----------------------------------------------------------------------------------------
 %	THEMES AND DOCUMENT STRUCTURE
 %----------------------------------------------------------------------------------------
@@ -115,6 +126,9 @@
 \setbeamertemplate{itemize item}{\color{TurkishRose}$\bullet$}
 \setbeamertemplate{itemize subitem}{\color{ChetwodeBlue}$\circ$}
 \setbeamercolor{section number projected}{bg=TurkishRose}
+
+% Auxiliar color for itemize
+\newcommand*\MyPitem{\item[\color{ChetwodeBlue}{\textbullet}]}
 
 % Blocks colour
 \hypersetup{colorlinks,linkcolor=,urlcolor=TurkishRose}
@@ -146,14 +160,14 @@
 			\begin{beamercolorbox}[sep=2pt,center]{title}	
 				\usebeamerfont{title}\textbf{\inserttitle}\par
 			\end{beamercolorbox}
-			\begin{columns}
-				\column{0.05\textwidth}
-				\href{https://github.com/andreshp/Big-Data-TPCx-HS}{\includegraphics[width=40pt]{./Images/Logos/github.png}}
-				\column{0.95\textwidth}
-				\begin{beamercolorbox}[sep=4pt,center]{author}	
-					\usebeamerfont{author}\authors
-				\end{beamercolorbox}
-			\end{columns}
+%			\begin{columns}
+%				\column{0.05\textwidth}
+%				\href{https://github.com/andreshp/Big-Data-TPCx-HS}{\includegraphics[width=40pt]{./Images/Logos/github.png}}
+%				\column{0.95\textwidth}
+%				\begin{beamercolorbox}[sep=4pt,center]{author}	
+%					\usebeamerfont{author}\authors
+%				\end{beamercolorbox}
+%			\end{columns}
 		\end{titleBox}
 		
 }
@@ -172,7 +186,7 @@
 %	Javier Poyatos Amador \\ \Letter \ \href{mailto:poyatosamador@gmail.com}{poyatosamador@gmail.com}
 %}
 
-%\author[A. Herrera y J. Poyatos]{}
+\author[Ingeniería de Servidores]{}
 
 % Date
 \date{10 de Mayo de 2016}
