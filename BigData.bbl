@@ -29,7 +29,7 @@
   \field{sortinit}{B}
   \field{title}{HDFS architecture guide}
   \verb{url}
-  \verb archive.cloudera.com/cdh/3/hadoop-0.20.2-cdh3u6/hdfs_design.pdf
+  \verb http://archive.cloudera.com/cdh/3/hadoop-0.20.2-cdh3u6/hdfs_design.pdf
   \endverb
   \field{year}{2008}
 \endentry
