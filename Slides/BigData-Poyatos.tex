@@ -145,6 +145,37 @@
 \renewcommand\textbullet{\ensuremath{\bullet}}
 
 %-----------------------------------------------------------------------------------------------------
+%	LINKS
+%-----------------------------------------------------------------------------------------------------
+
+\usepackage{hyperref}
+
+\hypersetup{
+	colorlinks   = true,   % Quita las cajas y añade un color al texto.
+	% Tipos de enlaces cuyo color se puede configurar:
+	linkcolor    = white,        % Por defecto red
+	anchorcolor  = black,        % Por defecto black
+	citecolor    = magenta,     % Por defecto green
+	filecolor    = red,         % Por defecto cyan
+	menucolor    = green,       % Por defecto red
+	runcolor     = red,         % Por defecto cyan
+	urlcolor     = cyan,        % Por defecto magenta
+	% pdf information
+	unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+	pdftoolbar=true,        % show Acrobat’s toolbar?
+	pdfmenubar=true,        % show Acrobat’s menu?
+	pdffitwindow=false,     % window fit to page when opened
+	%    pdfstartview={FitW},    % fits the width of the page to the window
+	pdftitle={Big Data, Map Reduce y TPCx-HS},    % title
+	pdfauthor={},     % author
+	pdfsubject={Ingeniería de servidores},   % subject of the document
+	pdfcreator={},   % creator of the document
+	pdfproducer={},  % producer of the document
+	pdfkeywords={Big Data, } {Map Reduce, } {Hadoop, } {TPCx-HS, } {benchmarks, } {ingeniería de servidores}, % list of keywords
+	pdfnewwindow=true, 	     % links in new window
+}
+
+%-----------------------------------------------------------------------------------------------------
 %	TITLE PAGE
 %-----------------------------------------------------------------------------------------------------
 
