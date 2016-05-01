@@ -8,36 +8,44 @@
 
 	\subsection*{¿Por qué usar TPCx-HS?}
 
-		\begin{frame}{Información sobre TPCx-HS}
+		\begin{frame}{¿Qué es TPCx-HS?}
+			\kern -10mm
+			\begin{flushright}
+					\includegraphics[width=0.2\textwidth]{./Images/tpc-logo.png}
+			\end{flushright}
+			\kern -2mm
 			\begin{tcolorbox}[colback=ChetwodeBlue!10,colframe=ChetwodeBlue!60]
 				\fontsize{8}{8}\selectfont
 				\centering
 				\textbf{Transaction Processing Performance Council Express Hadoop System}
 			\end{tcolorbox}
+
 			\begin{columns}[c]
-				\column{.7\textwidth}
-				\begin{figure}[h]
-					\centering
-					\includegraphics[width=5cm]{./Images/tpc-logo.png}
-				\end{figure}
+				\column{.7\textwidth}					
+					\kern-2mm
+					\begin{center}
+						{\color{TurkishRose}\large \textbf{Benchmarking Hadoop}}						
+					\end{center}
+					
+					\kern 3mm
+
+					{\color{ChetwodeBlue}\large Carga de trabajo de TPCx-HS}		
+					\begin{itemize}
+						\fontsize{8}{10}\selectfont
+						\item HSGen: generación de datos con un factor de escala.
+						\item HSDataCheck: comprobación de los datos.
+						\item HSSort: Implementación en Hadoop de TeraSort.
+						\item HSValidate: comprobación de la salida.
+					\end{itemize}		
 			
-				\column{.4\textwidth}
-			
-				\begin{figure}[h]
-							\centering
-							\includegraphics[width=4cm]{./Images/hardwork.png}
-						\end{figure}
-					\end{columns}
-			
-			{\color{ChetwodeBlue}\large Carga de trabajo de TPCx-HS}
-			
-			\begin{itemize}
-				\fontsize{8}{10}\selectfont
-				\item HSGen: generación de los datos según un factor de escala.
-				\item HSDataCheck: comprobación de la calidad del conjunto de datos.
-				\item HSSort: ordenación de los datos según un orden total.
-				\item HSValidate: comprobación si los datos obtenidos son válidos.
-			\end{itemize}		
+				\column{.3\textwidth}
+					\begin{figure}[h]
+						\centering
+						\includegraphics[width=0.9\textwidth]{./Images/hardwork.png}
+						
+						\includegraphics[width=0.7\textwidth]{./Images/benchmark.png}
+					\end{figure}
+			\end{columns}
 		\end{frame}
 	
 	\subsection*{Funcionamiento de TPCx-HS}	
@@ -45,21 +53,18 @@
 		\begin{frame}{Ejecución de TPCx-HS}
 				\begin{columns}[c]
 					\column{.6\textwidth}
+						\fontsize{8}{10}\selectfont
+											
+						\begin{itemize}
+							\item Fase 1: Generación de los datos. \\ 3-ways replication
+							\item Fase 2: Verificación de la validez de los datos.
+							\item Fase 3: Ordenación de los datos.  \\ 3-ways replication
+							\item Fase 4: Verificación de la validez de los datos.
+							\item Fase 5: Validación de la salida
+						\end{itemize}
 					
-					\begin{itemize}
-						\item Fase 1: Generación de los datos.
-						\item Fase 2: Verificación de la validez de los datos.
-						\item Fase 3: Ordena de los datos.
-						\item Fase 4: Verificación de la viabilidad de los datos.
-						\item Fase 5: Validación de los datos.
-					\end{itemize}
-					
-					\column{.7\textwidth}
-					\begin{figure}[H]
-						\centering
-						\includegraphics[width=5cm]{./Images/executionsTPC.png}
-					\end{figure}
-
+					\column{.4\textwidth}
+						\includegraphics[width=\textwidth]{./Images/executionsTPC.png}
 				\end{columns}
 	
 		\end{frame}
