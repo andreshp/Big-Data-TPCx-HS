@@ -8,14 +8,25 @@
 
 	\begin{frame}{Conclusión}
 		\centering
-		\fontsize{9}{8}\selectfont
-		\begin{tikzpicture}
-		\node [fill=Grandis!80, circle,inner sep=2pt, text width=2.35cm, align=center] (ise) {Ingeniería de servidores};
-		\node [fill=TurkishRose!80, circle,inner sep=2pt, text width=2.35cm, align=center, right= 2.2cm of $(ise)$] (pd) {Programación distribuida};
-		\node [fill=ChetwodeBlue!80, circle, inner sep=2pt, text width=2.35cm, align=center, above = 20mm of $(ise)!0.5!(pd)$] (cd) {Ciencia de Datos};
-		\node [fill=Jaguar!85, circle, inner sep=2pt, text width=2.5cm, align=center, below = 6mm of $(cd)$] (bd) {\color{white}{\textbf{Big Data}}};
-		\end{tikzpicture}
-			
+		\fontsize{8}{8}\selectfont
+
+		\begin{columns}
+			\column{0.45\textwidth}
+				\begin{tikzpicture}
+					\node [fill=Grandis!80, circle,inner sep=2pt, text width=2cm, align=center] (ise) {Ingeniería de servidores};
+					\node [fill=TurkishRose!80, circle,inner sep=2pt, text width=2cm, align=center, right= 2cm of $(ise)$] (pd) {Programación distribuida};
+					\node [fill=ChetwodeBlue!80, circle, inner sep=2pt, text width=2cm, align=center, above = 20mm of $(ise)!0.5!(pd)$] (cd) {Ciencia de Datos};
+					\node [fill=Jaguar!85, circle, inner sep=2pt, text width=2.2cm, align=center, below = 6mm of $(cd)$] (bd) {\color{white}{\textbf{Big Data}}};
+				\end{tikzpicture}
+			\column{0.55\textwidth}
+				\includegraphics[width=0.9\textwidth]{./Images/big-data-future.jpg}
+				\kern 3mm
+				\begin{itemize}
+					\item Nuevas tecnologías: Spark, Flink...
+					\item Desarrollo y diseño de algoritmos
+					\item Benchmarks para las nuevas tecnologías
+				\end{itemize}
+		\end{columns}			
 	\end{frame}
 
 	\setbeamertemplate{headline}{
